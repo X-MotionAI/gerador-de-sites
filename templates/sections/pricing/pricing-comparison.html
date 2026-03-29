@@ -1,0 +1,148 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-surface, #f9fafb);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 3rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">Escolha o plano ideal para voce</h2>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    ">
+      <!-- Plan 1 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 0.2s ease;
+      " onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,0.06)'" onmouseout="this.style.boxShadow='none'">
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{plan_1_name}}</h3>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--color-text, #1a1a2e); margin-bottom: 1.5rem;">{{plan_1_price}}</div>
+        <div style="font-size: 0.95rem; line-height: 2.2; color: var(--color-muted, #6b7280); text-align: left; flex-grow: 1; margin-bottom: 2rem;">{{plan_1_features}}</div>
+        <a href="{{plan_1_cta_url}}" style="
+          display: block;
+          width: 100%;
+          padding: 0.9rem;
+          background-color: transparent;
+          color: var(--color-primary, #4f46e5);
+          font-family: var(--font-body, system-ui, sans-serif);
+          font-size: 1rem;
+          font-weight: 700;
+          border: 2px solid var(--color-primary, #4f46e5);
+          border-radius: var(--radius, 0.5rem);
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          box-sizing: border-box;
+        " onmouseover="this.style.backgroundColor='var(--color-primary, #4f46e5)';this.style.color='#ffffff'" onmouseout="this.style.backgroundColor='transparent';this.style.color='var(--color-primary, #4f46e5)'">{{plan_1_cta_text}}</a>
+      </div>
+
+      <!-- Plan 2 (highlighted) -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 2px solid var(--color-primary, #4f46e5);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 10px 40px rgba(79, 70, 229, 0.15);
+      ">
+        <span style="
+          position: absolute;
+          top: -14px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 0.35rem 1.25rem;
+          border-radius: 999px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        ">Mais popular</span>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{plan_2_name}}</h3>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--color-text, #1a1a2e); margin-bottom: 1.5rem;">{{plan_2_price}}</div>
+        <div style="font-size: 0.95rem; line-height: 2.2; color: var(--color-muted, #6b7280); text-align: left; flex-grow: 1; margin-bottom: 2rem;">{{plan_2_features}}</div>
+        <a href="{{plan_2_cta_url}}" style="
+          display: block;
+          width: 100%;
+          padding: 0.9rem;
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          font-family: var(--font-body, system-ui, sans-serif);
+          font-size: 1rem;
+          font-weight: 700;
+          border: none;
+          border-radius: var(--radius, 0.5rem);
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+          box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+          box-sizing: border-box;
+        " onmouseover="this.style.backgroundColor='var(--color-secondary, #4338ca)';this.style.transform='translateY(-2px)'" onmouseout="this.style.backgroundColor='var(--color-primary, #4f46e5)';this.style.transform='translateY(0)'">{{plan_2_cta_text}}</a>
+      </div>
+
+      <!-- Plan 3 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        transition: box-shadow 0.2s ease;
+      " onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,0.06)'" onmouseout="this.style.boxShadow='none'">
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{plan_3_name}}</h3>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--color-text, #1a1a2e); margin-bottom: 1.5rem;">{{plan_3_price}}</div>
+        <div style="font-size: 0.95rem; line-height: 2.2; color: var(--color-muted, #6b7280); text-align: left; flex-grow: 1; margin-bottom: 2rem;">{{plan_3_features}}</div>
+        <a href="{{plan_3_cta_url}}" style="
+          display: block;
+          width: 100%;
+          padding: 0.9rem;
+          background-color: transparent;
+          color: var(--color-primary, #4f46e5);
+          font-family: var(--font-body, system-ui, sans-serif);
+          font-size: 1rem;
+          font-weight: 700;
+          border: 2px solid var(--color-primary, #4f46e5);
+          border-radius: var(--radius, 0.5rem);
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          box-sizing: border-box;
+        " onmouseover="this.style.backgroundColor='var(--color-primary, #4f46e5)';this.style.color='#ffffff'" onmouseout="this.style.backgroundColor='transparent';this.style.color='var(--color-primary, #4f46e5)'">{{plan_3_cta_text}}</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      section > div > div:nth-child(2) {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+  </style>
+</section>

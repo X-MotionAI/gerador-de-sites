@@ -1,0 +1,48 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-bg, #ffffff);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <div style="
+      background-color: var(--color-surface, #f9fafb);
+      border: 2px solid #bbf7d0;
+      border-radius: var(--radius, 0.5rem);
+      padding: clamp(2rem, 4vw, 3rem);
+    ">
+      <div style="
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0fdf4;
+        border-radius: 50%;
+        font-size: 2.5rem;
+      ">&#x1F6E1;</div>
+
+      <h2 style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 0.5rem 0;
+        color: var(--color-text, #1a1a2e);
+      ">Garantia incondicional de {{guarantee_duration}}</h2>
+
+      <p style="
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+        line-height: 1.7;
+        color: var(--color-muted, #6b7280);
+        margin: 0 auto;
+        max-width: 500px;
+      ">{{guarantee_text}}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,597 @@
+# =============================================================================
+# AWARENESS LEVELS — MATRIZ DE ROTEAMENTO BASEADA NOS 5 NIVEIS DE
+# CONSCIENCIA DE EUGENE SCHWARTZ
+# Determina estrutura da pagina, agentes primarios, abordagem de headline,
+# framework de copy, estilo de chamada para acao e comprimento do corpo do texto
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+source_framework: "Breakthrough Advertising — Eugene Schwartz (1966)"
+
+# =============================================================================
+# NIVEL 1 — UNAWARE (Completamente Inconsciente)
+# O prospect nao sabe que tem um problema. Nao sabe que existe uma solucao.
+# Nao sabe que voce existe. A abordagem precisa ser 100% indireta.
+# =============================================================================
+unaware:
+  display_name: "Completamente Inconsciente"
+  description: >
+    O prospect nao tem consciencia de que possui um problema, uma necessidade
+    ou um desejo relacionado ao que voce oferece. Ele nao esta procurando
+    nada. A unica forma de capturar sua atencao e atraves de historias,
+    curiosidade e identificacao emocional profunda.
+
+  page_sections:
+    - header-simple
+    - hero-diagonal
+    - pain-points-storytelling
+    - solution-mechanism
+    - authority-credentials
+    - social-proof-case-study
+    - social-proof-testimonials-grid
+    - solution-before-after
+    - bonus-cards
+    - pricing-single
+    - guarantee-full-section
+    - faq-accordion
+    - cta-centered
+    - footer-full
+
+  primary_agents:
+    lead_copywriter: "story-weaver"
+    supporting_copywriters:
+      - body-copy-architect
+      - headline-sniper
+    copy_captain_directive: >
+      Priorizar narrativa emocional e identificacao. O prospect nao sabe
+      que tem um problema, entao a copy precisa abrir essa consciencia
+      atraves de historia e empatia antes de qualquer mencao a solucao.
+    design_focus: "layout longo, imersivo, com blocos narrativos e transicoes visuais suaves"
+
+  headline_approach:
+    strategy: "curiosity_and_story"
+    description: >
+      A headline nunca menciona o produto ou a solucao diretamente. Em vez
+      disso, utiliza curiosidade extrema, uma historia intrigante ou uma
+      declaracao provocativa que gera identificacao imediata. O objetivo
+      e fazer o leitor pensar 'isso e sobre mim' sem saber que esta
+      prestes a receber uma oferta.
+    templates:
+      - "A historia de {{protagonist}} que mudou tudo sobre {{topic}}"
+      - "O que {{number}} {{audience}} descobriram sobre {{hidden_truth}}"
+      - "Por que {{common_belief}} pode estar sabotando {{desired_outcome}}"
+      - "{{provocative_statement}} — e o que isso significa para voce"
+    avoid:
+      - Mencionar o produto pelo nome
+      - Usar linguagem de vendas direta
+      - Prometer resultados especificos na headline
+      - Usar palavras como "compre", "adquira", "invista"
+
+  copy_framework:
+    primary: "Story-Based Selling (Gary Halbert)"
+    secondary: "Emotional Identification (Robert Collier)"
+    structure:
+      - step: "Hook via historia ou curiosidade"
+        percentage_of_copy: 15
+        agent: headline-sniper
+      - step: "Narrativa de identificacao emocional"
+        percentage_of_copy: 25
+        agent: story-weaver
+      - step: "Revelacao gradual do problema"
+        percentage_of_copy: 20
+        agent: story-weaver
+      - step: "Introducao sutil da solucao como descoberta"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Prova social e autoridade como validacao da historia"
+        percentage_of_copy: 10
+        agent: body-copy-architect
+      - step: "Transicao suave para a oferta"
+        percentage_of_copy: 10
+        agent: body-copy-architect
+      - step: "Chamada para acao suave e sem pressao"
+        percentage_of_copy: 5
+        agent: cta-engineer
+
+  cta_style:
+    intensity: "soft"
+    description: >
+      A chamada para acao e apresentada como uma oportunidade de descoberta,
+      nao como uma compra. O botao utiliza linguagem de curiosidade e
+      exploracao, nunca linguagem transacional.
+    button_examples:
+      - "Descobrir como funciona"
+      - "Ver a historia completa"
+      - "Quero saber mais"
+      - "Revelar o metodo"
+    urgency_level: "none"
+    scarcity_elements: false
+    social_proof_near_cta: true
+
+  body_copy_length:
+    minimum_words: 3000
+    maximum_words: 5000
+    ideal_range: "3500-4500 palavras"
+    rationale: >
+      O prospect inconsciente precisa de uma jornada narrativa longa para
+      transitar da completa ignorancia ate o desejo de agir. Cada etapa
+      dessa transicao requer espaco para construir emocao, identificacao
+      e confianca antes de apresentar qualquer oferta.
+
+# =============================================================================
+# NIVEL 2 — PROBLEM AWARE (Consciente do Problema)
+# O prospect sabe que tem um problema mas nao sabe que existe solucao.
+# =============================================================================
+problem_aware:
+  display_name: "Consciente do Problema"
+  description: >
+    O prospect reconhece que tem um problema, uma dor ou uma frustracao,
+    mas ainda nao sabe que existem solucoes eficazes para resolve-lo. Ele
+    pode ate ter tentado resolver por conta propria e falhado. A abordagem
+    precisa validar a dor, amplifica-la e entao apresentar a solucao.
+
+  page_sections:
+    - header-sticky
+    - hero-split
+    - pain-points-storytelling
+    - pain-points-3-column
+    - solution-mechanism
+    - solution-features
+    - authority-credentials
+    - social-proof-testimonials-grid
+    - social-proof-stats
+    - solution-before-after
+    - bonus-list
+    - pricing-value-stack
+    - guarantee-full-section
+    - faq-accordion
+    - cta-split
+    - footer-full
+
+  primary_agents:
+    lead_copywriter: "headline-sniper"
+    supporting_copywriters:
+      - body-copy-architect
+      - story-weaver
+      - objection-handler
+    copy_captain_directive: >
+      Combinar headline poderosa que nomeia a dor com body copy que
+      amplifica o problema, mostra empatia e introduz a solucao como
+      o caminho natural para a resolucao. A historia deve ser usada
+      para mostrar que outros passaram pelo mesmo problema.
+    design_focus: "layout que alterna blocos de dor (escuros) com blocos de solucao (claros)"
+
+  headline_approach:
+    strategy: "problem_amplification"
+    description: >
+      A headline nomeia diretamente o problema ou a dor que o prospect
+      esta sentindo, utilizando linguagem emocional e especifica. O
+      objetivo e gerar um reconhecimento imediato: 'sim, e exatamente
+      isso que eu sinto'. A subheadline pode insinuar que existe uma
+      solucao sem revela-la completamente.
+    templates:
+      - "Cansado de {{specific_pain}}? Voce nao esta sozinho"
+      - "{{number}}% de {{audience}} enfrentam {{problem}} — aqui esta o porqueque"
+      - "Se {{pain_symptom}} esta arruinando {{life_area}}, leia isto"
+      - "A verdade sobre {{problem}} que ninguem te contou"
+    avoid:
+      - Comecar com a solucao
+      - Minimizar a dor do prospect
+      - Usar jargao tecnico na headline
+      - Ser generico demais na descricao do problema
+
+  copy_framework:
+    primary: "Problem-Agitate-Solve (Dan Kennedy)"
+    secondary: "Headline Dominance (John Caples)"
+    structure:
+      - step: "Headline que nomeia a dor com precisao cirurgica"
+        percentage_of_copy: 10
+        agent: headline-sniper
+      - step: "Validacao e amplificacao do problema"
+        percentage_of_copy: 20
+        agent: body-copy-architect
+      - step: "Historia de identificacao (alguem que passou pelo mesmo)"
+        percentage_of_copy: 15
+        agent: story-weaver
+      - step: "Revelacao do mecanismo por tras do problema"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Apresentacao da solucao como consequencia logica"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Prova social e resultados"
+        percentage_of_copy: 10
+        agent: body-copy-architect
+      - step: "Manipulacao de objecoes"
+        percentage_of_copy: 8
+        agent: objection-handler
+      - step: "Chamada para acao com incentivo moderado"
+        percentage_of_copy: 7
+        agent: cta-engineer
+
+  cta_style:
+    intensity: "medium"
+    description: >
+      A chamada para acao posiciona a acao como a solucao para o problema
+      que foi amplificado ao longo da copy. O botao utiliza linguagem de
+      resolucao e transformacao, com um nivel moderado de incentivo.
+    button_examples:
+      - "Resolver esse problema agora"
+      - "Comecar minha transformacao"
+      - "Sim, quero a solucao"
+      - "Dar o primeiro passo"
+    urgency_level: "low"
+    scarcity_elements: false
+    social_proof_near_cta: true
+
+  body_copy_length:
+    minimum_words: 2000
+    maximum_words: 4000
+    ideal_range: "2500-3500 palavras"
+    rationale: >
+      O prospect consciente do problema precisa que sua dor seja validada
+      e amplificada antes de receber a solucao. Isso requer espaco para
+      construir empatia, mas nao tanto quanto o prospect completamente
+      inconsciente, pois ele ja possui um ponto de partida emocional.
+
+# =============================================================================
+# NIVEL 3 — SOLUTION AWARE (Consciente da Solucao)
+# O prospect sabe que existem solucoes mas nao conhece a sua especificamente.
+# =============================================================================
+solution_aware:
+  display_name: "Consciente da Solucao"
+  description: >
+    O prospect sabe que tem um problema e sabe que existem solucoes no
+    mercado, mas ainda nao conhece o seu produto especificamente ou nao
+    entende por que o seu e diferente dos demais. A abordagem precisa
+    diferenciar sua solucao atraves de um mecanismo unico.
+
+  page_sections:
+    - header-sticky
+    - hero-centered
+    - solution-mechanism
+    - solution-features
+    - solution-before-after
+    - authority-credentials
+    - authority-media-mentions
+    - social-proof-testimonials-grid
+    - social-proof-case-study
+    - social-proof-stats
+    - bonus-cards
+    - pricing-comparison
+    - guarantee-badge
+    - faq-two-column
+    - cta-split
+    - footer-full
+
+  primary_agents:
+    lead_copywriter: "body-copy-architect"
+    supporting_copywriters:
+      - headline-sniper
+      - objection-handler
+    copy_captain_directive: >
+      Focar no mecanismo unico que diferencia esta solucao de todas as
+      outras no mercado. O prospect ja sabe que solucoes existem, entao
+      a copy precisa responder 'por que ESTA solucao e diferente e melhor'.
+      Usar comparacoes implicitas sem denegrir concorrentes.
+    design_focus: "layout comparativo, com destaque para diferenciais e mecanismo unico"
+
+  headline_approach:
+    strategy: "unique_mechanism_reveal"
+    description: >
+      A headline apresenta o diferencial unico ou o mecanismo exclusivo
+      que torna esta solucao superior as alternativas. O objetivo e gerar
+      curiosidade sobre o 'como' e o 'por que' esta abordagem e diferente
+      de tudo que o prospect ja tentou.
+    templates:
+      - "O metodo {{unique_name}} que {{result}} sem {{common_objection}}"
+      - "Como {{mechanism}} esta ajudando {{audience}} a {{achieve_result}}"
+      - "A diferenca entre {{generic_solution}} e {{your_solution}} em {{metric}}"
+      - "Por que {{common_approach}} falha e o que funciona de verdade"
+    avoid:
+      - Ser generico sobre a solucao
+      - Ignorar a existencia de concorrentes
+      - Nao explicar o mecanismo diferenciador
+      - Prometer sem fundamentar
+
+  copy_framework:
+    primary: "Unique Mechanism (Todd Brown)"
+    secondary: "Differentiation Strategy (Jay Abraham)"
+    structure:
+      - step: "Headline que apresenta o mecanismo unico"
+        percentage_of_copy: 10
+        agent: headline-sniper
+      - step: "Explicacao detalhada do mecanismo diferenciador"
+        percentage_of_copy: 20
+        agent: body-copy-architect
+      - step: "Comparacao implicita com abordagens tradicionais"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Demonstracao de resultados e provas"
+        percentage_of_copy: 20
+        agent: body-copy-architect
+      - step: "Autoridade e credenciais que validam o mecanismo"
+        percentage_of_copy: 10
+        agent: body-copy-architect
+      - step: "Resposta a objecoes sobre a diferenciacao"
+        percentage_of_copy: 15
+        agent: objection-handler
+      - step: "Chamada para acao direta e confiante"
+        percentage_of_copy: 10
+        agent: cta-engineer
+
+  cta_style:
+    intensity: "direct"
+    description: >
+      A chamada para acao e direta e posiciona a acao como a escolha
+      inteligente e diferenciada. O botao utiliza linguagem de decisao
+      e acesso, com confianca moderada a alta.
+    button_examples:
+      - "Quero acesso ao metodo {{name}}"
+      - "Comecar com {{product_name}} agora"
+      - "Garantir minha vaga"
+      - "Experimentar o {{unique_mechanism}}"
+    urgency_level: "medium"
+    scarcity_elements: true
+    social_proof_near_cta: true
+
+  body_copy_length:
+    minimum_words: 1500
+    maximum_words: 3000
+    ideal_range: "1800-2500 palavras"
+    rationale: >
+      O prospect consciente da solucao ja entende o problema e sabe que
+      solucoes existem. A copy precisa focar em diferenciar, nao em
+      educar. Isso permite um texto mais curto e mais focado no
+      mecanismo unico e nas provas de superioridade.
+
+# =============================================================================
+# NIVEL 4 — PRODUCT AWARE (Consciente do Produto)
+# O prospect ja conhece seu produto mas ainda nao decidiu comprar.
+# =============================================================================
+product_aware:
+  display_name: "Consciente do Produto"
+  description: >
+    O prospect ja conhece seu produto ou servico especifico, pode ate
+    ter visitado sua pagina antes, mas ainda nao tomou a decisao de
+    comprar. Ele precisa de um empurrao final: mais provas, garantia
+    mais forte, oferta irresistivel ou remocao da ultima objecao.
+
+  page_sections:
+    - header-sticky
+    - hero-centered
+    - social-proof-stats
+    - social-proof-testimonials-grid
+    - social-proof-case-study
+    - solution-features
+    - bonus-cards
+    - pricing-value-stack
+    - pricing-guarantee-combo
+    - guarantee-full-section
+    - faq-accordion
+    - cta-urgency
+    - footer-minimal
+
+  primary_agents:
+    lead_copywriter: "objection-handler"
+    supporting_copywriters:
+      - cta-engineer
+      - body-copy-architect
+    copy_captain_directive: >
+      O prospect ja conhece o produto. A copy deve focar em remover as
+      ultimas barreiras de compra: objecoes residuais, medo de tomar
+      a decisao errada, necessidade de mais prova social e uma oferta
+      tao irresistivel que a inacao se torne mais dolorosa que a acao.
+    design_focus: "layout compacto com foco em prova social, garantia proeminente e chamada para acao de alta visibilidade"
+
+  headline_approach:
+    strategy: "offer_crystallization"
+    description: >
+      A headline cristaliza a oferta de forma irresistivel, enfatizando
+      o valor acumulado, a garantia ou um incentivo especial para agir
+      agora. O prospect ja sabe o que e o produto, entao a headline
+      precisa dar a razao final para comprar hoje.
+    templates:
+      - "Tudo que voce precisa para {{result}}, com garantia de {{guarantee}}"
+      - "{{product_name}}: {{key_benefit}} + {{bonus}} por apenas {{price}}"
+      - "Ultima chance de {{special_offer}} para {{product_name}}"
+      - "{{number}} {{audience}} ja {{achieved_result}} — falta so voce"
+    avoid:
+      - Re-explicar o que o produto e
+      - Repetir informacoes que o prospect ja sabe
+      - Usar abordagem educativa
+      - Ser vago sobre a oferta
+
+  copy_framework:
+    primary: "Objection Destruction (Claude Hopkins)"
+    secondary: "Irresistible Offer Stack (Russell Brunson)"
+    structure:
+      - step: "Headline com oferta cristalizada"
+        percentage_of_copy: 10
+        agent: headline-sniper
+      - step: "Reforco rapido de valor e beneficios principais"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Destruicao sistematica de objecoes"
+        percentage_of_copy: 25
+        agent: objection-handler
+      - step: "Prova social massiva e resultados"
+        percentage_of_copy: 20
+        agent: body-copy-architect
+      - step: "Stack de valor e garantia irresistivel"
+        percentage_of_copy: 15
+        agent: cta-engineer
+      - step: "Chamada para acao forte com urgencia"
+        percentage_of_copy: 15
+        agent: cta-engineer
+
+  cta_style:
+    intensity: "strong"
+    description: >
+      A chamada para acao e forte, direta e utiliza urgencia real e
+      escassez quando aplicavel. O botao transmite decisao e acao
+      imediata, com linguagem que reduz o risco percebido.
+    button_examples:
+      - "Garantir meu acesso agora — com garantia de {{days}} dias"
+      - "Sim, quero {{product_name}} pelo preco especial"
+      - "Aproveitar a oferta antes que acabe"
+      - "Comecar agora — risco zero"
+    urgency_level: "high"
+    scarcity_elements: true
+    social_proof_near_cta: true
+    guarantee_near_cta: true
+
+  body_copy_length:
+    minimum_words: 1000
+    maximum_words: 2000
+    ideal_range: "1200-1800 palavras"
+    rationale: >
+      O prospect consciente do produto nao precisa ser educado nem
+      convencido do problema. A copy deve ser enxuta e focada em
+      remover objecoes, empilhar valor e criar urgencia para acao.
+
+# =============================================================================
+# NIVEL 5 — MOST AWARE (Completamente Consciente)
+# O prospect ja conhece, confia e quer comprar. So precisa do melhor deal.
+# =============================================================================
+most_aware:
+  display_name: "Completamente Consciente"
+  description: >
+    O prospect conhece seu produto, confia em voce, ja decidiu que quer
+    comprar e so esta esperando o momento certo, a oferta certa ou o
+    incentivo final. Este e o prospect mais quente do funil — a conversao
+    depende apenas de facilitar a acao e oferecer o melhor negocio.
+
+  page_sections:
+    - header-simple
+    - hero-minimal
+    - social-proof-stats
+    - pricing-value-stack
+    - pricing-guarantee-combo
+    - cta-urgency
+    - cta-floating
+    - footer-minimal
+
+  primary_agents:
+    lead_copywriter: "cta-engineer"
+    supporting_copywriters:
+      - objection-handler
+    copy_captain_directive: >
+      Minimalismo extremo. O prospect ja quer comprar. Qualquer texto
+      adicional e uma distracao que pode reduzir a conversao. Foco total
+      em oferta, preco, garantia e chamada para acao. Cada palavra
+      que nao contribui para a conversao deve ser eliminada.
+    design_focus: "layout ultra-compacto, chamada para acao acima da dobra, preco destacado, checkout simplificado"
+
+  headline_approach:
+    strategy: "deal_presentation"
+    description: >
+      A headline vai direto ao ponto com a oferta, o preco ou o
+      incentivo especial. Sem educacao, sem historia, sem explicacao.
+      Apenas o melhor deal apresentado da forma mais clara e atraente
+      possivel.
+    templates:
+      - "{{product_name}} — {{discount}}% de desconto so ate {{deadline}}"
+      - "Sua oferta exclusiva: {{product_name}} por {{price}}"
+      - "Acesso imediato a {{product_name}} — comece em {{time}}"
+      - "{{product_name}} + {{bonus_count}} bonus por {{price}}"
+    avoid:
+      - Textos longos
+      - Explicacoes sobre o produto
+      - Historias ou narrativas
+      - Qualquer coisa que atrase a conversao
+
+  copy_framework:
+    primary: "Direct Response CTA Engineering (Claude Hopkins)"
+    secondary: "Scarcity and Urgency Framework (Robert Cialdini)"
+    structure:
+      - step: "Headline com oferta e preco diretos"
+        percentage_of_copy: 20
+        agent: cta-engineer
+      - step: "Resumo ultra-compacto de valor"
+        percentage_of_copy: 15
+        agent: cta-engineer
+      - step: "Prova social rapida (numeros e stats)"
+        percentage_of_copy: 15
+        agent: body-copy-architect
+      - step: "Oferta com urgencia e escassez"
+        percentage_of_copy: 25
+        agent: cta-engineer
+      - step: "Chamada para acao agressiva com garantia"
+        percentage_of_copy: 25
+        agent: cta-engineer
+
+  cta_style:
+    intensity: "aggressive"
+    description: >
+      A chamada para acao e agressiva, imediata e impossible de ignorar.
+      Utiliza urgencia real, escassez verificavel e garantia como redutor
+      de risco. O botao e grande, visivel e utiliza linguagem de acao
+      imediata. Chamada para acao fixa (floating) acompanha o scroll.
+    button_examples:
+      - "COMPRAR AGORA — {{discount}}% OFF"
+      - "GARANTIR ACESSO IMEDIATO"
+      - "SIM, QUERO POR {{price}}"
+      - "APROVEITAR ANTES QUE ACABE"
+    urgency_level: "maximum"
+    scarcity_elements: true
+    countdown_timer: true
+    social_proof_near_cta: true
+    guarantee_near_cta: true
+    multiple_cta_placements: true
+
+  body_copy_length:
+    minimum_words: 500
+    maximum_words: 1000
+    ideal_range: "600-800 palavras"
+    rationale: >
+      O prospect completamente consciente nao precisa de convencimento.
+      Mais texto significa mais atrito e mais oportunidades para desistir.
+      A copy deve ser a menor possivel enquanto ainda apresenta a oferta
+      de forma irresistivel.
+
+# =============================================================================
+# REGRAS DE DETECCAO AUTOMATICA DE NIVEL DE CONSCIENCIA
+# =============================================================================
+detection_rules:
+  signals:
+    unaware:
+      - "nao sabe que tem um problema"
+      - "publico frio"
+      - "trafego frio"
+      - "audiencia nova"
+      - "primeiro contato"
+      - "nunca ouviu falar"
+      - "nao conhece o nicho"
+    problem_aware:
+      - "sabe que tem o problema"
+      - "ja tentou resolver"
+      - "frustrado com"
+      - "buscando solucao"
+      - "pesquisando sobre"
+      - "trafego de busca organica"
+    solution_aware:
+      - "ja conhece solucoes"
+      - "comparando opcoes"
+      - "viu concorrentes"
+      - "sabe que existem alternativas"
+      - "trafego de comparacao"
+    product_aware:
+      - "ja conhece o produto"
+      - "visitou a pagina antes"
+      - "remarketing"
+      - "retargeting"
+      - "carrinho abandonado"
+      - "lista de emails existente"
+    most_aware:
+      - "cliente existente"
+      - "upsell"
+      - "cross-sell"
+      - "renovacao"
+      - "upgrade"
+      - "ja comprou antes"
+      - "lista quente"
+
+  default_when_unknown: "problem_aware"
+  ask_user_when_confidence_below: 0.6

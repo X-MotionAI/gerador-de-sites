@@ -1,0 +1,529 @@
+# =============================================================================
+# SITE GENERATOR FRAMEWORK — SQUAD MANIFEST
+# Arquitetura XQUADS para geracao de sites de alta conversao
+# =============================================================================
+
+squad:
+  name: "Site Generator"
+  version: "1.0.0"
+  description: >
+    Framework completo de geracao de sites de alta conversao utilizando
+    a arquitetura XQUADS (eXtended Quality-driven Unified Agent Deployment System).
+    Orquestra 38 agentes especializados em 6 esquadras para produzir paginas
+    de vendas, captura, webinario, agradecimento e landing pages com copy
+    persuasiva, design responsivo e otimizacao para conversao.
+  author: "ArtCode Framework"
+  created: "2026-03-29"
+
+# =============================================================================
+# HIERARQUIA DE TIERS
+# =============================================================================
+tier_definitions:
+  tier_0:
+    name: "Comando Supremo"
+    description: "Orquestrador principal que controla todo o pipeline"
+    max_agents: 1
+  tier_1:
+    name: "Capitaes de Esquadra"
+    description: "Roteadores especializados que coordenam suas respectivas esquadras"
+    max_agents: 6
+  tier_2:
+    name: "Tenentes Especialistas"
+    description: "Executores de alto nivel com dominio profundo em frameworks especificos"
+    max_agents: 15
+  tier_3:
+    name: "Sargentos e Recrutas"
+    description: "Executores de tarefas especificas e agentes de suporte"
+    max_agents: 16
+
+# =============================================================================
+# ESQUADRAS (SQUADS)
+# =============================================================================
+squads:
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 0 — COMANDO
+  # ---------------------------------------------------------------------------
+  - id: command
+    name: "Comando Central"
+    description: "Orquestracao e supervisao de todo o pipeline de geracao"
+    agents:
+      - id: site-commander
+        name: "Atlas"
+        rank: Commander
+        tier: 0
+        file: agents/commander/site-commander.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 1 — ESTRATEGIA
+  # ---------------------------------------------------------------------------
+  - id: strategy
+    name: "Estrategia e Inteligencia de Mercado"
+    description: "Analise de mercado, posicionamento, audiencia e oferta"
+    captain: strategy-captain
+    agents:
+      - id: strategy-captain
+        name: "Athena"
+        rank: Captain
+        tier: 1
+        file: agents/strategy/strategy-captain.md
+      - id: market-researcher
+        name: "Marco"
+        rank: Lieutenant
+        tier: 2
+        file: agents/strategy/market-researcher.md
+      - id: offer-architect
+        name: "Oscar"
+        rank: Lieutenant
+        tier: 2
+        file: agents/strategy/offer-architect.md
+      - id: audience-profiler
+        name: "Aurora"
+        rank: Sergeant
+        tier: 3
+        file: agents/strategy/audience-profiler.md
+      - id: competitor-analyst
+        name: "Caesar"
+        rank: Sergeant
+        tier: 3
+        file: agents/strategy/competitor-analyst.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 2 — COPY
+  # ---------------------------------------------------------------------------
+  - id: copy
+    name: "Copywriting e Persuasao"
+    description: "Producao de copy persuasiva para todos os elementos da pagina"
+    captain: copy-captain
+    agents:
+      - id: copy-captain
+        name: "Cyrus"
+        rank: Captain
+        tier: 1
+        file: agents/copy/copy-captain.md
+      - id: headline-sniper
+        name: "Helena"
+        rank: Lieutenant
+        tier: 2
+        file: agents/copy/headline-sniper.md
+      - id: body-copy-architect
+        name: "Bruno"
+        rank: Lieutenant
+        tier: 2
+        file: agents/copy/body-copy-architect.md
+      - id: story-weaver
+        name: "Sophia"
+        rank: Lieutenant
+        tier: 2
+        file: agents/copy/story-weaver.md
+      - id: cta-engineer
+        name: "Carlos"
+        rank: Sergeant
+        tier: 3
+        file: agents/copy/cta-engineer.md
+      - id: objection-handler
+        name: "Oliver"
+        rank: Sergeant
+        tier: 3
+        file: agents/copy/objection-handler.md
+      - id: email-sequence-writer
+        name: "Elena"
+        rank: Sergeant
+        tier: 3
+        file: agents/copy/email-sequence-writer.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 3 — DESIGN E INTERFACE
+  # ---------------------------------------------------------------------------
+  - id: design
+    name: "Design e Interface"
+    description: "Layout, hierarquia visual, responsividade e componentes de interface"
+    captain: design-captain
+    agents:
+      - id: design-captain
+        name: "Diana"
+        rank: Captain
+        tier: 1
+        file: agents/design/design-captain.md
+      - id: layout-architect
+        name: "Leonardo"
+        rank: Lieutenant
+        tier: 2
+        file: agents/design/layout-architect.md
+      - id: visual-hierarchy-specialist
+        name: "Victor"
+        rank: Lieutenant
+        tier: 2
+        file: agents/design/visual-hierarchy-specialist.md
+      - id: responsive-engineer
+        name: "Rachel"
+        rank: Lieutenant
+        tier: 2
+        file: agents/design/responsive-engineer.md
+      - id: color-typography-specialist
+        name: "Claudia"
+        rank: Sergeant
+        tier: 3
+        file: agents/design/color-typography-specialist.md
+      - id: icon-imagery-curator
+        name: "Isaac"
+        rank: Sergeant
+        tier: 3
+        file: agents/design/icon-imagery-curator.md
+      - id: animation-specialist
+        name: "Anita"
+        rank: Sergeant
+        tier: 3
+        file: agents/design/animation-specialist.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 4 — DESENVOLVIMENTO
+  # ---------------------------------------------------------------------------
+  - id: development
+    name: "Desenvolvimento e Codigo"
+    description: "Geracao de codigo HTML/CSS/JavaScript, componentes e integracao"
+    captain: dev-captain
+    agents:
+      - id: dev-captain
+        name: "Darius"
+        rank: Captain
+        tier: 1
+        file: agents/development/dev-captain.md
+      - id: html-architect
+        name: "Hugo"
+        rank: Lieutenant
+        tier: 2
+        file: agents/development/html-architect.md
+      - id: css-engineer
+        name: "Celeste"
+        rank: Lieutenant
+        tier: 2
+        file: agents/development/css-engineer.md
+      - id: javascript-specialist
+        name: "Jonas"
+        rank: Lieutenant
+        tier: 2
+        file: agents/development/javascript-specialist.md
+      - id: form-builder
+        name: "Fabio"
+        rank: Sergeant
+        tier: 3
+        file: agents/development/form-builder.md
+      - id: integration-specialist
+        name: "Iris"
+        rank: Sergeant
+        tier: 3
+        file: agents/development/integration-specialist.md
+      - id: performance-optimizer
+        name: "Paulo"
+        rank: Sergeant
+        tier: 3
+        file: agents/development/performance-optimizer.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 5 — CONVERSAO E OTIMIZACAO
+  # ---------------------------------------------------------------------------
+  - id: conversion
+    name: "Conversao e Otimizacao"
+    description: "CRO, testes, analytics, SEO e otimizacao de performance de conversao"
+    captain: conversion-captain
+    agents:
+      - id: conversion-captain
+        name: "Cassandra"
+        rank: Captain
+        tier: 1
+        file: agents/conversion/conversion-captain.md
+      - id: cro-specialist
+        name: "Conrad"
+        rank: Lieutenant
+        tier: 2
+        file: agents/conversion/cro-specialist.md
+      - id: ab-test-architect
+        name: "Alma"
+        rank: Lieutenant
+        tier: 2
+        file: agents/conversion/ab-test-architect.md
+      - id: analytics-engineer
+        name: "Andre"
+        rank: Sergeant
+        tier: 3
+        file: agents/conversion/analytics-engineer.md
+      - id: seo-specialist
+        name: "Sebastian"
+        rank: Sergeant
+        tier: 3
+        file: agents/conversion/seo-specialist.md
+      - id: trust-signal-specialist
+        name: "Theodora"
+        rank: Sergeant
+        tier: 3
+        file: agents/conversion/trust-signal-specialist.md
+
+  # ---------------------------------------------------------------------------
+  # ESQUADRA 6 — QUALIDADE E REVISAO
+  # ---------------------------------------------------------------------------
+  - id: quality
+    name: "Qualidade e Revisao"
+    description: "Revisao final, testes de qualidade e aprovacao para publicacao"
+    captain: quality-captain
+    agents:
+      - id: quality-captain
+        name: "Quintus"
+        rank: Captain
+        tier: 1
+        file: agents/conversion/quality-captain.md
+      - id: copy-reviewer
+        name: "Celia"
+        rank: Lieutenant
+        tier: 2
+        file: agents/quality/copy-reviewer.md
+      - id: ux-auditor
+        name: "Ulysses"
+        rank: Lieutenant
+        tier: 2
+        file: agents/quality/ux-auditor.md
+      - id: accessibility-checker
+        name: "Ada"
+        rank: Sergeant
+        tier: 3
+        file: agents/quality/accessibility-checker.md
+      - id: cross-browser-tester
+        name: "Xavier"
+        rank: Sergeant
+        tier: 3
+        file: agents/quality/cross-browser-tester.md
+
+# =============================================================================
+# MATRIZ DE HANDOFF (QUEM ALIMENTA QUEM)
+# =============================================================================
+handoff_matrix:
+
+  # Tier 0 -> Tier 1 (Comandante distribui para Capitaes)
+  - from: site-commander
+    to: [strategy-captain, copy-captain, design-captain, dev-captain, conversion-captain, quality-captain]
+    trigger: "pipeline_start"
+    data: "briefing_completo"
+
+  # Estrategia -> Copy (Estrategia alimenta Copywriting)
+  - from: strategy-captain
+    to: [copy-captain]
+    trigger: "strategy_complete"
+    data: "strategic_package"
+    contents:
+      - market_landscape
+      - offer_structure
+      - audience_profiles
+      - competitive_positioning
+
+  # Estrategia -> Design (Estrategia alimenta Design)
+  - from: strategy-captain
+    to: [design-captain]
+    trigger: "strategy_complete"
+    data: "brand_positioning"
+
+  # Copy -> Design (Copy alimenta Design com conteudo)
+  - from: copy-captain
+    to: [design-captain]
+    trigger: "copy_approved"
+    data: "copy_package"
+    contents:
+      - headlines
+      - body_copy
+      - cta_texts
+      - testimonial_copy
+      - faq_content
+
+  # Design -> Desenvolvimento (Design alimenta Desenvolvimento)
+  - from: design-captain
+    to: [dev-captain]
+    trigger: "design_approved"
+    data: "design_specs"
+    contents:
+      - layout_structure
+      - visual_hierarchy
+      - responsive_breakpoints
+      - component_library
+      - color_palette
+      - typography_system
+
+  # Copy -> Desenvolvimento (Copy alimenta Desenvolvimento com textos finais)
+  - from: copy-captain
+    to: [dev-captain]
+    trigger: "copy_approved"
+    data: "final_copy"
+
+  # Desenvolvimento -> Conversao (Desenvolvimento alimenta Conversao)
+  - from: dev-captain
+    to: [conversion-captain]
+    trigger: "build_complete"
+    data: "page_build"
+
+  # Conversao -> Qualidade (Conversao alimenta Qualidade)
+  - from: conversion-captain
+    to: [quality-captain]
+    trigger: "optimization_complete"
+    data: "optimized_page"
+
+  # Qualidade -> Comandante (Qualidade reporta ao Comandante)
+  - from: quality-captain
+    to: [site-commander]
+    trigger: "qa_complete"
+    data: "quality_report"
+
+  # Loops de feedback internos das esquadras
+  - from: market-researcher
+    to: [offer-architect, audience-profiler]
+    trigger: "market_data_ready"
+    data: "market_landscape"
+
+  - from: audience-profiler
+    to: [offer-architect, copy-captain]
+    trigger: "profiles_ready"
+    data: "audience_profiles"
+
+  - from: headline-sniper
+    to: [body-copy-architect]
+    trigger: "headlines_approved"
+    data: "approved_headlines"
+
+  - from: story-weaver
+    to: [body-copy-architect]
+    trigger: "narrative_ready"
+    data: "story_structure"
+
+  - from: body-copy-architect
+    to: [cta-engineer, objection-handler]
+    trigger: "body_copy_ready"
+    data: "body_copy_draft"
+
+  - from: objection-handler
+    to: [cta-engineer]
+    trigger: "objections_handled"
+    data: "objection_responses"
+
+# =============================================================================
+# DEFINICAO DO PIPELINE
+# =============================================================================
+pipeline:
+  name: "Site Generation Pipeline"
+  description: "Pipeline completo de geracao de site de alta conversao"
+
+  stages:
+    - stage: 1
+      name: "Briefing e Diagnostico"
+      owner: site-commander
+      description: "Recebe o briefing do usuario, diagnostica o tipo de pagina e constroi o pipeline"
+      outputs: [pipeline_plan, page_type, briefing_structured]
+      max_duration_minutes: 5
+
+    - stage: 2
+      name: "Estrategia e Inteligencia"
+      owner: strategy-captain
+      description: "Analise de mercado, construcao de oferta, perfil de audiencia e analise competitiva"
+      agents: [market-researcher, offer-architect, audience-profiler, competitor-analyst]
+      outputs: [market_landscape, offer_structure, audience_profiles, competitive_positioning]
+      max_duration_minutes: 15
+      parallel_execution: true
+
+    - stage: 3
+      name: "Copywriting"
+      owner: copy-captain
+      description: "Producao de toda a copy da pagina com base na estrategia definida"
+      agents: [headline-sniper, body-copy-architect, story-weaver, cta-engineer, objection-handler, email-sequence-writer]
+      outputs: [headlines, body_copy, story_elements, cta_blocks, objection_responses, email_sequences]
+      max_duration_minutes: 20
+      parallel_execution: false
+      execution_order: [headline-sniper, story-weaver, body-copy-architect, [cta-engineer, objection-handler], email-sequence-writer]
+
+    - stage: 4
+      name: "Design e Interface"
+      owner: design-captain
+      description: "Criacao do layout, hierarquia visual e sistema de design"
+      agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist, icon-imagery-curator, animation-specialist]
+      outputs: [layout_specs, visual_hierarchy, responsive_rules, design_tokens, imagery_guide, animation_specs]
+      max_duration_minutes: 15
+      parallel_execution: true
+
+    - stage: 5
+      name: "Desenvolvimento"
+      owner: dev-captain
+      description: "Geracao de codigo HTML, CSS e JavaScript"
+      agents: [html-architect, css-engineer, javascript-specialist, form-builder, integration-specialist, performance-optimizer]
+      outputs: [html_structure, css_styles, javascript_logic, form_components, integrations, performance_report]
+      max_duration_minutes: 20
+      parallel_execution: false
+      execution_order: [html-architect, css-engineer, [javascript-specialist, form-builder], integration-specialist, performance-optimizer]
+
+    - stage: 6
+      name: "Otimizacao de Conversao"
+      owner: conversion-captain
+      description: "Otimizacao para conversao, SEO, analytics e sinais de confianca"
+      agents: [cro-specialist, ab-test-architect, analytics-engineer, seo-specialist, trust-signal-specialist]
+      outputs: [cro_recommendations, ab_test_plan, analytics_setup, seo_optimization, trust_elements]
+      max_duration_minutes: 10
+      parallel_execution: true
+
+    - stage: 7
+      name: "Revisao de Qualidade"
+      owner: quality-captain
+      description: "Revisao final de copy, experiencia do usuario, acessibilidade e compatibilidade"
+      agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+      outputs: [copy_review, ux_audit, accessibility_report, browser_compatibility]
+      max_duration_minutes: 10
+      parallel_execution: true
+
+    - stage: 8
+      name: "Aprovacao e Entrega"
+      owner: site-commander
+      description: "Revisao final do Comandante, consolidacao e entrega ao usuario"
+      outputs: [final_page, quality_score, delivery_report]
+      max_duration_minutes: 5
+
+  # Definicao dos tipos de pagina suportados e quais esquadras sao ativadas
+  page_types:
+    landing_page:
+      description: "Pagina de captura de leads com formulario simples"
+      required_squads: [strategy, copy, design, development, conversion, quality]
+      skip_agents: [email-sequence-writer, ab-test-architect]
+      focus: "captura_de_leads"
+
+    sales_page:
+      description: "Pagina de vendas longa com todos os elementos persuasivos"
+      required_squads: [strategy, copy, design, development, conversion, quality]
+      skip_agents: []
+      focus: "venda_direta"
+
+    squeeze_page:
+      description: "Pagina de captura minimalista com foco em um unico CTA"
+      required_squads: [strategy, copy, design, development, conversion, quality]
+      skip_agents: [story-weaver, email-sequence-writer, ab-test-architect, competitor-analyst]
+      focus: "captura_minimalista"
+
+    webinar_page:
+      description: "Pagina de registro para webinario com contagem regressiva"
+      required_squads: [strategy, copy, design, development, conversion, quality]
+      skip_agents: [competitor-analyst]
+      focus: "registro_webinario"
+
+    thank_you_page:
+      description: "Pagina de agradecimento com proximos passos e upsell opcional"
+      required_squads: [copy, design, development, quality]
+      skip_agents: [market-researcher, competitor-analyst, audience-profiler, ab-test-architect, seo-specialist]
+      focus: "pos_conversao"
+
+# =============================================================================
+# CONFIGURACOES GLOBAIS
+# =============================================================================
+global_settings:
+  language: "pt-BR"
+  default_tone: "profissional_persuasivo"
+  quality_threshold: 7
+  max_pipeline_retries: 2
+  enable_parallel_execution: true
+  output_format: "html"
+  responsive_breakpoints: [320, 768, 1024, 1440]
+  performance_budget:
+    first_contentful_paint_ms: 1500
+    largest_contentful_paint_ms: 2500
+    total_blocking_time_ms: 200
+    cumulative_layout_shift: 0.1

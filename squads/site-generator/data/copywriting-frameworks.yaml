@@ -1,0 +1,795 @@
+# =============================================================================
+# COPYWRITING FRAMEWORKS — MATRIZ DE ROTEAMENTO DE FRAMEWORKS DE COPY
+# 22 mestres do copywriting com seus frameworks, especialidades e regras
+# de selecao baseadas em nivel de consciencia e tipo de pagina
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+
+# =============================================================================
+# CATALOGO DOS 22 MESTRES DO COPYWRITING
+# =============================================================================
+masters:
+
+  # ---------------------------------------------------------------------------
+  # 1. Eugene Schwartz
+  # ---------------------------------------------------------------------------
+  - id: eugene-schwartz
+    name: "Eugene Schwartz"
+    specialty: "Niveis de consciencia e canalizacao de desejos existentes do mercado"
+    best_for_awareness:
+      - unaware
+      - problem_aware
+    best_for_medium:
+      - sales
+      - landing
+    primary_framework: "Mass Desire Channeling"
+    framework_description: >
+      Identifica os desejos massivos ja existentes no mercado e canaliza
+      esses desejos para o produto. Nunca tenta criar desejo novo — apenas
+      redireciona o desejo existente. A copy funciona como um tunel que
+      conecta o desejo do prospect ao produto do anunciante.
+    key_principles:
+      - "Nunca tente criar desejo — canalize o desejo que ja existe"
+      - "A copy nao convence — ela conecta desejo a produto"
+      - "Adapte a sofisticacao da copy ao nivel de consciencia do mercado"
+      - "O primeiro paragrafo deve ser tao forte que force a leitura do segundo"
+      - "Cada palavra deve carregar peso e proposito"
+
+  # ---------------------------------------------------------------------------
+  # 2. Gary Halbert
+  # ---------------------------------------------------------------------------
+  - id: gary-halbert
+    name: "Gary Halbert"
+    specialty: "Cartas de vendas baseadas em historias pessoais e conexao emocional direta"
+    best_for_awareness:
+      - unaware
+      - problem_aware
+    best_for_medium:
+      - sales
+    primary_framework: "Story-Based Direct Mail"
+    framework_description: >
+      Utiliza historias pessoais, confessionais e extremamente detalhadas
+      para criar conexao emocional imediata. A carta parece ter sido
+      escrita por um amigo proximo, nao por um vendedor. Cada historia
+      leva naturalmente ao produto como solucao inevitavel.
+    key_principles:
+      - "Escreva como se estivesse conversando com um amigo proximo"
+      - "Use detalhes sensoriais especificos para tornar a historia vivida"
+      - "A melhor copy vem da pesquisa obsessiva sobre o mercado"
+      - "O envelope (headline) e mais importante que a carta (body)"
+      - "Teste tudo — nunca assuma que sabe o que funciona"
+
+  # ---------------------------------------------------------------------------
+  # 3. David Ogilvy
+  # ---------------------------------------------------------------------------
+  - id: david-ogilvy
+    name: "David Ogilvy"
+    specialty: "Posicionamento de marca, headlines baseadas em pesquisa e copy factual"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - landing
+      - sales
+    primary_framework: "Research-Driven Brand Positioning"
+    framework_description: >
+      Copy fundamentada em pesquisa extensiva e dados concretos. Headlines
+      que comunicam o beneficio mais importante de forma clara e especifica.
+      A marca e posicionada como autoridade indiscutivel atraves de fatos,
+      numeros e provas concretas, nunca atraves de hype ou exagero.
+    key_principles:
+      - "A headline e lida cinco vezes mais que o corpo do texto"
+      - "Nunca escreva um anuncio que voce nao gostaria que sua familia visse"
+      - "Fatos vendem mais que adjetivos"
+      - "A copy longa vende mais que a copy curta quando bem escrita"
+      - "O consumidor nao e um idiota — ele e sua esposa"
+
+  # ---------------------------------------------------------------------------
+  # 4. Claude Hopkins
+  # ---------------------------------------------------------------------------
+  - id: claude-hopkins
+    name: "Claude Hopkins"
+    specialty: "Publicidade cientifica, testes sistematicos e copy mensuravel"
+    best_for_awareness:
+      - product_aware
+      - most_aware
+    best_for_medium:
+      - landing
+      - squeeze
+    primary_framework: "Scientific Advertising"
+    framework_description: >
+      Abordagem 100% cientifica e mensuravel para copywriting. Cada
+      headline, cada oferta, cada elemento e testado e medido. A copy
+      e tratada como uma equacao onde cada variavel e otimizada para
+      maximizar a resposta. Foco em ofertas concretas e mensuarcoes
+      precisas de resultado.
+    key_principles:
+      - "Publicidade e ciencia — teste tudo e meça tudo"
+      - "Ofereça servico, nao argumento de venda"
+      - "Um cupom ou amostra gratis vale mais que mil palavras"
+      - "Seja especifico — generalidades escorrem como agua"
+      - "Cada anuncio deve conter uma proposta especifica"
+
+  # ---------------------------------------------------------------------------
+  # 5. Dan Kennedy
+  # ---------------------------------------------------------------------------
+  - id: dan-kennedy
+    name: "Dan Kennedy"
+    specialty: "Marketing de resposta direta, urgencia e oferta irresistivel"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - sales
+      - webinar
+    primary_framework: "No Bullshit Direct Response"
+    framework_description: >
+      Copywriting direto, sem rodeios, com foco total em gerar resposta
+      imediata. Utiliza urgencia, escassez, bonus e garantias agressivas
+      para eliminar procrastinacao. A copy e deliberadamente longa,
+      detalhada e persuasiva, sem se preocupar com elegancia ou estilo.
+    key_principles:
+      - "Urgencia e o oxigenio da venda — sem urgencia, sem venda"
+      - "A unica metrica que importa e o retorno sobre investimento"
+      - "Nunca faça uma oferta que possa ser facilmente recusada"
+      - "Empilhe valor ate a oferta parecer absurdamente generosa"
+      - "O pior pecado do marketing e ser chato"
+
+  # ---------------------------------------------------------------------------
+  # 6. John Caples
+  # ---------------------------------------------------------------------------
+  - id: john-caples
+    name: "John Caples"
+    specialty: "Headlines testadas, copy orientada a beneficios e testes divididos"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - landing
+      - sales
+    primary_framework: "Tested Advertising Methods"
+    framework_description: >
+      Framework sistematico de criacao e teste de headlines. Cada headline
+      segue formulas testadas exaustivamente ao longo de decadas. A copy
+      e construida em torno do beneficio principal, com cada paragrafo
+      desenhado para manter o leitor engajado ate o final.
+    key_principles:
+      - "A headline e responsavel por 80% do sucesso do anuncio"
+      - "Use 'voce' e 'seu' para falar diretamente com o leitor"
+      - "Comece com o maior beneficio na headline"
+      - "Teste headlines em pares para descobrir a vencedora"
+      - "Nunca sacrifique clareza por criatividade"
+
+  # ---------------------------------------------------------------------------
+  # 7. Robert Collier
+  # ---------------------------------------------------------------------------
+  - id: robert-collier
+    name: "Robert Collier"
+    specialty: "Cartas que entram na conversa mental do leitor"
+    best_for_awareness:
+      - unaware
+      - problem_aware
+    best_for_medium:
+      - sales
+      - landing
+    primary_framework: "Mental Conversation Entry"
+    framework_description: >
+      A copy deve entrar na conversa que ja esta acontecendo na mente do
+      leitor. Em vez de iniciar um novo topico, a copy se conecta aos
+      pensamentos, preocupacoes e desejos que o prospect ja esta tendo
+      naquele momento. A transicao para a venda acontece de forma
+      organica e natural.
+    key_principles:
+      - "Entre na conversa que ja esta acontecendo na mente do prospect"
+      - "O primeiro paragrafo deve ecoar os pensamentos do leitor"
+      - "Conecte o conhecido ao desconhecido"
+      - "Apele para os motivos dominantes que movem a acao humana"
+      - "Cada carta deve ter um unico apelo emocional dominante"
+
+  # ---------------------------------------------------------------------------
+  # 8. Joe Sugarman
+  # ---------------------------------------------------------------------------
+  - id: joe-sugarman
+    name: "Joe Sugarman"
+    specialty: "Copy de formato longo com elementos de curiosidade e escorregador"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - sales
+    primary_framework: "Slippery Slide Copywriting"
+    framework_description: >
+      A copy e construida como um escorregador: cada frase e projetada
+      para fazer o leitor ler a proxima frase. O texto todo funciona
+      como uma ladeira onde e impossivel parar no meio. Utiliza gatilhos
+      psicologicos, curiosidade e storytelling para manter o momentum.
+    key_principles:
+      - "Cada frase deve obrigar o leitor a ler a proxima frase"
+      - "O unico objetivo da primeira frase e fazer voce ler a segunda"
+      - "Crie seeds de curiosidade que so serao resolvidas adiante"
+      - "Use gatilhos psicologicos de forma etica e estrategica"
+      - "A copy deve fluir naturalmente como uma conversa fascinante"
+
+  # ---------------------------------------------------------------------------
+  # 9. Gary Bencivenga
+  # ---------------------------------------------------------------------------
+  - id: gary-bencivenga
+    name: "Gary Bencivenga"
+    specialty: "Copy de alta conversao baseada em emocoes profundas e crencas do mercado"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - sales
+      - landing
+    primary_framework: "Belief-Driven Persuasion"
+    framework_description: >
+      A copy mais poderosa nao muda crencas — ela se alinha com as crencas
+      que o prospect ja possui. Identifica as crencas dominantes do mercado
+      e alinha o produto como a manifestacao natural dessas crencas. A
+      persuasao acontece porque o prospect sente que esta sendo compreendido.
+    key_principles:
+      - "Alinhe-se com as crencas existentes do mercado, nao lute contra elas"
+      - "A emocao decide, a logica justifica"
+      - "Ofereca uma razao para acreditar em cada promessa feita"
+      - "A prova mais poderosa e a demonstracao, nao a afirmacao"
+      - "O melhor copywriter e o melhor pesquisador"
+
+  # ---------------------------------------------------------------------------
+  # 10. Jay Abraham
+  # ---------------------------------------------------------------------------
+  - id: jay-abraham
+    name: "Jay Abraham"
+    specialty: "Estrategia de preeminencia, multiplicacao de valor e posicionamento unico"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - sales
+      - webinar
+    primary_framework: "Strategy of Preeminence"
+    framework_description: >
+      Posicionar a empresa ou expert como o consultor confiavel e
+      autoridade indiscutivel do nicho. A copy transmite genuina
+      preocupacao com o bem-estar do cliente, oferecendo valor
+      extraordinario que faz o preco parecer irrelevante. A venda
+      acontece como consequencia natural da confianca construida.
+    key_principles:
+      - "Coloque os interesses do cliente acima dos seus proprios"
+      - "Ofereca valor tao extraordinario que o preco se torne irrelevante"
+      - "Posicione-se como o consultor confiavel, nao como vendedor"
+      - "Multiplique o valor percebido atraves de empilhamento estrategico"
+      - "Toda transacao deve beneficiar ambas as partes de forma desigual a favor do cliente"
+
+  # ---------------------------------------------------------------------------
+  # 11. Russell Brunson
+  # ---------------------------------------------------------------------------
+  - id: russell-brunson
+    name: "Russell Brunson"
+    specialty: "Funis de vendas, stacking de oferta e frameworks de webinario"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - webinar
+      - sales
+    primary_framework: "Perfect Webinar / Expert Secrets"
+    framework_description: >
+      Framework estruturado para webinarios e funis de vendas online.
+      Utiliza quebra de falsas crencas, empilhamento de oferta e
+      fechamento por urgencia e escassez. A apresentacao segue uma
+      sequencia precisa: Uma Grande Ideia, Tres Segredos, Stack,
+      Fechamento.
+    key_principles:
+      - "Uma Grande Ideia que muda tudo para o prospect"
+      - "Quebre as tres falsas crencas que impedem a compra"
+      - "Empilhe a oferta ate parecer impossivel dizer nao"
+      - "Crie urgencia real e genuina para agir agora"
+      - "O framework do webinario funciona em qualquer formato de venda"
+
+  # ---------------------------------------------------------------------------
+  # 12. Todd Brown
+  # ---------------------------------------------------------------------------
+  - id: todd-brown
+    name: "Todd Brown"
+    specialty: "Mecanismo unico e diferenciacao de oferta em mercados saturados"
+    best_for_awareness:
+      - solution_aware
+    best_for_medium:
+      - sales
+      - webinar
+    primary_framework: "E5 Method / Unique Mechanism"
+    framework_description: >
+      Em mercados saturados onde o prospect ja conhece as solucoes
+      existentes, a chave e apresentar um mecanismo unico que explica
+      por que as abordagens anteriores falharam e por que esta nova
+      abordagem funciona. O mecanismo unico e o diferenciador que
+      torna a oferta incomparavel.
+    key_principles:
+      - "Todo produto precisa de um mecanismo unico que o diferencie"
+      - "Explique por que as solucoes anteriores falharam (sem culpar o prospect)"
+      - "O mecanismo unico deve ser simples de entender e impossivel de replicar"
+      - "A Grande Ideia de Marketing e o que diferencia sua campanha"
+      - "Marketing e sobre o mecanismo, nao sobre o produto"
+
+  # ---------------------------------------------------------------------------
+  # 13. Frank Kern
+  # ---------------------------------------------------------------------------
+  - id: frank-kern
+    name: "Frank Kern"
+    specialty: "Venda por resultados antecipados e construcao de autoridade casual"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - webinar
+      - sales
+    primary_framework: "Results In Advance"
+    framework_description: >
+      Oferecer resultados reais antecipadamente, antes de pedir qualquer
+      coisa em troca. A autoridade e construida entregando valor genuino
+      de forma casual e acessivel. Quando o prospect ve que consegue
+      resultados parciais gratuitamente, a compra do produto completo
+      se torna obvia.
+    key_principles:
+      - "Entregue resultados reais antes de pedir a venda"
+      - "Construa autoridade sendo util, nao se gabando"
+      - "Seja casual e acessivel — fale como uma pessoa normal"
+      - "Mostre que voce ja esta vivendo o estilo de vida que o prospect deseja"
+      - "A melhor venda e a que o prospect nem percebe que e uma venda"
+
+  # ---------------------------------------------------------------------------
+  # 14. Robert Cialdini
+  # ---------------------------------------------------------------------------
+  - id: robert-cialdini
+    name: "Robert Cialdini"
+    specialty: "Gatilhos psicologicos de persuasao: reciprocidade, escassez, autoridade, prova social, comprometimento, afinidade"
+    best_for_awareness:
+      - product_aware
+      - most_aware
+    best_for_medium:
+      - sales
+      - landing
+      - webinar
+    primary_framework: "6 Principles of Influence"
+    framework_description: >
+      Aplicacao estrategica dos seis principios universais de influencia
+      em cada elemento da copy e do design: reciprocidade, comprometimento
+      e consistencia, prova social, autoridade, afinidade e escassez.
+      Cada secao da pagina utiliza pelo menos um principio como gatilho
+      primario de persuasao.
+    key_principles:
+      - "Reciprocidade: de algo de valor antes de pedir algo em troca"
+      - "Escassez: o que pode ser perdido motiva mais do que o que pode ser ganho"
+      - "Autoridade: as pessoas seguem a orientacao de especialistas crediveeis"
+      - "Prova social: as pessoas fazem o que veem outras pessoas fazendo"
+      - "Comprometimento: pequenos compromissos levam a grandes acoes"
+      - "Afinidade: as pessoas compram de quem gostam e se identificam"
+
+  # ---------------------------------------------------------------------------
+  # 15. Victor Schwab
+  # ---------------------------------------------------------------------------
+  - id: victor-schwab
+    name: "Victor Schwab"
+    specialty: "Estrutura de anuncios de resposta direta com 5 fundamentos"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - landing
+      - sales
+    primary_framework: "How to Write a Good Advertisement"
+    framework_description: >
+      Cinco etapas fundamentais para qualquer anuncio eficaz: capturar
+      atencao, mostrar beneficios, provar os beneficios, persuadir a
+      acao e pedir a acao. A copy e construida em camadas progressivas
+      que movem o leitor da atencao ate a conversao.
+    key_principles:
+      - "Capture a atencao com a headline mais forte possivel"
+      - "Mostre ao leitor as vantagens de ler mais"
+      - "Prove cada afirmacao com evidencias concretas"
+      - "Persuada o leitor a agir com base nos beneficios provados"
+      - "Peca a acao de forma clara e sem ambiguidade"
+
+  # ---------------------------------------------------------------------------
+  # 16. Drayton Bird
+  # ---------------------------------------------------------------------------
+  - id: drayton-bird
+    name: "Drayton Bird"
+    specialty: "Marketing direto com foco em retencao e valor vitalicio do cliente"
+    best_for_awareness:
+      - product_aware
+      - most_aware
+    best_for_medium:
+      - sales
+      - landing
+    primary_framework: "Commonsense Direct Marketing"
+    framework_description: >
+      Marketing direto pragmatico e orientado a dados. Cada peca de copy
+      e tratada como um investimento mensuravel. Foco em maximizar o
+      valor vitalicio do cliente atraves de comunicacao relevante,
+      segmentada e orientada por dados de comportamento.
+    key_principles:
+      - "O objetivo nao e a primeira venda — e o valor vitalicio do cliente"
+      - "Segmentacao e a base de toda comunicacao eficaz"
+      - "Teste tudo, mas teste uma variavel de cada vez"
+      - "A copy deve refletir exatamente o que o cliente recebera"
+      - "Simplicidade vende mais que sofisticacao"
+
+  # ---------------------------------------------------------------------------
+  # 17. Joseph Sugarman (Triggers)
+  # ---------------------------------------------------------------------------
+  - id: joe-sugarman-triggers
+    name: "Joseph Sugarman (Psychological Triggers)"
+    specialty: "30 gatilhos psicologicos aplicados em copy de venda direta"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - sales
+    primary_framework: "30 Psychological Triggers"
+    framework_description: >
+      Catalogo de 30 gatilhos psicologicos que podem ser aplicados em
+      qualquer peca de copy para aumentar a persuasao. Inclui gatilhos
+      como envolvimento e propriedade, honestidade, integridade,
+      credibilidade, valor e prova de valor, autoridade, satisfacao
+      e exclusividade.
+    key_principles:
+      - "Cada compra e uma decisao emocional justificada pela logica"
+      - "Crie senso de envolvimento e propriedade antes da compra"
+      - "A honestidade e o gatilho mais poderoso de todos"
+      - "Torne cada claim especifico e mensuravel"
+      - "A curiosidade mantém o leitor engajado ate o final"
+
+  # ---------------------------------------------------------------------------
+  # 18. Stefan Georgi
+  # ---------------------------------------------------------------------------
+  - id: stefan-georgi
+    name: "Stefan Georgi"
+    specialty: "Video Sales Letters e copy de alto volume para funis digitais"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - sales
+      - webinar
+    primary_framework: "RMBC Method (Research, Mechanism, Brief, Copy)"
+    framework_description: >
+      Framework em quatro etapas para producao de copy de alta conversao
+      em escala: Pesquisa profunda do mercado, identificacao do Mecanismo
+      unico, Briefing estruturado da campanha, e execucao da Copy baseada
+      nos tres pilares anteriores. Especialmente eficaz para Video Sales
+      Letters e funis de vendas online.
+    key_principles:
+      - "Pesquisa representa 80% do trabalho — a copy e apenas 20%"
+      - "O mecanismo unico e o que diferencia sua oferta de todas as outras"
+      - "O briefing deve ser tao detalhado que qualquer copywriter consiga executar"
+      - "Video Sales Letters seguem uma estrutura emocional precisa"
+      - "Teste leads (primeiros 5 minutos) mais do que qualquer outra coisa"
+
+  # ---------------------------------------------------------------------------
+  # 19. Perry Marshall
+  # ---------------------------------------------------------------------------
+  - id: perry-marshall
+    name: "Perry Marshall"
+    specialty: "Principio 80/20 aplicado ao marketing e copy baseada em sistema de qualificacao"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - landing
+      - sales
+    primary_framework: "80/20 Sales and Marketing"
+    framework_description: >
+      Aplicacao do principio de Pareto ao copywriting: 20% dos elementos
+      geram 80% dos resultados. Identifica os gatilhos mais poderosos
+      para cada mercado e concentra toda a energia neles. Utiliza sistemas
+      de qualificacao que filtram os prospects mais propensos a comprar.
+    key_principles:
+      - "Foque nos 20% dos elementos que geram 80% dos resultados"
+      - "Qualifique antes de vender — nem todo lead vale o mesmo"
+      - "O melhor marketing repele os clientes errados"
+      - "Simplifique impiedosamente — complexidade mata conversoes"
+      - "Trafego, conversao e economia sao as unicas metricas que importam"
+
+  # ---------------------------------------------------------------------------
+  # 20. Alex Hormozi
+  # ---------------------------------------------------------------------------
+  - id: alex-hormozi
+    name: "Alex Hormozi"
+    specialty: "Criacao de ofertas irrecusaveis com valor absurdamente desproporcional"
+    best_for_awareness:
+      - solution_aware
+      - product_aware
+    best_for_medium:
+      - sales
+      - webinar
+    primary_framework: "Grand Slam Offer"
+    framework_description: >
+      Construcao de ofertas tao valiosas que o prospect se sente
+      estupido por nao aceitar. A oferta resolve o problema do dream
+      outcome, reduz o esforco percebido, diminui o tempo necessario
+      e aumenta a certeza de sucesso. O resultado e uma proposta de
+      valor onde o preco e irrelevante comparado ao que se recebe.
+    key_principles:
+      - "Crie ofertas tao boas que as pessoas se sintam estupidas por recusar"
+      - "Valor = (Dream Outcome x Perceived Likelihood) / (Time x Effort)"
+      - "Resolva todos os problemas adjacentes, nao apenas o problema central"
+      - "Nomeie sua oferta de forma que ela soe unica e proprietaria"
+      - "Empilhe solucoes ate o valor percebido ser absurdamente maior que o preco"
+
+  # ---------------------------------------------------------------------------
+  # 21. Joanna Wiebe
+  # ---------------------------------------------------------------------------
+  - id: joanna-wiebe
+    name: "Joanna Wiebe"
+    specialty: "Copy baseada em dados do cliente, Voice of Customer e otimizacao de conversao"
+    best_for_awareness:
+      - problem_aware
+      - solution_aware
+    best_for_medium:
+      - landing
+      - squeeze
+    primary_framework: "Voice of Customer (VOC) Copywriting"
+    framework_description: >
+      A melhor copy vem diretamente da voz do cliente. Utiliza avaliacoes
+      de produtos, depoimentos, respostas de pesquisas e comentarios em
+      foruns para extrair a linguagem exata que o mercado usa para descrever
+      seus problemas e desejos. A copy reflete essa linguagem de volta,
+      criando identificacao instantanea.
+    key_principles:
+      - "A melhor copy vem das palavras exatas dos seus clientes"
+      - "Mineracao de dados do cliente e superior a criatividade do copywriter"
+      - "Teste uma variavel por vez para isolar o que funciona"
+      - "A headline deve ecoar a conversa interna do prospect"
+      - "Copy baseada em dados converte mais que copy baseada em opiniao"
+
+  # ---------------------------------------------------------------------------
+  # 22. Ben Settle
+  # ---------------------------------------------------------------------------
+  - id: ben-settle
+    name: "Ben Settle"
+    specialty: "Email marketing diario, personalidade polarizante e venda por entretenimento"
+    best_for_awareness:
+      - product_aware
+      - most_aware
+    best_for_medium:
+      - sales
+      - landing
+    primary_framework: "Infotainment-Based Selling"
+    framework_description: >
+      Venda atraves de entretenimento e personalidade. A copy e tao
+      interessante de ler que o prospect consome como conteudo, nao
+      como material de vendas. Utiliza polarizacao controlada,
+      opinioes fortes e um tom unico que cria uma tribo de seguidores
+      leais que compram repetidamente.
+    key_principles:
+      - "Entretenha primeiro, venda como consequencia"
+      - "Tenha opinioes fortes e nao tenha medo de polarizar"
+      - "Consistencia diaria constroi um relacionamento inquebrantavel"
+      - "A personalidade do autor e o diferencial competitivo definitivo"
+      - "Rejeite clientes que nao se alinham com seus valores"
+
+# =============================================================================
+# REGRAS DE SELECAO DE FRAMEWORK
+# Matriz de decisao: nivel de consciencia x tipo de pagina
+# =============================================================================
+selection_rules:
+
+  # ---------------------------------------------------------------------------
+  # Regras por nivel de consciencia
+  # ---------------------------------------------------------------------------
+  by_awareness_level:
+
+    unaware:
+      primary_masters:
+        - gary-halbert
+        - robert-collier
+        - eugene-schwartz
+      secondary_masters:
+        - joe-sugarman
+        - gary-bencivenga
+      framework_priority: "Story-Based Selling com entrada na conversa mental"
+      copy_structure: "historia_longa_para_revelacao_gradual"
+      avoid_frameworks:
+        - "Scientific Advertising"
+        - "Grand Slam Offer"
+        - "Direct Response CTA"
+
+    problem_aware:
+      primary_masters:
+        - john-caples
+        - dan-kennedy
+        - eugene-schwartz
+      secondary_masters:
+        - joanna-wiebe
+        - victor-schwab
+        - stefan-georgi
+      framework_priority: "Problem-Agitate-Solve com headline dominante"
+      copy_structure: "amplificacao_de_dor_para_solucao_natural"
+      avoid_frameworks:
+        - "Infotainment-Based Selling"
+        - "Deal Presentation"
+
+    solution_aware:
+      primary_masters:
+        - todd-brown
+        - alex-hormozi
+        - jay-abraham
+      secondary_masters:
+        - russell-brunson
+        - perry-marshall
+        - frank-kern
+      framework_priority: "Unique Mechanism com diferenciacao de oferta"
+      copy_structure: "mecanismo_unico_para_comparacao_favoravel"
+      avoid_frameworks:
+        - "Story-Based Direct Mail"
+        - "Mental Conversation Entry"
+
+    product_aware:
+      primary_masters:
+        - robert-cialdini
+        - alex-hormozi
+        - dan-kennedy
+      secondary_masters:
+        - drayton-bird
+        - ben-settle
+        - joe-sugarman-triggers
+      framework_priority: "Objection Destruction com oferta irresistivel"
+      copy_structure: "remocao_de_objecoes_para_fechamento_forte"
+      avoid_frameworks:
+        - "Story-Based Direct Mail"
+        - "Problem-Agitate-Solve"
+
+    most_aware:
+      primary_masters:
+        - claude-hopkins
+        - robert-cialdini
+        - drayton-bird
+      secondary_masters:
+        - ben-settle
+        - dan-kennedy
+      framework_priority: "Direct Response CTA com urgencia e escassez"
+      copy_structure: "oferta_direta_para_acao_imediata"
+      avoid_frameworks:
+        - "Story-Based Selling"
+        - "Unique Mechanism"
+        - "Belief-Driven Persuasion"
+
+  # ---------------------------------------------------------------------------
+  # Regras por tipo de pagina
+  # ---------------------------------------------------------------------------
+  by_page_type:
+
+    landing:
+      recommended_masters:
+        - john-caples
+        - david-ogilvy
+        - joanna-wiebe
+        - claude-hopkins
+      framework_focus: "headline forte + beneficios claros + formulario otimizado"
+      max_copy_length: 2000
+      cta_frequency: "duas vezes na pagina (hero e final)"
+
+    sales:
+      recommended_masters:
+        - gary-halbert
+        - dan-kennedy
+        - eugene-schwartz
+        - alex-hormozi
+        - joe-sugarman
+      framework_focus: "narrativa longa + mecanismo unico + stack de valor + urgencia"
+      max_copy_length: 5000
+      cta_frequency: "tres a cinco vezes ao longo da pagina"
+
+    squeeze:
+      recommended_masters:
+        - claude-hopkins
+        - john-caples
+        - joanna-wiebe
+      framework_focus: "headline irresistivel + proposta de valor em uma frase + chamada para acao imediata"
+      max_copy_length: 500
+      cta_frequency: "uma vez, imediatamente visivel"
+
+    webinar:
+      recommended_masters:
+        - russell-brunson
+        - frank-kern
+        - dan-kennedy
+        - stefan-georgi
+      framework_focus: "curiosidade + credenciais + topicos provocativos + urgencia temporal"
+      max_copy_length: 2500
+      cta_frequency: "duas a tres vezes (hero, meio, final)"
+
+    thank_you:
+      recommended_masters:
+        - drayton-bird
+        - jay-abraham
+        - russell-brunson
+      framework_focus: "reforco de decisao + proximos passos + upsell suave"
+      max_copy_length: 1000
+      cta_frequency: "uma a duas vezes"
+
+  # ---------------------------------------------------------------------------
+  # Combinacoes especiais (nivel de consciencia + tipo de pagina)
+  # ---------------------------------------------------------------------------
+  special_combinations:
+
+    - awareness: unaware
+      page_type: sales
+      best_combination:
+        primary: gary-halbert
+        secondary: robert-collier
+        tertiary: eugene-schwartz
+      strategy: >
+        Historia confessional longa que abre a consciencia do problema
+        de forma gradual, utilizando entrada na conversa mental do
+        prospect e canalizacao de desejos existentes.
+
+    - awareness: problem_aware
+      page_type: landing
+      best_combination:
+        primary: john-caples
+        secondary: joanna-wiebe
+        tertiary: victor-schwab
+      strategy: >
+        Headline que nomeia a dor com precisao, copy baseada na voz do
+        cliente e estrutura classica de captacao de atencao seguida de
+        demonstracao de beneficios.
+
+    - awareness: solution_aware
+      page_type: sales
+      best_combination:
+        primary: todd-brown
+        secondary: alex-hormozi
+        tertiary: russell-brunson
+      strategy: >
+        Mecanismo unico como diferenciador central, oferta irresistivel
+        com empilhamento de valor e framework de quebra de falsas crencas.
+
+    - awareness: product_aware
+      page_type: sales
+      best_combination:
+        primary: robert-cialdini
+        secondary: dan-kennedy
+        tertiary: alex-hormozi
+      strategy: >
+        Gatilhos psicologicos sistematicos combinados com urgencia real,
+        destruicao de objecoes e oferta tao valiosa que a inacao se torna
+        irracional.
+
+    - awareness: most_aware
+      page_type: sales
+      best_combination:
+        primary: claude-hopkins
+        secondary: robert-cialdini
+        tertiary: drayton-bird
+      strategy: >
+        Oferta direta com preco claro, escassez real, prova social
+        massiva e chamada para acao impossivel de ignorar. Minimo
+        de texto, maximo de impacto.
+
+    - awareness: problem_aware
+      page_type: webinar
+      best_combination:
+        primary: russell-brunson
+        secondary: frank-kern
+        tertiary: stefan-georgi
+      strategy: >
+        Curiosidade sobre o que sera revelado, credenciais do apresentador
+        que validam a autoridade, topicos provocativos que prometem
+        resolver a dor identificada e urgencia de vagas limitadas.
+
+    - awareness: solution_aware
+      page_type: webinar
+      best_combination:
+        primary: todd-brown
+        secondary: russell-brunson
+        tertiary: frank-kern
+      strategy: >
+        Mecanismo unico como o segredo que sera revelado no webinario,
+        framework de resultados antecipados mostrando que o metodo
+        funciona, e estrutura de Perfect Webinar para o registro.

@@ -1,0 +1,118 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-bg, #ffffff);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 2.5rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <div style="
+      background-color: var(--color-surface, #f9fafb);
+      border: 1px solid var(--color-border, #e5e7eb);
+      border-radius: var(--radius, 0.5rem);
+      overflow: hidden;
+    ">
+      <!-- Value stack items -->
+      <div style="padding: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--color-border, #e5e7eb);">
+          <span style="font-size: 1rem; color: var(--color-text, #1a1a2e); font-weight: 500;">{{item_1_name}}</span>
+          <span style="font-size: 1rem; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{item_1_value}}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--color-border, #e5e7eb);">
+          <span style="font-size: 1rem; color: var(--color-text, #1a1a2e); font-weight: 500;">{{item_2_name}}</span>
+          <span style="font-size: 1rem; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{item_2_value}}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--color-border, #e5e7eb);">
+          <span style="font-size: 1rem; color: var(--color-text, #1a1a2e); font-weight: 500;">{{item_3_name}}</span>
+          <span style="font-size: 1rem; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{item_3_value}}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--color-border, #e5e7eb);">
+          <span style="font-size: 1rem; color: var(--color-text, #1a1a2e); font-weight: 500;">{{item_4_name}}</span>
+          <span style="font-size: 1rem; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{item_4_value}}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--color-border, #e5e7eb);">
+          <span style="font-size: 1rem; color: var(--color-text, #1a1a2e); font-weight: 500;">{{item_5_name}}</span>
+          <span style="font-size: 1rem; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{item_5_value}}</span>
+        </div>
+      </div>
+
+      <!-- Total value -->
+      <div style="
+        padding: 1.5rem 2rem;
+        background-color: var(--color-bg, #ffffff);
+        border-bottom: 1px solid var(--color-border, #e5e7eb);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      ">
+        <span style="font-size: 1.1rem; font-weight: 700; color: var(--color-text, #1a1a2e);">Valor total</span>
+        <span style="font-size: 1.25rem; font-weight: 700; color: var(--color-muted, #6b7280); text-decoration: line-through;">{{total_value}}</span>
+      </div>
+
+      <!-- Actual price -->
+      <div style="
+        padding: 2rem;
+        background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+        text-align: center;
+      ">
+        <div style="
+          font-size: 0.9rem;
+          color: rgba(255,255,255,0.8);
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          font-weight: 600;
+        ">Seu investimento hoje</div>
+        <div style="
+          font-family: var(--font-heading, system-ui, sans-serif);
+          font-size: clamp(2.5rem, 6vw, 3.5rem);
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1;
+          margin-bottom: 0.5rem;
+        ">{{actual_price}}</div>
+        <div style="
+          display: inline-block;
+          background-color: var(--color-accent, #f0c040);
+          color: var(--color-text, #1a1a2e);
+          font-size: 0.875rem;
+          font-weight: 700;
+          padding: 0.35rem 1rem;
+          border-radius: 999px;
+          margin-bottom: 1.5rem;
+        ">Economia de {{savings}}</div>
+
+        <a href="{{cta_url}}" style="
+          display: block;
+          width: 100%;
+          padding: 1rem;
+          background-color: var(--color-accent, #f0c040);
+          color: var(--color-text, #1a1a2e);
+          font-family: var(--font-body, system-ui, sans-serif);
+          font-size: 1.125rem;
+          font-weight: 700;
+          border: none;
+          border-radius: var(--radius, 0.5rem);
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+          box-sizing: border-box;
+        " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 14px rgba(0,0,0,0.2)'">{{cta_text}}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,137 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-bg, #ffffff);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 0.75rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <p style="
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.6;
+      color: var(--color-muted, #6b7280);
+      margin: 0 auto 3rem auto;
+      max-width: 600px;
+    ">{{section_subheadline}}</p>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    ">
+      <!-- Feature 1 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="
+          font-size: 2.25rem;
+          margin-bottom: 1rem;
+          width: 60px;
+          height: 60px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          border-radius: var(--radius, 0.5rem);
+        ">{{feature_1_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_1_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_1_text}}</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size: 2.25rem; margin-bottom: 1rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; background-color: var(--color-primary, #4f46e5); color: #ffffff; border-radius: var(--radius, 0.5rem);">{{feature_2_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_2_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_2_text}}</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size: 2.25rem; margin-bottom: 1rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; background-color: var(--color-primary, #4f46e5); color: #ffffff; border-radius: var(--radius, 0.5rem);">{{feature_3_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_3_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_3_text}}</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size: 2.25rem; margin-bottom: 1rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; background-color: var(--color-primary, #4f46e5); color: #ffffff; border-radius: var(--radius, 0.5rem);">{{feature_4_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_4_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_4_text}}</p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size: 2.25rem; margin-bottom: 1rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; background-color: var(--color-primary, #4f46e5); color: #ffffff; border-radius: var(--radius, 0.5rem);">{{feature_5_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_5_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_5_text}}</p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div style="
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="font-size: 2.25rem; margin-bottom: 1rem; width: 60px; height: 60px; display: inline-flex; align-items: center; justify-content: center; background-color: var(--color-primary, #4f46e5); color: #ffffff; border-radius: var(--radius, 0.5rem);">{{feature_6_icon}}</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{feature_6_title}}</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0;">{{feature_6_text}}</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 640px) {
+      section > div > div:last-of-type {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    @media (min-width: 960px) {
+      section > div > div:last-of-type {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+  </style>
+</section>

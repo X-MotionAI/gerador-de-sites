@@ -1,0 +1,70 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-surface, #f9fafb);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 2.5rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <div style="
+      background-color: var(--color-bg, #ffffff);
+      border: 2px solid var(--color-primary, #4f46e5);
+      border-radius: var(--radius, 0.5rem);
+      padding: 3rem 2rem;
+      box-shadow: 0 10px 40px rgba(79, 70, 229, 0.12);
+    ">
+      <div style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        color: var(--color-text, #1a1a2e);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      ">{{price}}</div>
+      <div style="
+        font-size: 0.95rem;
+        color: var(--color-muted, #6b7280);
+        margin-bottom: 2rem;
+      ">{{period}}</div>
+
+      <div style="
+        text-align: left;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+        line-height: 2.2;
+        color: var(--color-text, #1a1a2e);
+      ">{{features}}</div>
+
+      <a href="{{cta_url}}" style="
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--color-primary, #4f46e5);
+        color: #ffffff;
+        font-family: var(--font-body, system-ui, sans-serif);
+        font-size: 1.125rem;
+        font-weight: 700;
+        border: none;
+        border-radius: var(--radius, 0.5rem);
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+        box-sizing: border-box;
+      " onmouseover="this.style.backgroundColor='var(--color-secondary, #4338ca)';this.style.transform='translateY(-2px)'" onmouseout="this.style.backgroundColor='var(--color-primary, #4f46e5)';this.style.transform='translateY(0)'">{{cta_text}}</a>
+    </div>
+  </div>
+</section>

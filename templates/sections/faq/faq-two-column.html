@@ -1,0 +1,75 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-surface, #f9fafb);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 3rem 0;
+      color: var(--color-text, #1a1a2e);
+      text-align: center;
+    ">{{section_headline}}</h2>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    ">
+      <!-- Column 1 -->
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_1_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_1_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_2_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_2_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_3_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_3_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_4_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_4_answer}}</p>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_5_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_5_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_6_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_6_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_7_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_7_answer}}</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{faq_8_question}}</h3>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-muted, #6b7280); margin: 0;">{{faq_8_answer}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      section > div > div:nth-child(2) {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+  </style>
+</section>

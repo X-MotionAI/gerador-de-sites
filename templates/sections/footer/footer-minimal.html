@@ -1,0 +1,51 @@
+<footer style="
+  padding: 2rem 1.5rem;
+  background-color: var(--color-bg, #ffffff);
+  border-top: 1px solid var(--color-border, #e5e7eb);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1200px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  ">
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    ">
+      <a href="{{link_1_url}}" style="
+        font-size: 0.875rem;
+        color: var(--color-muted, #6b7280);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      " onmouseover="this.style.color='var(--color-text, #1a1a2e)'" onmouseout="this.style.color='var(--color-muted, #6b7280)'">{{link_1_text}}</a>
+
+      <a href="{{link_2_url}}" style="
+        font-size: 0.875rem;
+        color: var(--color-muted, #6b7280);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      " onmouseover="this.style.color='var(--color-text, #1a1a2e)'" onmouseout="this.style.color='var(--color-muted, #6b7280)'">{{link_2_text}}</a>
+
+      <a href="{{link_3_url}}" style="
+        font-size: 0.875rem;
+        color: var(--color-muted, #6b7280);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      " onmouseover="this.style.color='var(--color-text, #1a1a2e)'" onmouseout="this.style.color='var(--color-muted, #6b7280)'">{{link_3_text}}</a>
+    </div>
+
+    <p style="
+      font-size: 0.8rem;
+      color: var(--color-muted, #6b7280);
+      margin: 0;
+      opacity: 0.7;
+    ">{{copyright_text}}</p>
+  </div>
+</footer>

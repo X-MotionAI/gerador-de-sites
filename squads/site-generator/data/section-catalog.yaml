@@ -1,0 +1,992 @@
+# =============================================================================
+# SECTION CATALOG — CATALOGO COMPLETO DE 37 TEMPLATES DE SECAO
+# Cada secao define seus elementos de copy, padrao de design e
+# tipos de pagina recomendados
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+total_sections: 37
+
+# =============================================================================
+# CATEGORIA: HERO (5 secoes)
+# Secao principal acima da dobra — primeira impressao do visitante
+# =============================================================================
+hero:
+
+  - id: hero-centered
+    name: "Hero Centralizado"
+    category: hero
+    description: >
+      Layout de hero com headline, subheadline e chamada para acao centralizados
+      na pagina. Imagem ou video opcional como fundo. Ideal para mensagens
+      claras e diretas que nao precisam de elementos visuais complexos.
+    copy_elements:
+      - "{{headline}}"
+      - "{{subheadline}}"
+      - "{{cta_primary_text}}"
+      - "{{cta_secondary_text}}"
+      - "{{social_proof_micro}}"
+    recommended_for:
+      - landing
+      - thank_you
+      - squeeze
+    copy_agent: headline-sniper
+    design_pattern: "centered-stack"
+
+  - id: hero-split
+    name: "Hero Dividido"
+    category: hero
+    description: >
+      Layout de hero com duas colunas: copy na esquerda e imagem, video ou
+      formulario na direita. Perfeito para landing pages que precisam de
+      um formulario de captura visivel imediatamente acima da dobra.
+    copy_elements:
+      - "{{headline}}"
+      - "{{subheadline}}"
+      - "{{body_intro}}"
+      - "{{cta_primary_text}}"
+      - "{{form_headline}}"
+      - "{{form_submit_text}}"
+      - "{{trust_badges_text}}"
+    recommended_for:
+      - landing
+      - webinar
+    copy_agent: headline-sniper
+    design_pattern: "two-column-split"
+
+  - id: hero-video
+    name: "Hero com Video"
+    category: hero
+    description: >
+      Layout de hero centrado em um video de vendas ou demonstracao.
+      Headline acima do video, subheadline e chamada para acao abaixo.
+      Ideal para paginas de vendas com Video Sales Letter e paginas de webinario.
+    copy_elements:
+      - "{{headline}}"
+      - "{{subheadline}}"
+      - "{{video_caption}}"
+      - "{{cta_primary_text}}"
+      - "{{cta_below_video_text}}"
+      - "{{social_proof_micro}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: headline-sniper
+    design_pattern: "video-centered"
+
+  - id: hero-diagonal
+    name: "Hero Diagonal"
+    category: hero
+    description: >
+      Layout de hero com divisao diagonal entre a area de copy e a area
+      visual. Cria um impacto visual forte e moderno, ideal para paginas
+      que precisam de uma primeira impressao marcante e diferenciada.
+    copy_elements:
+      - "{{headline}}"
+      - "{{subheadline}}"
+      - "{{body_intro}}"
+      - "{{cta_primary_text}}"
+      - "{{background_statement}}"
+    recommended_for:
+      - sales
+      - landing
+    copy_agent: headline-sniper
+    design_pattern: "diagonal-split"
+
+  - id: hero-minimal
+    name: "Hero Minimalista"
+    category: hero
+    description: >
+      Layout de hero ultra-simplificado com apenas headline, uma linha de
+      subheadline e chamada para acao. Sem imagens, sem video, sem distracao.
+      Ideal para squeeze pages e prospects completamente conscientes.
+    copy_elements:
+      - "{{headline}}"
+      - "{{subheadline}}"
+      - "{{cta_primary_text}}"
+    recommended_for:
+      - squeeze
+      - thank_you
+    copy_agent: headline-sniper
+    design_pattern: "minimal-centered"
+
+# =============================================================================
+# CATEGORIA: PAIN POINTS (3 secoes)
+# Secoes que exploram dores, problemas e frustraciones do prospect
+# =============================================================================
+pain_points:
+
+  - id: pain-points-3-column
+    name: "Pontos de Dor em 3 Colunas"
+    category: pain_points
+    description: >
+      Tres colunas com icones, cada uma destacando uma dor ou frustracao
+      especifica do prospect. Formato visual limpo que permite consumo
+      rapido das informacoes.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{pain_1_title}}"
+      - "{{pain_1_description}}"
+      - "{{pain_2_title}}"
+      - "{{pain_2_description}}"
+      - "{{pain_3_title}}"
+      - "{{pain_3_description}}"
+      - "{{transition_text}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "three-column-cards"
+
+  - id: pain-points-storytelling
+    name: "Pontos de Dor com Narrativa"
+    category: pain_points
+    description: >
+      Secao narrativa longa que conta uma historia de identificacao,
+      descrevendo o dia a dia do prospect com suas dores e frustracoes.
+      Utiliza linguagem emocional e detalhes sensoriais para criar
+      conexao profunda.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{story_opening}}"
+      - "{{pain_scenario_1}}"
+      - "{{pain_scenario_2}}"
+      - "{{pain_scenario_3}}"
+      - "{{emotional_climax}}"
+      - "{{transition_to_solution}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: story-weaver
+    design_pattern: "long-form-narrative"
+
+  - id: pain-points-quiz
+    name: "Pontos de Dor como Quiz"
+    category: pain_points
+    description: >
+      Secao interativa onde o prospect responde perguntas do tipo
+      'Voce se identifica com isso?' para cada dor. Cada resposta
+      positiva aumenta o engajamento e a identificacao com o problema.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{quiz_intro}}"
+      - "{{question_1}}"
+      - "{{question_2}}"
+      - "{{question_3}}"
+      - "{{question_4}}"
+      - "{{question_5}}"
+      - "{{quiz_result_text}}"
+      - "{{transition_text}}"
+    recommended_for:
+      - sales
+      - landing
+    copy_agent: body-copy-architect
+    design_pattern: "interactive-checklist"
+
+# =============================================================================
+# CATEGORIA: SOLUTION (4 secoes)
+# Secoes que apresentam a solucao, produto ou servico
+# =============================================================================
+solution:
+
+  - id: solution-features
+    name: "Solucao por Funcionalidades"
+    category: solution
+    description: >
+      Grid ou lista de funcionalidades e beneficios do produto, cada um
+      com icone, titulo e descricao curta. Formato classico e eficaz
+      para produtos com multiplas funcionalidades distintas.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{section_subheadline}}"
+      - "{{feature_1_title}}"
+      - "{{feature_1_description}}"
+      - "{{feature_1_benefit}}"
+      - "{{feature_2_title}}"
+      - "{{feature_2_description}}"
+      - "{{feature_2_benefit}}"
+      - "{{feature_3_title}}"
+      - "{{feature_3_description}}"
+      - "{{feature_3_benefit}}"
+      - "{{feature_4_title}}"
+      - "{{feature_4_description}}"
+      - "{{feature_4_benefit}}"
+      - "{{feature_5_title}}"
+      - "{{feature_5_description}}"
+      - "{{feature_5_benefit}}"
+      - "{{feature_6_title}}"
+      - "{{feature_6_description}}"
+      - "{{feature_6_benefit}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "feature-grid"
+
+  - id: solution-before-after
+    name: "Solucao Antes e Depois"
+    category: solution
+    description: >
+      Comparacao visual lado a lado entre a situacao antes (com o problema)
+      e depois (com a solucao). Utiliza duas colunas contrastantes com
+      cores e icones que reforcing a transformacao.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{before_title}}"
+      - "{{before_point_1}}"
+      - "{{before_point_2}}"
+      - "{{before_point_3}}"
+      - "{{before_point_4}}"
+      - "{{before_point_5}}"
+      - "{{after_title}}"
+      - "{{after_point_1}}"
+      - "{{after_point_2}}"
+      - "{{after_point_3}}"
+      - "{{after_point_4}}"
+      - "{{after_point_5}}"
+      - "{{transformation_statement}}"
+    recommended_for:
+      - sales
+      - landing
+    copy_agent: body-copy-architect
+    design_pattern: "two-column-contrast"
+
+  - id: solution-mechanism
+    name: "Mecanismo Unico da Solucao"
+    category: solution
+    description: >
+      Secao que explica o mecanismo unico por tras da solucao — por que
+      ela funciona de forma diferente de tudo que o prospect ja tentou.
+      Utiliza diagramas, ilustracoes ou infograficos para tornar o
+      mecanismo tangivel e compreensivel.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{mechanism_intro}}"
+      - "{{mechanism_name}}"
+      - "{{mechanism_explanation}}"
+      - "{{why_it_works}}"
+      - "{{why_others_fail}}"
+      - "{{proof_of_mechanism}}"
+      - "{{transition_to_results}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "explanatory-diagram"
+
+  - id: solution-3-step
+    name: "Solucao em 3 Passos"
+    category: solution
+    description: >
+      Apresentacao da solucao como um processo simples de 3 passos.
+      Reduz a complexidade percebida e torna a acao facil de visualizar.
+      Cada passo tem um numero, titulo, descricao e icone ilustrativo.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{section_subheadline}}"
+      - "{{step_1_title}}"
+      - "{{step_1_description}}"
+      - "{{step_2_title}}"
+      - "{{step_2_description}}"
+      - "{{step_3_title}}"
+      - "{{step_3_description}}"
+      - "{{result_statement}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+      - thank_you
+    copy_agent: body-copy-architect
+    design_pattern: "numbered-steps"
+
+# =============================================================================
+# CATEGORIA: SOCIAL PROOF (5 secoes)
+# Secoes de prova social: depoimentos, logos, estatisticas
+# =============================================================================
+social_proof:
+
+  - id: social-proof-testimonials-grid
+    name: "Grid de Depoimentos"
+    category: social_proof
+    description: >
+      Grid de depoimentos com foto do cliente, nome, cargo ou resultado
+      alcancado. Formato de cartoes dispostos em grade, geralmente 3 a 6
+      depoimentos visiveis por vez.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{testimonial_1_quote}}"
+      - "{{testimonial_1_name}}"
+      - "{{testimonial_1_role}}"
+      - "{{testimonial_1_result}}"
+      - "{{testimonial_2_quote}}"
+      - "{{testimonial_2_name}}"
+      - "{{testimonial_2_role}}"
+      - "{{testimonial_2_result}}"
+      - "{{testimonial_3_quote}}"
+      - "{{testimonial_3_name}}"
+      - "{{testimonial_3_role}}"
+      - "{{testimonial_3_result}}"
+      - "{{testimonial_4_quote}}"
+      - "{{testimonial_4_name}}"
+      - "{{testimonial_4_role}}"
+      - "{{testimonial_4_result}}"
+      - "{{testimonial_5_quote}}"
+      - "{{testimonial_5_name}}"
+      - "{{testimonial_5_role}}"
+      - "{{testimonial_5_result}}"
+      - "{{testimonial_6_quote}}"
+      - "{{testimonial_6_name}}"
+      - "{{testimonial_6_role}}"
+      - "{{testimonial_6_result}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+      - thank_you
+    copy_agent: body-copy-architect
+    design_pattern: "card-grid"
+
+  - id: social-proof-carousel
+    name: "Carrossel de Depoimentos"
+    category: social_proof
+    description: >
+      Carrossel rotativo de depoimentos com navegacao por setas ou
+      indicadores. Mostra um depoimento por vez em formato grande e
+      imersivo, ideal para depoimentos longos e detalhados.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{testimonial_1_quote}}"
+      - "{{testimonial_1_name}}"
+      - "{{testimonial_1_role}}"
+      - "{{testimonial_1_context}}"
+      - "{{testimonial_2_quote}}"
+      - "{{testimonial_2_name}}"
+      - "{{testimonial_2_role}}"
+      - "{{testimonial_2_context}}"
+      - "{{testimonial_3_quote}}"
+      - "{{testimonial_3_name}}"
+      - "{{testimonial_3_role}}"
+      - "{{testimonial_3_context}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "carousel-slider"
+
+  - id: social-proof-logos-bar
+    name: "Barra de Logos"
+    category: social_proof
+    description: >
+      Faixa horizontal com logos de empresas clientes, veiculos de midia
+      onde foi mencionado ou parceiros reconhecidos. Cria autoridade
+      instantanea por associacao visual.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{logo_alt_1}}"
+      - "{{logo_alt_2}}"
+      - "{{logo_alt_3}}"
+      - "{{logo_alt_4}}"
+      - "{{logo_alt_5}}"
+      - "{{logo_alt_6}}"
+      - "{{logo_alt_7}}"
+      - "{{logo_alt_8}}"
+    recommended_for:
+      - landing
+      - sales
+      - squeeze
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "horizontal-logo-strip"
+
+  - id: social-proof-stats
+    name: "Estatisticas de Prova Social"
+    category: social_proof
+    description: >
+      Secao com numeros impactantes dispostos em formato de contadores
+      ou grandes numeros: clientes atendidos, resultados gerados,
+      anos de mercado, avaliacao media, entre outros indicadores.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{stat_1_number}}"
+      - "{{stat_1_label}}"
+      - "{{stat_2_number}}"
+      - "{{stat_2_label}}"
+      - "{{stat_3_number}}"
+      - "{{stat_3_label}}"
+      - "{{stat_4_number}}"
+      - "{{stat_4_label}}"
+      - "{{supporting_text}}"
+    recommended_for:
+      - sales
+      - landing
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "counter-row"
+
+  - id: social-proof-case-study
+    name: "Estudo de Caso"
+    category: social_proof
+    description: >
+      Secao detalhada que conta a historia completa de um cliente:
+      situacao inicial, desafios, solucao implementada e resultados
+      obtidos. Formato narrativo com dados e depoimento integrado.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{client_name}}"
+      - "{{client_industry}}"
+      - "{{challenge_description}}"
+      - "{{solution_implemented}}"
+      - "{{result_1}}"
+      - "{{result_2}}"
+      - "{{result_3}}"
+      - "{{client_quote}}"
+      - "{{timeline}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: story-weaver
+    design_pattern: "narrative-case-study"
+
+# =============================================================================
+# CATEGORIA: PRICING (4 secoes)
+# Secoes de precificacao e apresentacao de oferta
+# =============================================================================
+pricing:
+
+  - id: pricing-single
+    name: "Preco Unico"
+    category: pricing
+    description: >
+      Apresentacao de preco unico com destaque visual para o valor,
+      lista de itens inclusos e chamada para acao. Ideal para produtos
+      com uma unica opcao de compra.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{price_original}}"
+      - "{{price_current}}"
+      - "{{price_installment}}"
+      - "{{included_item_1}}"
+      - "{{included_item_2}}"
+      - "{{included_item_3}}"
+      - "{{included_item_4}}"
+      - "{{included_item_5}}"
+      - "{{cta_text}}"
+      - "{{guarantee_micro}}"
+      - "{{payment_methods_text}}"
+    recommended_for:
+      - landing
+      - squeeze
+    copy_agent: cta-engineer
+    design_pattern: "single-price-card"
+
+  - id: pricing-value-stack
+    name: "Stack de Valor"
+    category: pricing
+    description: >
+      Empilhamento visual de todo o valor da oferta: produto principal,
+      bonus, materiais complementares, suporte — cada item com seu
+      valor individual listado, culminando no preco total versus o
+      preco que o prospect vai pagar. Tecnica classica de ancoragem.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{main_product_name}}"
+      - "{{main_product_value}}"
+      - "{{main_product_description}}"
+      - "{{bonus_1_name}}"
+      - "{{bonus_1_value}}"
+      - "{{bonus_1_description}}"
+      - "{{bonus_2_name}}"
+      - "{{bonus_2_value}}"
+      - "{{bonus_2_description}}"
+      - "{{bonus_3_name}}"
+      - "{{bonus_3_value}}"
+      - "{{bonus_3_description}}"
+      - "{{total_value}}"
+      - "{{actual_price}}"
+      - "{{savings_amount}}"
+      - "{{price_installment}}"
+      - "{{cta_text}}"
+      - "{{guarantee_text}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: cta-engineer
+    design_pattern: "value-stack-list"
+
+  - id: pricing-comparison
+    name: "Tabela Comparativa de Precos"
+    category: pricing
+    description: >
+      Tabela comparativa com dois ou tres planos lado a lado, destacando
+      o plano recomendado. Ideal para produtos com multiplas opcoes de
+      compra ou niveis de acesso.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{plan_1_name}}"
+      - "{{plan_1_price}}"
+      - "{{plan_1_features}}"
+      - "{{plan_1_cta}}"
+      - "{{plan_2_name}}"
+      - "{{plan_2_price}}"
+      - "{{plan_2_features}}"
+      - "{{plan_2_cta}}"
+      - "{{plan_2_badge}}"
+      - "{{plan_3_name}}"
+      - "{{plan_3_price}}"
+      - "{{plan_3_features}}"
+      - "{{plan_3_cta}}"
+      - "{{comparison_note}}"
+    recommended_for:
+      - sales
+    copy_agent: cta-engineer
+    design_pattern: "comparison-table"
+
+  - id: pricing-guarantee-combo
+    name: "Preco com Garantia Integrada"
+    category: pricing
+    description: >
+      Combinacao do bloco de preco com a garantia em uma unica secao
+      coesa. O selo de garantia aparece visualmente integrado ao card
+      de preco, reduzindo o risco percebido no momento da decisao.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{price_original}}"
+      - "{{price_current}}"
+      - "{{price_installment}}"
+      - "{{guarantee_type}}"
+      - "{{guarantee_duration}}"
+      - "{{guarantee_description}}"
+      - "{{included_items_summary}}"
+      - "{{cta_text}}"
+      - "{{risk_reversal_statement}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: cta-engineer
+    design_pattern: "price-guarantee-combined"
+
+# =============================================================================
+# CATEGORIA: FAQ (2 secoes)
+# Secoes de perguntas frequentes
+# =============================================================================
+faq:
+
+  - id: faq-accordion
+    name: "Perguntas Frequentes em Acordeao"
+    category: faq
+    description: >
+      Lista de perguntas frequentes em formato de acordeao expansivel.
+      Cada pergunta pode ser clicada para revelar a resposta. Formato
+      mais comum e eficiente para dispositivos moveis.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{question_1}}"
+      - "{{answer_1}}"
+      - "{{question_2}}"
+      - "{{answer_2}}"
+      - "{{question_3}}"
+      - "{{answer_3}}"
+      - "{{question_4}}"
+      - "{{answer_4}}"
+      - "{{question_5}}"
+      - "{{answer_5}}"
+      - "{{question_6}}"
+      - "{{answer_6}}"
+      - "{{question_7}}"
+      - "{{answer_7}}"
+      - "{{question_8}}"
+      - "{{answer_8}}"
+      - "{{closing_text}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+      - thank_you
+    copy_agent: objection-handler
+    design_pattern: "accordion-expandable"
+
+  - id: faq-two-column
+    name: "Perguntas Frequentes em Duas Colunas"
+    category: faq
+    description: >
+      Perguntas e respostas dispostas em formato de duas colunas, todas
+      visiveis simultaneamente sem necessidade de clicar. Ideal para
+      paginas com menos perguntas onde a visibilidade total e preferida.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{question_1}}"
+      - "{{answer_1}}"
+      - "{{question_2}}"
+      - "{{answer_2}}"
+      - "{{question_3}}"
+      - "{{answer_3}}"
+      - "{{question_4}}"
+      - "{{answer_4}}"
+      - "{{question_5}}"
+      - "{{answer_5}}"
+      - "{{question_6}}"
+      - "{{answer_6}}"
+    recommended_for:
+      - sales
+    copy_agent: objection-handler
+    design_pattern: "two-column-visible"
+
+# =============================================================================
+# CATEGORIA: CTA - CHAMADA PARA ACAO (4 secoes)
+# Secoes de chamada para acao
+# =============================================================================
+cta:
+
+  - id: cta-centered
+    name: "Chamada para Acao Centralizada"
+    category: cta
+    description: >
+      Bloco de chamada para acao centralizado com headline persuasiva,
+      texto de suporte curto, botao de acao grande e elementos de
+      confianca (garantia, prova social micro). Formato classico e
+      versantil para qualquer tipo de pagina.
+    copy_elements:
+      - "{{cta_headline}}"
+      - "{{cta_subtext}}"
+      - "{{cta_button_text}}"
+      - "{{cta_below_button_text}}"
+      - "{{trust_element}}"
+    recommended_for:
+      - landing
+      - sales
+      - squeeze
+      - webinar
+      - thank_you
+    copy_agent: cta-engineer
+    design_pattern: "centered-cta-block"
+
+  - id: cta-split
+    name: "Chamada para Acao Dividida"
+    category: cta
+    description: >
+      Chamada para acao em formato de duas colunas: copy persuasiva na
+      esquerda e formulario ou botao de acao na direita. Ideal para
+      paginas que precisam de argumentacao adicional junto ao ponto
+      de conversao.
+    copy_elements:
+      - "{{cta_headline}}"
+      - "{{cta_body_text}}"
+      - "{{cta_bullet_1}}"
+      - "{{cta_bullet_2}}"
+      - "{{cta_bullet_3}}"
+      - "{{cta_button_text}}"
+      - "{{cta_guarantee_micro}}"
+    recommended_for:
+      - landing
+      - sales
+    copy_agent: cta-engineer
+    design_pattern: "split-cta-block"
+
+  - id: cta-floating
+    name: "Chamada para Acao Flutuante"
+    category: cta
+    description: >
+      Barra fixa que acompanha o scroll do visitante, sempre visivel
+      na parte inferior ou superior da tela. Contem texto curto e
+      botao de acao. Ideal para paginas longas onde o visitante pode
+      decidir comprar em qualquer ponto da leitura.
+    copy_elements:
+      - "{{cta_short_text}}"
+      - "{{cta_button_text}}"
+      - "{{cta_price_display}}"
+    recommended_for:
+      - sales
+    copy_agent: cta-engineer
+    design_pattern: "floating-sticky-bar"
+
+  - id: cta-urgency
+    name: "Chamada para Acao com Urgencia"
+    category: cta
+    description: >
+      Bloco de chamada para acao com elementos de urgencia e escassez:
+      contagem regressiva, vagas limitadas, preco que vai subir ou
+      bonus que vai expirar. Utiliza cores quentes e tipografia
+      grande para criar sensacao de imediatismo.
+    copy_elements:
+      - "{{cta_headline}}"
+      - "{{urgency_message}}"
+      - "{{countdown_label}}"
+      - "{{scarcity_text}}"
+      - "{{cta_button_text}}"
+      - "{{cta_below_button_text}}"
+      - "{{deadline_text}}"
+      - "{{guarantee_micro}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: cta-engineer
+    design_pattern: "urgency-cta-block"
+
+# =============================================================================
+# CATEGORIA: GUARANTEE (2 secoes)
+# Secoes de garantia e reversao de risco
+# =============================================================================
+guarantee:
+
+  - id: guarantee-badge
+    name: "Selo de Garantia"
+    category: guarantee
+    description: >
+      Selo visual de garantia compacto, geralmente posicionado proximo
+      ao preco ou a chamada para acao. Inclui icone de selo ou escudo,
+      periodo de garantia e texto curto de reversao de risco.
+    copy_elements:
+      - "{{guarantee_type}}"
+      - "{{guarantee_duration}}"
+      - "{{guarantee_short_text}}"
+    recommended_for:
+      - landing
+      - sales
+      - webinar
+    copy_agent: cta-engineer
+    design_pattern: "badge-compact"
+
+  - id: guarantee-full-section
+    name: "Secao Completa de Garantia"
+    category: guarantee
+    description: >
+      Secao dedicada exclusivamente a garantia, com headline, explicacao
+      detalhada da politica de garantia, termos claros e selo visual
+      grande. Posicionada estrategicamente antes da chamada para acao
+      final para eliminar o ultimo resquicio de medo.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{guarantee_name}}"
+      - "{{guarantee_duration}}"
+      - "{{guarantee_explanation}}"
+      - "{{guarantee_terms}}"
+      - "{{guarantee_promise}}"
+      - "{{risk_reversal_statement}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: objection-handler
+    design_pattern: "full-width-guarantee"
+
+# =============================================================================
+# CATEGORIA: HEADER (2 secoes)
+# Cabecalho da pagina — navegacao e marca
+# =============================================================================
+header:
+
+  - id: header-simple
+    name: "Header Simples"
+    category: header
+    description: >
+      Cabecalho simples com logo a esquerda e chamada para acao a direita.
+      Sem menu de navegacao para evitar distracao e manter o foco do
+      visitante na conversao. Ideal para paginas de captura e vendas.
+    copy_elements:
+      - "{{brand_name}}"
+      - "{{header_cta_text}}"
+    recommended_for:
+      - landing
+      - squeeze
+      - webinar
+      - thank_you
+    copy_agent: cta-engineer
+    design_pattern: "simple-header"
+
+  - id: header-sticky
+    name: "Header Fixo com Progresso"
+    category: header
+    description: >
+      Cabecalho que permanece fixo no topo durante o scroll, com logo,
+      indicador de progresso de leitura opcional e botao de chamada
+      para acao sempre visivel. Ideal para paginas de vendas longas.
+    copy_elements:
+      - "{{brand_name}}"
+      - "{{header_cta_text}}"
+      - "{{progress_label}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: cta-engineer
+    design_pattern: "sticky-header"
+
+# =============================================================================
+# CATEGORIA: FOOTER (2 secoes)
+# Rodape da pagina
+# =============================================================================
+footer:
+
+  - id: footer-minimal
+    name: "Footer Minimalista"
+    category: footer
+    description: >
+      Rodape minimalista com apenas o copyright, politica de privacidade
+      e termos de uso. Sem links de navegacao adicionais para manter
+      o foco na conversao.
+    copy_elements:
+      - "{{brand_name}}"
+      - "{{copyright_text}}"
+      - "{{privacy_link_text}}"
+      - "{{terms_link_text}}"
+      - "{{disclaimer_text}}"
+    recommended_for:
+      - landing
+      - squeeze
+      - webinar
+      - thank_you
+    copy_agent: body-copy-architect
+    design_pattern: "minimal-footer"
+
+  - id: footer-full
+    name: "Footer Completo"
+    category: footer
+    description: >
+      Rodape completo com multiplas colunas: sobre a empresa, links uteis,
+      contato, redes sociais e informacoes legais. Ideal para paginas de
+      vendas que precisam transmitir legitimidade e profissionalismo.
+    copy_elements:
+      - "{{brand_name}}"
+      - "{{brand_description}}"
+      - "{{contact_email}}"
+      - "{{contact_phone}}"
+      - "{{address}}"
+      - "{{social_links}}"
+      - "{{useful_links}}"
+      - "{{copyright_text}}"
+      - "{{privacy_link_text}}"
+      - "{{terms_link_text}}"
+      - "{{disclaimer_text}}"
+      - "{{cnpj_or_company_info}}"
+    recommended_for:
+      - sales
+    copy_agent: body-copy-architect
+    design_pattern: "multi-column-footer"
+
+# =============================================================================
+# CATEGORIA: BONUS (2 secoes)
+# Secoes de apresentacao de bonus e materiais extras
+# =============================================================================
+bonus:
+
+  - id: bonus-list
+    name: "Lista de Bonus"
+    category: bonus
+    description: >
+      Lista vertical de bonus inclusos na oferta, cada um com nome,
+      valor individual e descricao curta. Formato simples e eficiente
+      que enfatiza a quantidade de valor adicional incluido.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{bonus_1_name}}"
+      - "{{bonus_1_value}}"
+      - "{{bonus_1_description}}"
+      - "{{bonus_2_name}}"
+      - "{{bonus_2_value}}"
+      - "{{bonus_2_description}}"
+      - "{{bonus_3_name}}"
+      - "{{bonus_3_value}}"
+      - "{{bonus_3_description}}"
+      - "{{bonus_4_name}}"
+      - "{{bonus_4_value}}"
+      - "{{bonus_4_description}}"
+      - "{{total_bonus_value}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "vertical-list"
+
+  - id: bonus-cards
+    name: "Cards de Bonus"
+    category: bonus
+    description: >
+      Bonus apresentados como cards visuais com imagem mockup, nome,
+      valor e descricao. Formato mais visual e impactante que a lista,
+      ideal para bonus que possuem representacao visual (ebooks, cursos,
+      templates, planilhas).
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{section_subheadline}}"
+      - "{{bonus_1_name}}"
+      - "{{bonus_1_value}}"
+      - "{{bonus_1_description}}"
+      - "{{bonus_1_image_alt}}"
+      - "{{bonus_2_name}}"
+      - "{{bonus_2_value}}"
+      - "{{bonus_2_description}}"
+      - "{{bonus_2_image_alt}}"
+      - "{{bonus_3_name}}"
+      - "{{bonus_3_value}}"
+      - "{{bonus_3_description}}"
+      - "{{bonus_3_image_alt}}"
+      - "{{total_bonus_value}}"
+      - "{{bonus_availability_text}}"
+    recommended_for:
+      - sales
+      - landing
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "visual-cards"
+
+# =============================================================================
+# CATEGORIA: AUTHORITY (2 secoes)
+# Secoes de autoridade e credibilidade
+# =============================================================================
+authority:
+
+  - id: authority-credentials
+    name: "Credenciais e Autoridade"
+    category: authority
+    description: >
+      Secao que apresenta as credenciais do expert, autor ou empresa
+      por tras do produto: foto profissional, biografia, certificacoes,
+      experiencia, resultados alcancados e clientes notaveis. Constroi
+      confianca e autoridade percebida.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{expert_name}}"
+      - "{{expert_title}}"
+      - "{{expert_bio}}"
+      - "{{credential_1}}"
+      - "{{credential_2}}"
+      - "{{credential_3}}"
+      - "{{achievement_1}}"
+      - "{{achievement_2}}"
+      - "{{achievement_3}}"
+      - "{{personal_message}}"
+      - "{{photo_alt}}"
+    recommended_for:
+      - sales
+      - webinar
+      - landing
+    copy_agent: body-copy-architect
+    design_pattern: "bio-credentials"
+
+  - id: authority-media-mentions
+    name: "Mencoes na Midia"
+    category: authority
+    description: >
+      Secao que exibe onde o expert ou produto foi mencionado na midia:
+      logos de veiculos de imprensa, citacoes de artigos, capturas de
+      tela de materias. Autoridade por associacao com veiculos reconhecidos.
+    copy_elements:
+      - "{{section_headline}}"
+      - "{{media_1_name}}"
+      - "{{media_1_quote}}"
+      - "{{media_1_logo_alt}}"
+      - "{{media_2_name}}"
+      - "{{media_2_quote}}"
+      - "{{media_2_logo_alt}}"
+      - "{{media_3_name}}"
+      - "{{media_3_quote}}"
+      - "{{media_3_logo_alt}}"
+      - "{{media_4_name}}"
+      - "{{media_4_quote}}"
+      - "{{media_4_logo_alt}}"
+    recommended_for:
+      - sales
+      - webinar
+    copy_agent: body-copy-architect
+    design_pattern: "media-showcase"

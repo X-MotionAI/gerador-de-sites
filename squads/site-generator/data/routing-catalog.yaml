@@ -1,0 +1,627 @@
+# =============================================================================
+# ROUTING CATALOG — MASTER ROUTING CONFIGURATION
+# Mapeamento central de tipos de pagina, intencoes do usuario e sequencias
+# de pipeline para o Site Generator Framework
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+
+# =============================================================================
+# MAPEAMENTO DE TIPOS DE PAGINA PARA PIPELINE E AGENTES
+# =============================================================================
+page_types:
+
+  # ---------------------------------------------------------------------------
+  # LANDING PAGE — Pagina de captura de leads com formulario
+  # ---------------------------------------------------------------------------
+  landing:
+    display_name: "Landing Page"
+    description: >
+      Pagina de captura de leads com proposta de valor clara, formulario de
+      captura e prova social. Ideal para campanhas de trafego pago e
+      geracao de leads qualificados.
+    focus: "captura_de_leads"
+
+    pipeline_sequence:
+      - stage: briefing
+        owner: site-commander
+        priority: critical
+      - stage: strategy
+        owner: strategy-captain
+        agents: [market-researcher, offer-architect, audience-profiler]
+        parallel: true
+      - stage: copywriting
+        owner: copy-captain
+        agents: [headline-sniper, body-copy-architect, cta-engineer, objection-handler]
+        execution_order: [headline-sniper, body-copy-architect, [cta-engineer, objection-handler]]
+      - stage: design
+        owner: design-captain
+        agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist, icon-imagery-curator]
+        parallel: true
+      - stage: development
+        owner: dev-captain
+        agents: [html-architect, css-engineer, javascript-specialist, form-builder, integration-specialist, performance-optimizer]
+        execution_order: [html-architect, css-engineer, [javascript-specialist, form-builder], integration-specialist, performance-optimizer]
+      - stage: conversion
+        owner: conversion-captain
+        agents: [cro-specialist, analytics-engineer, seo-specialist, trust-signal-specialist]
+        parallel: true
+      - stage: quality
+        owner: quality-captain
+        agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+        parallel: true
+      - stage: delivery
+        owner: site-commander
+        priority: critical
+
+    active_agents:
+      - site-commander
+      - strategy-captain
+      - market-researcher
+      - offer-architect
+      - audience-profiler
+      - copy-captain
+      - headline-sniper
+      - body-copy-architect
+      - cta-engineer
+      - objection-handler
+      - design-captain
+      - layout-architect
+      - visual-hierarchy-specialist
+      - responsive-engineer
+      - color-typography-specialist
+      - icon-imagery-curator
+      - dev-captain
+      - html-architect
+      - css-engineer
+      - javascript-specialist
+      - form-builder
+      - integration-specialist
+      - performance-optimizer
+      - conversion-captain
+      - cro-specialist
+      - analytics-engineer
+      - seo-specialist
+      - trust-signal-specialist
+      - quality-captain
+      - copy-reviewer
+      - ux-auditor
+      - accessibility-checker
+      - cross-browser-tester
+
+    skipped_agents:
+      - story-weaver
+      - email-sequence-writer
+      - ab-test-architect
+      - competitor-analyst
+      - animation-specialist
+
+    default_sections:
+      - header-simple
+      - hero-split
+      - pain-points-3-column
+      - solution-features
+      - social-proof-testimonials-grid
+      - social-proof-logos-bar
+      - guarantee-badge
+      - cta-centered
+      - faq-accordion
+      - footer-minimal
+
+  # ---------------------------------------------------------------------------
+  # SALES PAGE — Pagina de vendas longa com elementos persuasivos completos
+  # ---------------------------------------------------------------------------
+  sales:
+    display_name: "Sales Page"
+    description: >
+      Pagina de vendas longa e completa com todos os elementos persuasivos:
+      historia, mecanismo unico, provas sociais extensas, stack de valor,
+      garantia, manipulacao de objecoes e multiplos blocos de chamada para acao.
+    focus: "venda_direta"
+
+    pipeline_sequence:
+      - stage: briefing
+        owner: site-commander
+        priority: critical
+      - stage: strategy
+        owner: strategy-captain
+        agents: [market-researcher, offer-architect, audience-profiler, competitor-analyst]
+        parallel: true
+      - stage: copywriting
+        owner: copy-captain
+        agents: [headline-sniper, story-weaver, body-copy-architect, cta-engineer, objection-handler, email-sequence-writer]
+        execution_order: [headline-sniper, story-weaver, body-copy-architect, [cta-engineer, objection-handler], email-sequence-writer]
+      - stage: design
+        owner: design-captain
+        agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist, icon-imagery-curator, animation-specialist]
+        parallel: true
+      - stage: development
+        owner: dev-captain
+        agents: [html-architect, css-engineer, javascript-specialist, form-builder, integration-specialist, performance-optimizer]
+        execution_order: [html-architect, css-engineer, [javascript-specialist, form-builder], integration-specialist, performance-optimizer]
+      - stage: conversion
+        owner: conversion-captain
+        agents: [cro-specialist, ab-test-architect, analytics-engineer, seo-specialist, trust-signal-specialist]
+        parallel: true
+      - stage: quality
+        owner: quality-captain
+        agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+        parallel: true
+      - stage: delivery
+        owner: site-commander
+        priority: critical
+
+    active_agents:
+      - site-commander
+      - strategy-captain
+      - market-researcher
+      - offer-architect
+      - audience-profiler
+      - competitor-analyst
+      - copy-captain
+      - headline-sniper
+      - story-weaver
+      - body-copy-architect
+      - cta-engineer
+      - objection-handler
+      - email-sequence-writer
+      - design-captain
+      - layout-architect
+      - visual-hierarchy-specialist
+      - responsive-engineer
+      - color-typography-specialist
+      - icon-imagery-curator
+      - animation-specialist
+      - dev-captain
+      - html-architect
+      - css-engineer
+      - javascript-specialist
+      - form-builder
+      - integration-specialist
+      - performance-optimizer
+      - conversion-captain
+      - cro-specialist
+      - ab-test-architect
+      - analytics-engineer
+      - seo-specialist
+      - trust-signal-specialist
+      - quality-captain
+      - copy-reviewer
+      - ux-auditor
+      - accessibility-checker
+      - cross-browser-tester
+
+    skipped_agents: []
+
+    default_sections:
+      - header-sticky
+      - hero-video
+      - pain-points-storytelling
+      - solution-mechanism
+      - authority-credentials
+      - social-proof-case-study
+      - solution-before-after
+      - solution-3-step
+      - social-proof-testimonials-grid
+      - social-proof-stats
+      - bonus-cards
+      - pricing-value-stack
+      - guarantee-full-section
+      - faq-accordion
+      - objection-handler-section
+      - cta-urgency
+      - social-proof-logos-bar
+      - authority-media-mentions
+      - cta-centered
+      - footer-full
+
+  # ---------------------------------------------------------------------------
+  # SQUEEZE PAGE — Pagina de captura minimalista
+  # ---------------------------------------------------------------------------
+  squeeze:
+    display_name: "Squeeze Page"
+    description: >
+      Pagina de captura extremamente minimalista com foco em um unico
+      objetivo de conversao. Sem distracao, sem navegacao, apenas a
+      proposta de valor e o formulario de captura.
+    focus: "captura_minimalista"
+
+    pipeline_sequence:
+      - stage: briefing
+        owner: site-commander
+        priority: critical
+      - stage: strategy
+        owner: strategy-captain
+        agents: [market-researcher, offer-architect, audience-profiler]
+        parallel: true
+      - stage: copywriting
+        owner: copy-captain
+        agents: [headline-sniper, body-copy-architect, cta-engineer]
+        execution_order: [headline-sniper, body-copy-architect, cta-engineer]
+      - stage: design
+        owner: design-captain
+        agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist]
+        parallel: true
+      - stage: development
+        owner: dev-captain
+        agents: [html-architect, css-engineer, form-builder, integration-specialist, performance-optimizer]
+        execution_order: [html-architect, css-engineer, form-builder, integration-specialist, performance-optimizer]
+      - stage: conversion
+        owner: conversion-captain
+        agents: [cro-specialist, analytics-engineer, seo-specialist, trust-signal-specialist]
+        parallel: true
+      - stage: quality
+        owner: quality-captain
+        agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+        parallel: true
+      - stage: delivery
+        owner: site-commander
+        priority: critical
+
+    active_agents:
+      - site-commander
+      - strategy-captain
+      - market-researcher
+      - offer-architect
+      - audience-profiler
+      - copy-captain
+      - headline-sniper
+      - body-copy-architect
+      - cta-engineer
+      - design-captain
+      - layout-architect
+      - visual-hierarchy-specialist
+      - responsive-engineer
+      - color-typography-specialist
+      - dev-captain
+      - html-architect
+      - css-engineer
+      - form-builder
+      - integration-specialist
+      - performance-optimizer
+      - conversion-captain
+      - cro-specialist
+      - analytics-engineer
+      - seo-specialist
+      - trust-signal-specialist
+      - quality-captain
+      - copy-reviewer
+      - ux-auditor
+      - accessibility-checker
+      - cross-browser-tester
+
+    skipped_agents:
+      - competitor-analyst
+      - story-weaver
+      - objection-handler
+      - email-sequence-writer
+      - ab-test-architect
+      - icon-imagery-curator
+      - animation-specialist
+      - javascript-specialist
+
+    default_sections:
+      - hero-minimal
+      - cta-centered
+      - social-proof-logos-bar
+      - footer-minimal
+
+  # ---------------------------------------------------------------------------
+  # WEBINAR PAGE — Pagina de registro para webinario
+  # ---------------------------------------------------------------------------
+  webinar:
+    display_name: "Webinar Page"
+    description: >
+      Pagina de registro para webinario com contagem regressiva,
+      informacoes sobre o apresentador, topicos que serao abordados
+      e formulario de registro com urgencia temporal.
+    focus: "registro_webinario"
+
+    pipeline_sequence:
+      - stage: briefing
+        owner: site-commander
+        priority: critical
+      - stage: strategy
+        owner: strategy-captain
+        agents: [market-researcher, offer-architect, audience-profiler]
+        parallel: true
+      - stage: copywriting
+        owner: copy-captain
+        agents: [headline-sniper, story-weaver, body-copy-architect, cta-engineer, objection-handler, email-sequence-writer]
+        execution_order: [headline-sniper, story-weaver, body-copy-architect, [cta-engineer, objection-handler], email-sequence-writer]
+      - stage: design
+        owner: design-captain
+        agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist, icon-imagery-curator, animation-specialist]
+        parallel: true
+      - stage: development
+        owner: dev-captain
+        agents: [html-architect, css-engineer, javascript-specialist, form-builder, integration-specialist, performance-optimizer]
+        execution_order: [html-architect, css-engineer, [javascript-specialist, form-builder], integration-specialist, performance-optimizer]
+      - stage: conversion
+        owner: conversion-captain
+        agents: [cro-specialist, analytics-engineer, seo-specialist, trust-signal-specialist]
+        parallel: true
+      - stage: quality
+        owner: quality-captain
+        agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+        parallel: true
+      - stage: delivery
+        owner: site-commander
+        priority: critical
+
+    active_agents:
+      - site-commander
+      - strategy-captain
+      - market-researcher
+      - offer-architect
+      - audience-profiler
+      - copy-captain
+      - headline-sniper
+      - story-weaver
+      - body-copy-architect
+      - cta-engineer
+      - objection-handler
+      - email-sequence-writer
+      - design-captain
+      - layout-architect
+      - visual-hierarchy-specialist
+      - responsive-engineer
+      - color-typography-specialist
+      - icon-imagery-curator
+      - animation-specialist
+      - dev-captain
+      - html-architect
+      - css-engineer
+      - javascript-specialist
+      - form-builder
+      - integration-specialist
+      - performance-optimizer
+      - conversion-captain
+      - cro-specialist
+      - analytics-engineer
+      - seo-specialist
+      - trust-signal-specialist
+      - quality-captain
+      - copy-reviewer
+      - ux-auditor
+      - accessibility-checker
+      - cross-browser-tester
+
+    skipped_agents:
+      - competitor-analyst
+      - ab-test-architect
+
+    default_sections:
+      - header-simple
+      - hero-video
+      - authority-credentials
+      - solution-3-step
+      - pain-points-3-column
+      - social-proof-testimonials-grid
+      - cta-urgency
+      - faq-accordion
+      - footer-minimal
+
+  # ---------------------------------------------------------------------------
+  # THANK YOU PAGE — Pagina de agradecimento pos-conversao
+  # ---------------------------------------------------------------------------
+  thank_you:
+    display_name: "Thank You Page"
+    description: >
+      Pagina de agradecimento exibida apos a conversao, com proximos passos
+      claros, possibilidade de upsell ou cross-sell, e reforco da decisao
+      do usuario para reduzir remorso de compra.
+    focus: "pos_conversao"
+
+    pipeline_sequence:
+      - stage: briefing
+        owner: site-commander
+        priority: critical
+      - stage: copywriting
+        owner: copy-captain
+        agents: [headline-sniper, body-copy-architect, cta-engineer]
+        execution_order: [headline-sniper, body-copy-architect, cta-engineer]
+      - stage: design
+        owner: design-captain
+        agents: [layout-architect, visual-hierarchy-specialist, responsive-engineer, color-typography-specialist]
+        parallel: true
+      - stage: development
+        owner: dev-captain
+        agents: [html-architect, css-engineer, javascript-specialist, integration-specialist, performance-optimizer]
+        execution_order: [html-architect, css-engineer, javascript-specialist, integration-specialist, performance-optimizer]
+      - stage: quality
+        owner: quality-captain
+        agents: [copy-reviewer, ux-auditor, accessibility-checker, cross-browser-tester]
+        parallel: true
+      - stage: delivery
+        owner: site-commander
+        priority: critical
+
+    active_agents:
+      - site-commander
+      - copy-captain
+      - headline-sniper
+      - body-copy-architect
+      - cta-engineer
+      - design-captain
+      - layout-architect
+      - visual-hierarchy-specialist
+      - responsive-engineer
+      - color-typography-specialist
+      - dev-captain
+      - html-architect
+      - css-engineer
+      - javascript-specialist
+      - integration-specialist
+      - performance-optimizer
+      - quality-captain
+      - copy-reviewer
+      - ux-auditor
+      - accessibility-checker
+      - cross-browser-tester
+
+    skipped_agents:
+      - strategy-captain
+      - market-researcher
+      - offer-architect
+      - audience-profiler
+      - competitor-analyst
+      - story-weaver
+      - objection-handler
+      - email-sequence-writer
+      - icon-imagery-curator
+      - animation-specialist
+      - form-builder
+      - conversion-captain
+      - cro-specialist
+      - ab-test-architect
+      - analytics-engineer
+      - seo-specialist
+      - trust-signal-specialist
+
+    default_sections:
+      - header-simple
+      - hero-centered
+      - solution-3-step
+      - social-proof-testimonials-grid
+      - cta-centered
+      - footer-minimal
+
+# =============================================================================
+# MAPEAMENTO DE INTENCOES DO USUARIO PARA TIPOS DE PAGINA
+# =============================================================================
+intent_mapping:
+
+  # Intencoes que apontam para Landing Page
+  landing:
+    keywords:
+      - "landing page"
+      - "pagina de captura"
+      - "capturar leads"
+      - "gerar leads"
+      - "captacao de leads"
+      - "pagina de lead"
+      - "lead magnet"
+      - "ebook download"
+      - "material gratuito"
+      - "conteudo gratuito"
+      - "isca digital"
+    phrases:
+      - "quero capturar emails"
+      - "preciso de uma pagina para coletar leads"
+      - "quero oferecer um material gratuito"
+      - "criar uma pagina para meu lead magnet"
+      - "pagina para download de ebook"
+      - "quero construir minha lista de emails"
+    fallback_awareness_level: "problem_aware"
+    typical_conversion_goal: "email_capture"
+
+  # Intencoes que apontam para Sales Page
+  sales:
+    keywords:
+      - "pagina de vendas"
+      - "sales page"
+      - "vender produto"
+      - "vender curso"
+      - "vender servico"
+      - "pagina de venda"
+      - "carta de vendas"
+      - "video sales letter"
+      - "pagina de oferta"
+      - "pagina comercial"
+    phrases:
+      - "quero vender meu produto"
+      - "preciso de uma pagina para vender"
+      - "criar uma pagina de vendas"
+      - "pagina para vender meu curso online"
+      - "quero uma pagina que converta em vendas"
+      - "preciso de uma carta de vendas"
+    fallback_awareness_level: "solution_aware"
+    typical_conversion_goal: "purchase"
+
+  # Intencoes que apontam para Squeeze Page
+  squeeze:
+    keywords:
+      - "squeeze page"
+      - "pagina simples de captura"
+      - "captura minimalista"
+      - "opt-in page"
+      - "pagina de opt-in"
+      - "captura rapida"
+      - "pagina enxuta"
+    phrases:
+      - "quero algo simples para capturar emails"
+      - "preciso de uma pagina bem minimalista"
+      - "so preciso de headline e formulario"
+      - "pagina rapida de captura"
+      - "algo simples e direto para coletar leads"
+    fallback_awareness_level: "problem_aware"
+    typical_conversion_goal: "email_capture"
+
+  # Intencoes que apontam para Webinar Page
+  webinar:
+    keywords:
+      - "webinar"
+      - "webinario"
+      - "live"
+      - "aula ao vivo"
+      - "masterclass"
+      - "workshop online"
+      - "evento online"
+      - "treinamento ao vivo"
+      - "aula gratuita"
+      - "palestra online"
+    phrases:
+      - "quero uma pagina para meu webinario"
+      - "preciso de inscricao para minha live"
+      - "criar pagina de registro para aula ao vivo"
+      - "pagina para minha masterclass"
+      - "quero registrar pessoas para meu evento"
+      - "pagina com contagem regressiva para minha aula"
+    fallback_awareness_level: "problem_aware"
+    typical_conversion_goal: "webinar_registration"
+
+  # Intencoes que apontam para Thank You Page
+  thank_you:
+    keywords:
+      - "pagina de agradecimento"
+      - "thank you page"
+      - "obrigado"
+      - "pagina de confirmacao"
+      - "pos-compra"
+      - "pos-inscricao"
+      - "proximos passos"
+      - "pagina de entrega"
+    phrases:
+      - "pagina que aparece apos a compra"
+      - "preciso de uma pagina de obrigado"
+      - "pagina para depois que a pessoa se inscrever"
+      - "quero uma pagina de confirmacao"
+      - "pagina com proximos passos apos o cadastro"
+      - "pagina de pos-conversao com upsell"
+    fallback_awareness_level: "most_aware"
+    typical_conversion_goal: "next_step_engagement"
+
+# =============================================================================
+# REGRAS DE FALLBACK E DETECCAO AUTOMATICA
+# =============================================================================
+fallback_rules:
+  default_page_type: "landing"
+  ambiguous_intent_action: "ask_user"
+  confidence_threshold: 0.7
+
+  detection_priority:
+    - check: "explicit_keywords"
+      weight: 1.0
+    - check: "phrase_matching"
+      weight: 0.8
+    - check: "context_inference"
+      weight: 0.6
+    - check: "awareness_level_hint"
+      weight: 0.4
+
+  when_multiple_matches:
+    strategy: "highest_confidence"
+    tiebreaker: "ask_user"
+    present_options: true

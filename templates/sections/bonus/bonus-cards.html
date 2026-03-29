@@ -1,0 +1,107 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-surface, #f9fafb);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 3rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    ">
+      <!-- Bonus Card 1 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          background: linear-gradient(90deg, var(--color-primary, #4f46e5), var(--color-accent, #f0c040));
+        "></div>
+        <div style="
+          display: inline-block;
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: #ffffff;
+          background-color: var(--color-primary, #4f46e5);
+          padding: 0.25rem 0.75rem;
+          border-radius: 999px;
+          margin-bottom: 1rem;
+        ">Bonus 1</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{bonus_1_name}}</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0 0 1rem 0;">{{bonus_1_description}}</p>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; color: var(--color-muted, #6b7280); text-decoration: line-through;">Valor: {{bonus_1_value}}</div>
+      </div>
+
+      <!-- Bonus Card 2 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--color-primary, #4f46e5), var(--color-accent, #f0c040));"></div>
+        <div style="display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; background-color: var(--color-primary, #4f46e5); padding: 0.25rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;">Bonus 2</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{bonus_2_name}}</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0 0 1rem 0;">{{bonus_2_description}}</p>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; color: var(--color-muted, #6b7280); text-decoration: line-through;">Valor: {{bonus_2_value}}</div>
+      </div>
+
+      <!-- Bonus Card 3 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border: 1px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--color-primary, #4f46e5), var(--color-accent, #f0c040));"></div>
+        <div style="display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #ffffff; background-color: var(--color-primary, #4f46e5); padding: 0.25rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;">Bonus 3</div>
+        <h3 style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text, #1a1a2e);">{{bonus_3_name}}</h3>
+        <p style="font-size: 0.9rem; line-height: 1.6; color: var(--color-muted, #6b7280); margin: 0 0 1rem 0;">{{bonus_3_description}}</p>
+        <div style="font-family: var(--font-heading, system-ui, sans-serif); font-size: 1.1rem; font-weight: 700; color: var(--color-muted, #6b7280); text-decoration: line-through;">Valor: {{bonus_3_value}}</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      section > div > div:nth-child(2) {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+  </style>
+</section>

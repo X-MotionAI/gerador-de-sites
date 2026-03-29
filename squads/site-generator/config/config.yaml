@@ -1,0 +1,366 @@
+# =============================================================================
+# FRAMEWORK CONFIGURATION — CONFIGURACAO CENTRAL DO SITE GENERATOR
+# Limiares de qualidade, modelos, pipeline, exportacao e tokens de design
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+framework_name: "Site Generator Framework"
+framework_version: "1.0.0"
+
+# =============================================================================
+# LIMIARES DE QUALIDADE
+# Notas minimas que cada artefato deve atingir para ser aprovado
+# =============================================================================
+quality_thresholds:
+
+  # Qualidade da copy
+  copy:
+    persuasion_score: 7.0
+    persuasion_score_description: >
+      Nota minima de persuasao da copy em uma escala de 0 a 10, avaliada
+      pelo agente copy-reviewer. Considera clareza da proposta de valor,
+      uso de gatilhos psicologicos, forca da headline, qualidade da
+      argumentacao e eficacia da chamada para acao.
+    readability_score: 7.0
+    readability_score_description: >
+      Nota minima de legibilidade da copy em uma escala de 0 a 10.
+      Considera tamanho das frases, complexidade do vocabulario,
+      uso de voz ativa, estrutura dos paragrafos e fluidez geral.
+    emotional_impact_score: 6.5
+    emotional_impact_score_description: >
+      Nota minima de impacto emocional da copy. Avalia se a copy
+      gera a reacao emocional desejada para o nivel de consciencia
+      do prospect e o tipo de pagina.
+    grammar_error_tolerance: 0
+    grammar_error_tolerance_description: >
+      Numero maximo de erros gramaticais ou ortograficos permitidos
+      na copy final. Zero tolerancia para erros.
+
+  # Qualidade do design e codigo
+  design:
+    lighthouse_performance_score: 90
+    lighthouse_performance_score_description: >
+      Nota minima do Google Lighthouse para performance. Avalia
+      First Contentful Paint, Largest Contentful Paint, Total
+      Blocking Time, Cumulative Layout Shift e Speed Index.
+    lighthouse_accessibility_score: 95
+    lighthouse_accessibility_score_description: >
+      Nota minima do Google Lighthouse para acessibilidade. Avalia
+      contraste de cores, labels de formularios, hierarquia de
+      headings, textos alternativos e navegacao por teclado.
+    lighthouse_best_practices_score: 90
+    lighthouse_best_practices_score_description: >
+      Nota minima do Google Lighthouse para melhores praticas.
+      Avalia uso de HTTPS, APIs modernas, ausencia de erros no
+      console e seguranca geral.
+    lighthouse_seo_score: 90
+    lighthouse_seo_score_description: >
+      Nota minima do Google Lighthouse para otimizacao de mecanismos
+      de busca. Avalia meta tags, estrutura de headings, links
+      rastreavel e mobile-friendliness.
+    contrast_ratio_minimum: 4.5
+    contrast_ratio_minimum_description: >
+      Razao minima de contraste entre texto e fundo conforme as
+      diretrizes WCAG 2.1 nivel AA. Para texto grande (acima de
+      18 pontos ou 14 pontos em negrito), o minimo e 3.0.
+    contrast_ratio_large_text: 3.0
+    mobile_responsiveness_score: 8.0
+    mobile_responsiveness_score_description: >
+      Nota minima para responsividade em dispositivos moveis em
+      uma escala de 0 a 10. Avalia layout, legibilidade, areas de
+      toque e experiencia geral em telas de 320 pixels a 768 pixels.
+
+  # Qualidade da conversao
+  conversion:
+    cro_score: 7.0
+    cro_score_description: >
+      Nota minima de otimizacao para conversao em uma escala de 0 a 10.
+      Avalia posicionamento de chamadas para acao, clareza da oferta,
+      uso de prova social, reducao de atrito e sinais de confianca.
+    trust_signal_coverage: 0.8
+    trust_signal_coverage_description: >
+      Percentual minimo de cobertura de sinais de confianca. Avalia
+      presenca de garantia, depoimentos, selos de seguranca, politica
+      de privacidade e informacoes de contato.
+    form_usability_score: 8.0
+    form_usability_score_description: >
+      Nota minima de usabilidade de formularios. Avalia numero de
+      campos, labels claros, validacao em tempo real, mensagens de
+      erro uteis e experiencia em dispositivos moveis.
+
+  # Limiar geral para aprovacao final
+  overall:
+    minimum_pass_score: 7.0
+    minimum_pass_score_description: >
+      Nota minima geral para que a pagina seja aprovada na revisao
+      final pelo quality-captain. A nota geral e a media ponderada
+      de todos os scores individuais.
+    auto_approve_score: 8.5
+    auto_approve_score_description: >
+      Nota minima para aprovacao automatica sem revisao manual
+      pelo site-commander. Acima desse limiar, a pagina e
+      considerada pronta para entrega.
+    require_human_review_below: 6.0
+    require_human_review_below_description: >
+      Abaixo desse limiar, a pagina e sinalizada para revisao
+      humana obrigatoria antes da entrega.
+
+# =============================================================================
+# CONFIGURACOES DE MODELO DE LINGUAGEM
+# Modelo padrao para cada estagio do pipeline
+# =============================================================================
+model_settings:
+
+  default_model: "claude-sonnet-4-20250514"
+  default_temperature: 0.7
+  default_max_tokens: 8192
+
+  per_stage:
+    briefing:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+      rationale: >
+        O estagio de briefing e diagnostico requer analise precisa e
+        classificacao deterministica. Temperatura mais baixa para
+        respostas mais consistentes e previsiveis.
+
+    strategy:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+      rationale: >
+        A analise estrategica precisa de um equilibrio entre criatividade
+        na identificacao de oportunidades e precisao na analise de dados
+        do mercado e da concorrencia.
+
+    copywriting:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.8
+      max_tokens: 16384
+      rationale: >
+        O copywriting e o estagio mais criativo do pipeline. Temperatura
+        mais alta permite maior variacao linguistica, metaforas originais
+        e abordagens narrativas inesperadas. Tokens elevados para
+        suportar copy longa de paginas de vendas.
+
+    design:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+      rationale: >
+        O design requer criatividade moderada dentro de restricoes
+        tecnicas rigorosas. A temperatura equilibrada permite
+        exploracoes visuais interessantes sem comprometer a
+        usabilidade e acessibilidade.
+
+    development:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 16384
+      rationale: >
+        A geracao de codigo requer maxima precisao e consistencia.
+        Temperatura baixa para minimizar erros de sintaxe e
+        garantir codigo funcional. Tokens elevados para suportar
+        paginas completas com HTML, CSS e JavaScript.
+
+    conversion:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 8192
+      rationale: >
+        A otimizacao de conversao combina analise analitica com
+        sugestoes criativas de melhoria. Temperatura moderada
+        para equilibrar precisao com inovacao.
+
+    quality:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+      rationale: >
+        A revisao de qualidade requer avaliacao objetiva e consistente.
+        Temperatura baixa para garantir que os mesmos criterios sejam
+        aplicados de forma uniforme em todas as revisoes.
+
+    delivery:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.4
+      max_tokens: 4096
+      rationale: >
+        A entrega final requer consolidacao precisa e relatorio
+        estruturado. Temperatura baixa para consistencia.
+
+# =============================================================================
+# CONFIGURACOES DO PIPELINE
+# Controle de loops de feedback, tentativas e timeouts
+# =============================================================================
+pipeline_settings:
+
+  max_feedback_loops: 3
+  max_feedback_loops_description: >
+    Numero maximo de loops de feedback entre estagios antes de
+    escalar para o site-commander. Se um estagio nao atingir o
+    limiar de qualidade apos este numero de iteracoes, o
+    comandante intervem com instrucoes especificas.
+
+  max_attempts_per_stage: 3
+  max_attempts_per_stage_description: >
+    Numero maximo de tentativas de execucao de um estagio individual.
+    Se o estagio falhar apos este numero de tentativas (por erro
+    tecnico, timeout ou qualidade insuficiente), o pipeline reporta
+    falha ao site-commander.
+
+  stage_timeout_minutes: 30
+  stage_timeout_description: >
+    Timeout maximo em minutos para qualquer estagio individual do
+    pipeline. Apos este tempo, o estagio e considerado como falha
+    por timeout e o pipeline tenta novamente ou escala.
+
+  total_pipeline_timeout_minutes: 120
+  total_pipeline_timeout_description: >
+    Timeout maximo em minutos para o pipeline completo do inicio
+    ao fim. Apos este tempo, o pipeline e interrompido e um
+    relatorio parcial e entregue ao usuario.
+
+  enable_parallel_execution: true
+  enable_parallel_execution_description: >
+    Quando habilitado, estagios e agentes que podem executar em
+    paralelo (conforme definido no squad.yaml) serao executados
+    simultaneamente para reduzir o tempo total do pipeline.
+
+  feedback_loop_strategy: "targeted"
+  feedback_loop_strategy_description: >
+    Estrategia de loop de feedback. 'targeted' envia feedback apenas
+    para os agentes que precisam de ajustes. 'full' reenvia o estagio
+    completo para todos os agentes. 'escalate' escala imediatamente
+    para o capitao da esquadra.
+
+  quality_gate_enforcement: "strict"
+  quality_gate_enforcement_description: >
+    Modo de aplicacao dos portoes de qualidade entre estagios.
+    'strict' impede avanco se o limiar nao for atingido. 'warning'
+    permite avanco com alerta. 'lenient' permite avanco livre com
+    registro para revisao posterior.
+
+# =============================================================================
+# FORMATOS DE EXPORTACAO
+# Formatos de saida suportados para entrega do site gerado
+# =============================================================================
+export_formats:
+
+  default: "html_single_file"
+
+  supported:
+    - id: html_single_file
+      name: "Arquivo HTML Unico"
+      description: >
+        Todo o site gerado em um unico arquivo HTML com CSS e JavaScript
+        embutidos (inline). Formato mais simples para entrega e deploy
+        imediato. Ideal para a maioria dos casos de uso.
+      file_extension: ".html"
+      includes_css: "inline"
+      includes_javascript: "inline"
+      includes_images: "base64_embedded_or_external_urls"
+      minified: true
+
+    - id: html_multi_file
+      name: "Arquivos HTML Separados"
+      description: >
+        Site gerado com arquivos separados para HTML, CSS e JavaScript.
+        Facilita manutencao e edicao posterior. Inclui estrutura de
+        pastas organizada.
+      file_extension: ".html"
+      output_structure:
+        - "index.html"
+        - "css/styles.css"
+        - "js/scripts.js"
+        - "images/"
+      includes_css: "external_file"
+      includes_javascript: "external_file"
+      includes_images: "external_files"
+      minified: true
+
+    - id: json_structured
+      name: "Estrutura JSON"
+      description: >
+        Saida estruturada em formato JSON contendo toda a copy,
+        configuracao de design e metadados da pagina. Ideal para
+        integracao com sistemas de gerenciamento de conteudo, builders
+        de pagina ou renderizadores customizados.
+      file_extension: ".json"
+      schema_version: "1.0.0"
+      includes:
+        - copy_elements
+        - design_tokens
+        - section_structure
+        - metadata
+        - seo_tags
+
+    - id: markdown_content
+      name: "Conteudo em Markdown"
+      description: >
+        Apenas o conteudo textual da pagina exportado em formato
+        Markdown para uso em blogs, plataformas de conteudo ou
+        como base para adaptacao manual.
+      file_extension: ".md"
+      includes:
+        - headlines
+        - body_copy
+        - cta_texts
+        - faq_content
+        - testimonial_content
+
+# =============================================================================
+# REFERENCIA AOS TOKENS DE DESIGN PADRAO
+# =============================================================================
+default_design_tokens:
+  source_file: "data/design-tokens.yaml"
+  active_theme: "default"
+  allow_user_override: true
+  allow_user_override_description: >
+    Quando habilitado, o usuario pode fornecer cores, fontes ou
+    espacamentos customizados no briefing. Esses valores sobrescrevem
+    os tokens do tema selecionado, mantendo os demais valores do
+    tema como fallback.
+  available_themes:
+    - default
+    - modern_dark
+    - warm_professional
+    - bold_startup
+    - clean_corporate
+    - playful_creative
+  theme_selection_strategy: "user_choice_or_auto"
+  theme_selection_strategy_description: >
+    'user_choice_or_auto' permite que o usuario escolha o tema no briefing.
+    Se o usuario nao especificar, o site-commander seleciona automaticamente
+    o tema mais adequado com base no nicho, audiencia e tipo de pagina.
+
+# =============================================================================
+# CONFIGURACOES DE IDIOMA E LOCALIZACAO
+# =============================================================================
+localization:
+  default_language: "pt-BR"
+  supported_languages:
+    - "pt-BR"
+    - "en-US"
+    - "es-ES"
+  currency_format: "BRL"
+  date_format: "DD/MM/YYYY"
+  number_format: "1.000,00"
+
+# =============================================================================
+# CONFIGURACOES DE SEGURANCA E PRIVACIDADE
+# =============================================================================
+security:
+  sanitize_user_input: true
+  escape_html_in_copy: true
+  include_privacy_policy_link: true
+  include_terms_of_use_link: true
+  gdpr_compliance: true
+  lgpd_compliance: true
+  cookie_consent_required: true
+  form_honeypot_enabled: true
+  form_honeypot_description: >
+    Adiciona um campo invisivel nos formularios para detectar e bloquear
+    submissoes automatizadas por bots de spam.

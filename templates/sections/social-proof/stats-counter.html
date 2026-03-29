@@ -1,0 +1,98 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    text-align: center;
+  ">
+    <!-- Stat 1 -->
+    <div style="padding: 1.5rem;">
+      <div style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      ">{{stat_1_number}}</div>
+      <div style="
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      ">{{stat_1_label}}</div>
+    </div>
+
+    <!-- Stat 2 -->
+    <div style="padding: 1.5rem;">
+      <div style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      ">{{stat_2_number}}</div>
+      <div style="
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      ">{{stat_2_label}}</div>
+    </div>
+
+    <!-- Stat 3 -->
+    <div style="padding: 1.5rem;">
+      <div style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      ">{{stat_3_number}}</div>
+      <div style="
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      ">{{stat_3_label}}</div>
+    </div>
+
+    <!-- Stat 4 -->
+    <div style="padding: 1.5rem;">
+      <div style="
+        font-family: var(--font-heading, system-ui, sans-serif);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      ">{{stat_4_number}}</div>
+      <div style="
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      ">{{stat_4_label}}</div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      section > div {
+        grid-template-columns: repeat(4, 1fr) !important;
+      }
+    }
+  </style>
+</section>

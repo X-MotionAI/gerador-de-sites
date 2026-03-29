@@ -1,0 +1,156 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-bg, #ffffff);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 1100px);
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 3rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    ">
+      <!-- Step 1 -->
+      <div style="
+        position: relative;
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem 2rem 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <span style="
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 52px;
+          height: 52px;
+          background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.5rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+          margin-bottom: 1.25rem;
+        ">1</span>
+        <h3 style="
+          font-family: var(--font-heading, system-ui, sans-serif);
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin: 0 0 0.75rem 0;
+          color: var(--color-text, #1a1a2e);
+        ">{{step_1_title}}</h3>
+        <p style="
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--color-muted, #6b7280);
+          margin: 0;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        ">{{step_1_text}}</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="
+        position: relative;
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem 2rem 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <span style="
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 52px;
+          height: 52px;
+          background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.5rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+          margin-bottom: 1.25rem;
+        ">2</span>
+        <h3 style="
+          font-family: var(--font-heading, system-ui, sans-serif);
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin: 0 0 0.75rem 0;
+          color: var(--color-text, #1a1a2e);
+        ">{{step_2_title}}</h3>
+        <p style="
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--color-muted, #6b7280);
+          margin: 0;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        ">{{step_2_text}}</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="
+        position: relative;
+        background-color: var(--color-surface, #f9fafb);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2.5rem 2rem 2rem 2rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 40px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <span style="
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 52px;
+          height: 52px;
+          background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.5rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+          margin-bottom: 1.25rem;
+        ">3</span>
+        <h3 style="
+          font-family: var(--font-heading, system-ui, sans-serif);
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin: 0 0 0.75rem 0;
+          color: var(--color-text, #1a1a2e);
+        ">{{step_3_title}}</h3>
+        <p style="
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--color-muted, #6b7280);
+          margin: 0;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        ">{{step_3_text}}</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @media (min-width: 768px) {
+      section > div > div:nth-child(2) {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+  </style>
+</section>

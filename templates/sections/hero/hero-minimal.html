@@ -1,0 +1,77 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-bg, #ffffff);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+">
+  <div style="
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
+  ">
+    <h1 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0 0 1rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{headline}}</h1>
+
+    <p style="
+      font-size: clamp(0.95rem, 2vw, 1.125rem);
+      line-height: 1.6;
+      color: var(--color-muted, #6b7280);
+      margin: 0 0 2rem 0;
+    ">{{subheadline}}</p>
+
+    <form action="{{form_action}}" method="POST" style="
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 440px;
+      margin: 0 auto;
+    ">
+      <input type="email" name="email" placeholder="{{input_placeholder}}" required style="
+        width: 100%;
+        padding: 0.95rem 1.25rem;
+        font-family: var(--font-body, system-ui, sans-serif);
+        font-size: 1rem;
+        border: 2px solid var(--color-border, #e5e7eb);
+        border-radius: var(--radius, 0.5rem);
+        background-color: var(--color-surface, #f9fafb);
+        color: var(--color-text, #1a1a2e);
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+      " onfocus="this.style.borderColor='var(--color-primary, #4f46e5)';this.style.boxShadow='0 0 0 3px rgba(79,70,229,0.15)'" onblur="this.style.borderColor='var(--color-border, #e5e7eb)';this.style.boxShadow='none'">
+
+      <button type="submit" style="
+        width: 100%;
+        padding: 0.95rem 1.25rem;
+        font-family: var(--font-body, system-ui, sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: var(--color-primary, #4f46e5);
+        color: #ffffff;
+        border: none;
+        border-radius: var(--radius, 0.5rem);
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+      " onmouseover="this.style.backgroundColor='var(--color-secondary, #4338ca)';this.style.transform='translateY(-1px)'" onmouseout="this.style.backgroundColor='var(--color-primary, #4f46e5)';this.style.transform='translateY(0)'">{{cta_text}}</button>
+    </form>
+
+    <p style="
+      font-size: 0.8rem;
+      color: var(--color-muted, #6b7280);
+      margin-top: 0.75rem;
+      opacity: 0.7;
+    ">Seus dados estao seguros. Nao enviamos spam.</p>
+  </div>
+</section>

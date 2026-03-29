@@ -1,0 +1,147 @@
+<section style="
+  padding: var(--section-padding, 5rem 1.5rem);
+  background-color: var(--color-surface, #f9fafb);
+  color: var(--color-text, #1a1a2e);
+  font-family: var(--font-body, system-ui, sans-serif);
+">
+  <div style="
+    max-width: var(--container-max, 900px);
+    margin: 0 auto;
+    text-align: center;
+  ">
+    <h2 style="
+      font-family: var(--font-heading, system-ui, sans-serif);
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 1rem 0;
+      color: var(--color-text, #1a1a2e);
+    ">{{section_headline}}</h2>
+
+    <div style="
+      display: inline-block;
+      background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+      color: #ffffff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    ">{{mechanism_name}}</div>
+
+    <p style="
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.7;
+      color: var(--color-muted, #6b7280);
+      margin: 0 auto 3rem auto;
+      max-width: 650px;
+    ">{{mechanism_description}}</p>
+
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: left;
+      position: relative;
+    ">
+      <!-- Step 1 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.04)'">
+        <span style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.125rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+        ">1</span>
+        <div style="font-size: 1rem; line-height: 1.6; color: var(--color-text, #1a1a2e);">{{step_1}}</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.04)'">
+        <span style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.125rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+        ">2</span>
+        <div style="font-size: 1rem; line-height: 1.6; color: var(--color-text, #1a1a2e);">{{step_2}}</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="
+        background-color: var(--color-bg, #ffffff);
+        border-radius: var(--radius, 0.5rem);
+        padding: 2rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.25rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.04)'">
+        <span style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          background-color: var(--color-primary, #4f46e5);
+          color: #ffffff;
+          border-radius: 50%;
+          font-size: 1.125rem;
+          font-weight: 800;
+          font-family: var(--font-heading, system-ui, sans-serif);
+        ">3</span>
+        <div style="font-size: 1rem; line-height: 1.6; color: var(--color-text, #1a1a2e);">{{step_3}}</div>
+      </div>
+    </div>
+
+    <div style="
+      margin-top: 3rem;
+      background: linear-gradient(135deg, var(--color-primary, #4f46e5), var(--color-secondary, #4338ca));
+      border-radius: var(--radius, 0.5rem);
+      padding: 2rem;
+    ">
+      <p style="
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        line-height: 1.7;
+        color: #ffffff;
+        margin: 0;
+        font-weight: 600;
+      ">{{result_text}}</p>
+    </div>
+  </div>
+</section>
