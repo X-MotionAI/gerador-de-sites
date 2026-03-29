@@ -1,0 +1,601 @@
+# =============================================================================
+# ELICITATION QUESTIONS — BANCO ESTRUTURADO DE PERGUNTAS PARA FASE DE BRIEFING
+# Inspirado no padrao ClawOS Elicitation Engine
+# Organizado em 3 fases de coleta progressiva com deteccao inteligente
+# =============================================================================
+
+version: "1.0.0"
+last_updated: "2026-03-29"
+description: >
+  Banco de perguntas estruturado para a fase de briefing do pipeline de geracao
+  de sites. As perguntas sao organizadas em 3 fases de prioridade decrescente,
+  permitindo geracao progressiva mesmo com informacoes parciais. O sistema de
+  inteligencia artificial pode auto-detectar respostas a partir do contexto
+  fornecido pelo usuario, reduzindo o numero de perguntas explicitas necessarias.
+
+# =============================================================================
+# CONFIGURACAO GLOBAL DO SISTEMA DE ELICITACAO
+# =============================================================================
+elicitation_config:
+  max_questions_per_turn: 3
+  allow_ai_autodetection: true
+  minimum_phase_for_generation: 1
+  preferred_language: "pt-BR"
+  progressive_disclosure: true
+  confidence_threshold_for_autodetection: 0.85
+
+# =============================================================================
+# FASE 1 — PERGUNTAS ESSENCIAIS (OBRIGATORIO COLETAR)
+# Sem estas informacoes, a geracao do site nao pode prosseguir.
+# O sistema deve garantir que todas sejam respondidas antes de avancar.
+# =============================================================================
+phases:
+  - phase: 1
+    name: "Perguntas Essenciais"
+    description: >
+      Informacoes absolutamente necessarias para iniciar a geracao do site.
+      O pipeline nao avanca para a fase de estrategia sem todas estas respostas.
+    minimum_completion: 100
+    questions:
+
+      - id: page_type
+        phase: 1
+        field_name: "page_type"
+        question_text: "Qual tipo de pagina voce precisa?"
+        description: >
+          Define a arquitetura base da pagina, os templates de secoes disponíveis,
+          o comprimento do corpo do texto e a estrategia de conversao primaria.
+        type: select
+        required: true
+        options:
+          - value: "landing"
+            label: "Landing Page — Pagina de destino com foco em uma unica acao"
+            description: "Pagina focada em um unico objetivo de conversao, sem distrações"
+          - value: "sales"
+            label: "Pagina de Vendas — Pagina longa com argumentacao completa de vendas"
+            description: "Pagina extensa com todos os elementos de persuasao para venda direta"
+          - value: "squeeze"
+            label: "Pagina de Captura — Coleta de email/lead em troca de algo gratuito"
+            description: "Pagina curta e objetiva para captura de contato do visitante"
+          - value: "webinar"
+            label: "Pagina de Webinar — Registro para evento online ao vivo ou gravado"
+            description: "Pagina de inscricao para webinar com elementos de urgencia e autoridade"
+          - value: "thank-you"
+            label: "Pagina de Agradecimento — Confirmacao pos-conversao com proximos passos"
+            description: "Pagina exibida apos a conversao com instrucoes e ofertas complementares"
+        default_value: "landing"
+        validation_rules:
+          allowed_values: ["landing", "sales", "squeeze", "webinar", "thank-you"]
+        ai_detection_hint: >
+          Analise o contexto do usuario para identificar palavras-chave como
+          "vender", "capturar leads", "email", "webinar", "obrigado". Se mencionar
+          preco ou pagamento, provavelmente e pagina de vendas. Se mencionar
+          "gratuito" ou "ebook", provavelmente e pagina de captura.
+        conditional_on: null
+
+      - id: product_name
+        phase: 1
+        field_name: "product_name"
+        question_text: "Qual e o nome do seu produto ou servico?"
+        description: >
+          Nome comercial que sera usado em headlines, chamadas para acao e
+          referencias ao longo de toda a pagina.
+        type: text
+        required: true
+        default_value: null
+        validation_rules:
+          min_length: 2
+          max_length: 100
+        ai_detection_hint: >
+          Procure por nomes proprios, nomes entre aspas, ou a primeira mencao
+          substantiva do que o usuario quer promover. Termos como "meu curso",
+          "meu ebook", "minha mentoria" seguidos de um nome indicam o produto.
+        conditional_on: null
+
+      - id: product_description
+        phase: 1
+        field_name: "product_description"
+        question_text: "Descreva o que seu produto ou servico faz e o que ele entrega ao cliente."
+        description: >
+          Descricao funcional e de beneficios do produto. Sera usada pelo
+          esquadrao de copy para extrair argumentos de venda, pelo esquadrao
+          de estrategia para posicionamento, e pelo esquadrao de design para
+          definir a hierarquia visual da informacao.
+        type: multiline
+        required: true
+        default_value: null
+        validation_rules:
+          min_length: 50
+          max_length: 2000
+        ai_detection_hint: >
+          Extraia toda informacao que descreva funcionalidades, entregas,
+          transformacoes prometidas e resultados esperados. Concatene
+          multiplas mencoes em uma descricao coerente.
+        conditional_on: null
+
+      - id: target_audience
+        phase: 1
+        field_name: "target_audience"
+        question_text: "Quem e o cliente ideal para este produto ou servico?"
+        description: >
+          Perfil demografico e psicografico do publico-alvo. Influencia
+          diretamente o tom da copy, a escolha de palavras, os pontos de
+          dor explorados e o estilo visual da pagina.
+        type: multiline
+        required: true
+        default_value: null
+        validation_rules:
+          min_length: 20
+          max_length: 1000
+        ai_detection_hint: >
+          Identifique mencoes a profissoes, faixas etarias, genero, nivel
+          de experiencia, situacao financeira, desejos e frustracooes.
+          Termos como "para", "destinado a", "ideal para", "quem precisa"
+          indicam o publico.
+        conditional_on: null
+
+      - id: main_problem
+        phase: 1
+        field_name: "main_problem"
+        question_text: "Qual e o principal problema que seu produto ou servico resolve?"
+        description: >
+          A dor central do publico-alvo. E o ponto de partida para toda a
+          estrutura de persuasao da pagina — da headline ate a chamada para
+          acao final.
+        type: multiline
+        required: true
+        default_value: null
+        validation_rules:
+          min_length: 20
+          max_length: 1000
+        ai_detection_hint: >
+          Procure por descricoes de dificuldades, frustracooes, obstaculos,
+          desafios, medos ou desejos nao realizados. Palavras como "problema",
+          "dificuldade", "nao consegue", "sofre com", "precisa de" indicam
+          a dor principal.
+        conditional_on: null
+
+      - id: conversion_goal
+        phase: 1
+        field_name: "conversion_goal"
+        question_text: "Qual acao voce quer que o visitante realize na pagina?"
+        description: >
+          Objetivo primario de conversao. Define o tipo de chamada para acao,
+          os formularios necessarios, a integracao com sistemas de pagamento
+          ou captura, e a pagina de destino pos-conversao.
+        type: select
+        required: true
+        options:
+          - value: "buy"
+            label: "Comprar — Realizar uma compra direta do produto ou servico"
+          - value: "subscribe"
+            label: "Assinar — Contratar uma assinatura recorrente"
+          - value: "register"
+            label: "Registrar — Inscrever-se em evento, webinar ou aula"
+          - value: "download"
+            label: "Baixar — Fazer download de material gratuito em troca de contato"
+          - value: "contact"
+            label: "Entrar em contato — Solicitar contato comercial ou orcamento"
+          - value: "whatsapp"
+            label: "Chamar no WhatsApp — Iniciar conversa via WhatsApp"
+        default_value: "buy"
+        validation_rules:
+          allowed_values: ["buy", "subscribe", "register", "download", "contact", "whatsapp"]
+        ai_detection_hint: >
+          Se o usuario menciona preco, pagamento ou checkout, o objetivo e "buy".
+          Se menciona "gratuito", "ebook", "pdf", o objetivo e "download".
+          Se menciona "webinar", "aula", "evento", o objetivo e "register".
+          Se menciona "WhatsApp" ou "zap", o objetivo e "whatsapp".
+        conditional_on: null
+
+      - id: price
+        phase: 1
+        field_name: "price"
+        question_text: "Qual e o preco do produto ou servico? (Digite 0 para ofertas gratuitas de captura de leads)"
+        description: >
+          Valor monetario exibido na pagina. Influencia a estrategia de
+          ancoragem de preco, a necessidade de justificacao de valor,
+          o comprimento da argumentacao e os elementos de garantia.
+        type: text
+        required: true
+        default_value: "0"
+        validation_rules:
+          pattern: "^[R$\\s]*[0-9.,]+$|^(gratuito|gratis|free|0)$"
+          error_message: "Informe um valor numerico valido ou 'gratuito'"
+        ai_detection_hint: >
+          Procure por valores monetarios mencionados com R$, reais, ou numeros
+          seguidos de contexto de preco. Se o usuario diz "gratuito", "gratis"
+          ou "de graca", o preco e 0.
+        conditional_on: null
+
+# =============================================================================
+# FASE 2 — PERGUNTAS ESTRATEGICAS (RECOMENDADO COLETAR)
+# Enriquecem significativamente a qualidade da pagina gerada.
+# O sistema pode prosseguir sem elas, mas com resultados inferiores.
+# =============================================================================
+  - phase: 2
+    name: "Perguntas Estrategicas"
+    description: >
+      Informacoes que enriquecem significativamente a qualidade da pagina gerada.
+      O pipeline pode avancar sem elas, mas a inteligencia artificial usara
+      valores inferidos ou padroes inteligentes como substitutos.
+    minimum_completion: 50
+    questions:
+
+      - id: awareness_level
+        phase: 2
+        field_name: "awareness_level"
+        question_text: "Qual o nivel de consciencia do seu publico sobre o problema e a solucao?"
+        description: >
+          Nivel de consciencia de Eugene Schwartz. Determina a estrutura completa
+          da pagina, a abordagem da headline, o framework de copy utilizado,
+          o estilo da chamada para acao e o comprimento da argumentacao.
+        type: select
+        required: false
+        options:
+          - value: "unaware"
+            label: "Completamente Inconsciente — Nao sabe que tem o problema"
+          - value: "problem_aware"
+            label: "Consciente do Problema — Sabe que tem o problema, mas nao conhece solucoes"
+          - value: "solution_aware"
+            label: "Consciente da Solucao — Conhece solucoes, mas nao conhece seu produto"
+          - value: "product_aware"
+            label: "Consciente do Produto — Conhece seu produto, mas ainda nao comprou"
+          - value: "most_aware"
+            label: "Totalmente Consciente — Conhece e quer, so precisa da oferta certa"
+          - value: "auto"
+            label: "Detectar automaticamente — Deixar a inteligencia artificial identificar"
+        default_value: "auto"
+        validation_rules:
+          allowed_values: ["unaware", "problem_aware", "solution_aware", "product_aware", "most_aware", "auto"]
+        ai_detection_hint: >
+          Analise o contexto completo: se o publico ja conhece o produto, e
+          "product_aware" ou "most_aware". Se o usuario descreve publico frio
+          ou que "nao sabe que precisa", e "unaware". Trafego pago frio
+          geralmente e "problem_aware" ou "solution_aware".
+        conditional_on: null
+
+      - id: competitors
+        phase: 2
+        field_name: "competitors"
+        question_text: "Quem sao os principais concorrentes ou alternativas ao seu produto?"
+        description: >
+          Informacao sobre o cenario competitivo. Usada para criar
+          diferenciacoes explicitas, contra-argumentos e posicionamento
+          unico na copy da pagina.
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 1000
+        ai_detection_hint: >
+          Procure por mencoes a outros produtos, marcas, servicos similares,
+          ou descricoes como "diferente de", "melhor que", "ao contrario de".
+        conditional_on: null
+
+      - id: unique_mechanism
+        phase: 2
+        field_name: "unique_mechanism"
+        question_text: "O que torna seu produto ou servico fundamentalmente diferente de todas as alternativas?"
+        description: >
+          O mecanismo unico e o elemento central de diferenciacao. E o que
+          faz o prospect acreditar que DESTA VEZ sera diferente. Sem ele,
+          o produto se torna uma commodity competindo apenas por preco.
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 1000
+        ai_detection_hint: >
+          Identifique metodologias proprietarias, processos exclusivos,
+          tecnologias unicas, abordagens inovadoras ou qualquer elemento
+          que o usuario destaque como diferencial competitivo.
+        conditional_on: null
+
+      - id: brand_colors
+        phase: 2
+        field_name: "brand_colors"
+        question_text: "Quais sao as cores da sua marca? (Informe codigos hexadecimais ou nomes de cores)"
+        description: >
+          Paleta de cores da marca para aplicacao no design da pagina.
+          Se nao fornecida, o esquadrao de design criara uma paleta
+          otimizada para conversao baseada no tipo de produto e publico.
+        type: text
+        required: false
+        default_value: null
+        validation_rules:
+          pattern: "^(#[0-9a-fA-F]{3,8}[,;\\s]*)+$|^[a-zA-Zà-ú\\s,;]+$"
+          error_message: "Informe cores em formato hexadecimal (#FF5733) ou por nome (azul, vermelho)"
+        ai_detection_hint: >
+          Procure por codigos hexadecimais (#RRGGBB), nomes de cores em
+          portugues ou ingles, ou referencias a identidade visual existente.
+        conditional_on: null
+
+      - id: brand_tone
+        phase: 2
+        field_name: "brand_tone"
+        question_text: "Qual e o tom de comunicacao da sua marca?"
+        description: >
+          Tom e voz da marca que guiarao toda a producao de copy.
+          Afeta escolha de palavras, nivel de formalidade, uso de humor
+          e intensidade emocional dos textos.
+        type: select
+        required: false
+        options:
+          - value: "professional"
+            label: "Profissional — Formal, tecnico, corporativo"
+          - value: "casual"
+            label: "Casual — Descontraido, acessivel, conversacional"
+          - value: "urgent"
+            label: "Urgente — Direto, energico, com senso de urgencia"
+          - value: "friendly"
+            label: "Amigavel — Caloroso, empatico, acolhedor"
+          - value: "authoritative"
+            label: "Autoritativo — Especialista, confiante, com dominio do assunto"
+          - value: "provocative"
+            label: "Provocativo — Desafiador, polemico, quebra de padroes"
+          - value: "inspirational"
+            label: "Inspiracional — Motivador, visionario, transformador"
+        default_value: "professional"
+        validation_rules:
+          allowed_values: ["professional", "casual", "urgent", "friendly", "authoritative", "provocative", "inspirational"]
+        ai_detection_hint: >
+          Analise como o usuario se comunica. Se usa girias e e informal,
+          provavelmente o tom e "casual". Se usa termos tecnicos, e
+          "professional" ou "authoritative". Se demonstra energia e
+          exclamacoes, pode ser "urgent" ou "inspirational".
+        conditional_on: null
+
+      - id: existing_testimonials
+        phase: 2
+        field_name: "existing_testimonials"
+        question_text: "Voce possui depoimentos ou provas sociais de clientes satisfeitos?"
+        description: >
+          Depoimentos reais aumentam drasticamente a taxa de conversao.
+          Se fornecidos, serao incorporados na secao de prova social.
+          Se nao fornecidos, a secao pode ser omitida ou preenchida com
+          placeholders para preenchimento posterior.
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 3000
+        ai_detection_hint: >
+          Procure por textos entre aspas atribuidos a terceiros, mencoes
+          a "depoimento", "feedback", "resultado de cliente", ou descricoes
+          de casos de sucesso.
+        conditional_on: null
+
+      - id: guarantee
+        phase: 2
+        field_name: "guarantee"
+        question_text: "Voce oferece alguma garantia de satisfacao? (Exemplo: 7 dias, 30 dias, incondicional)"
+        description: >
+          Garantias reduzem a percepcao de risco e aumentam conversao.
+          Se fornecida, sera destacada visualmente proximo a chamada para
+          acao e na secao de oferta.
+        type: text
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 500
+        ai_detection_hint: >
+          Procure por mencoes a "garantia", "devolucao", "reembolso",
+          "dias para testar", "sem risco", "satisfacao garantida".
+        conditional_on:
+          field: "page_type"
+          values: ["sales", "landing"]
+
+# =============================================================================
+# FASE 3 — PERGUNTAS DE REFINAMENTO (OPCIONAL)
+# Detalhes adicionais que podem elevar a qualidade, mas nao sao essenciais.
+# =============================================================================
+  - phase: 3
+    name: "Perguntas de Refinamento"
+    description: >
+      Detalhes opcionais que elevam a qualidade e completude da pagina gerada.
+      Podem ser coletados em rodadas posteriores ou apos a primeira geracao
+      como parte de um ciclo de refinamento.
+    minimum_completion: 0
+    questions:
+
+      - id: bonus_items
+        phase: 3
+        field_name: "bonus_items"
+        question_text: "Voce oferece bonus adicionais junto com o produto principal? Descreva cada um."
+        description: >
+          Bonus aumentam o valor percebido da oferta e justificam o preco.
+          Cada bonus sera apresentado com nome, descricao e valor individual
+          na secao de empilhamento de valor (value stack).
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 2000
+        ai_detection_hint: >
+          Procure por listas de itens extras, "bonus", "alem disso voce recebe",
+          "incluso no pacote", materiais complementares ou acessos adicionais.
+        conditional_on:
+          field: "page_type"
+          values: ["sales", "landing"]
+
+      - id: urgency_element
+        phase: 3
+        field_name: "urgency_element"
+        question_text: "Existe algum elemento de urgencia ou escassez na sua oferta? (Tempo limitado, vagas limitadas, preco promocional)"
+        description: >
+          Elementos de urgencia e escassez aceleram a tomada de decisao.
+          Se fornecidos, serao incorporados visualmente com contadores
+          regressivos, barras de progresso ou avisos destacados.
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 500
+        ai_detection_hint: >
+          Procure por mencoes a "limitado", "vagas", "ate dia", "promocao",
+          "desconto por tempo limitado", "ultimas unidades", "somente hoje".
+        conditional_on:
+          field: "page_type"
+          values: ["sales", "landing", "webinar"]
+
+      - id: logo_url
+        phase: 3
+        field_name: "logo_url"
+        question_text: "Qual a URL do logotipo da sua marca? (Pode ser um link direto para a imagem)"
+        description: >
+          Logotipo para aplicacao no cabecalho e rodape da pagina.
+          Se nao fornecido, o nome do produto sera usado como texto
+          estilizado no cabecalho.
+        type: text
+        required: false
+        default_value: null
+        validation_rules:
+          pattern: "^https?://.+\\.(png|jpg|jpeg|svg|webp)(\\?.*)?$"
+          error_message: "Informe uma URL valida para uma imagem (formatos aceitos: PNG, JPG, SVG, WebP)"
+        ai_detection_hint: >
+          Procure por URLs que apontem para arquivos de imagem ou mencoes
+          a "logo", "logotipo", "marca" acompanhadas de links.
+        conditional_on: null
+
+      - id: hero_image
+        phase: 3
+        field_name: "hero_image"
+        question_text: "Voce tem uma imagem principal para a secao de destaque da pagina? (URL da imagem)"
+        description: >
+          Imagem de destaque para a secao hero da pagina. Se nao fornecida,
+          o esquadrao de design criara um layout baseado apenas em
+          elementos tipograficos e graficos vetoriais.
+        type: text
+        required: false
+        default_value: null
+        validation_rules:
+          pattern: "^https?://.+\\.(png|jpg|jpeg|svg|webp)(\\?.*)?$"
+          error_message: "Informe uma URL valida para uma imagem"
+        ai_detection_hint: >
+          Procure por URLs de imagem mencionadas no contexto de "imagem
+          principal", "foto do produto", "banner", "hero" ou "destaque".
+        conditional_on: null
+
+      - id: email_sequence
+        phase: 3
+        field_name: "email_sequence"
+        question_text: "Voce precisa de uma sequencia de emails de acompanhamento apos a captura do lead?"
+        description: >
+          Sequencia automatizada de emails de nutrição e conversao para
+          leads capturados. Se solicitada, sera gerada como artefato
+          adicional ao site principal.
+        type: boolean
+        required: false
+        default_value: false
+        validation_rules: null
+        ai_detection_hint: >
+          Procure por mencoes a "emails", "sequencia", "automacao",
+          "follow-up", "nutrição de leads", "funil de emails".
+        conditional_on:
+          field: "conversion_goal"
+          values: ["download", "register", "subscribe"]
+
+      - id: tracking
+        phase: 3
+        field_name: "tracking"
+        question_text: "Voce precisa de rastreamento de analytics ou pixels de conversao? Quais plataformas?"
+        description: >
+          Codigos de rastreamento a serem incorporados na pagina para
+          medicao de resultados. Inclui Google Analytics, Meta Pixel,
+          Google Tag Manager, pixels de plataformas de anuncios, entre outros.
+        type: multiline
+        required: false
+        default_value: null
+        validation_rules:
+          max_length: 1000
+        ai_detection_hint: >
+          Procure por mencoes a "Google Analytics", "GA4", "pixel",
+          "Facebook Pixel", "Meta Pixel", "Tag Manager", "GTM",
+          "rastreamento", "tracking", "conversao".
+        conditional_on: null
+
+      - id: payment_platform
+        phase: 3
+        field_name: "payment_platform"
+        question_text: "Qual plataforma de pagamento voce utiliza? (Hotmart, Eduzz, Monetizze, Stripe, outra)"
+        description: >
+          Plataforma de pagamento para integracao do botao de compra
+          ou checkout. Determina o formato da URL de checkout e
+          eventuais scripts de rastreamento da plataforma.
+        type: select
+        required: false
+        options:
+          - value: "hotmart"
+            label: "Hotmart"
+          - value: "eduzz"
+            label: "Eduzz"
+          - value: "monetizze"
+            label: "Monetizze"
+          - value: "kiwify"
+            label: "Kiwify"
+          - value: "stripe"
+            label: "Stripe"
+          - value: "other"
+            label: "Outra plataforma"
+          - value: "none"
+            label: "Nenhuma — sera adicionada depois"
+        default_value: "none"
+        validation_rules:
+          allowed_values: ["hotmart", "eduzz", "monetizze", "kiwify", "stripe", "other", "none"]
+        ai_detection_hint: >
+          Procure por mencoes a plataformas de pagamento, links de checkout,
+          ou nomes como "Hotmart", "Eduzz", "Kiwify", "Stripe".
+        conditional_on:
+          field: "conversion_goal"
+          values: ["buy", "subscribe"]
+
+      - id: checkout_url
+        phase: 3
+        field_name: "checkout_url"
+        question_text: "Qual e a URL de checkout ou link de pagamento do seu produto?"
+        description: >
+          Link direto para o checkout que sera aplicado nos botoes de
+          chamada para acao de compra ao longo da pagina.
+        type: text
+        required: false
+        default_value: "#"
+        validation_rules:
+          pattern: "^https?://.+$|^#$"
+          error_message: "Informe uma URL valida comecando com https:// ou http://"
+        ai_detection_hint: >
+          Procure por URLs de plataformas de pagamento como
+          hotmart.com, eduzz.com, pay.kiwify.com.br, checkout.stripe.com
+          ou links similares de checkout.
+        conditional_on:
+          field: "payment_platform"
+          values: ["hotmart", "eduzz", "monetizze", "kiwify", "stripe", "other"]
+
+# =============================================================================
+# ESTRATEGIA DE COLETA INTELIGENTE
+# Define como o sistema de inteligencia artificial deve conduzir a elicitacao
+# =============================================================================
+collection_strategy:
+  first_message_parsing: >
+    Antes de fazer qualquer pergunta, analise a primeira mensagem do usuario
+    e tente auto-detectar o maximo de respostas possivel usando as dicas
+    de detecao (ai_detection_hint) de cada pergunta. Somente faca perguntas
+    para campos que nao puderam ser inferidos com confianca acima de 85%.
+
+  progressive_questioning: >
+    Faca no maximo 3 perguntas por turno de conversa para evitar fadiga
+    do usuario. Priorize perguntas da Fase 1 que ainda nao foram respondidas.
+    Somente avance para Fase 2 quando Fase 1 estiver 100% completa.
+
+  smart_defaults: >
+    Se o usuario escolher nao responder perguntas opcionais, use os valores
+    padrao definidos (default_value) ou infira valores inteligentes baseados
+    nas respostas ja coletadas. Por exemplo, se o tipo de pagina e "sales"
+    e o preco e acima de R$500, o nivel de consciencia provavelmente e
+    "solution_aware" ou "product_aware".
+
+  confirmation_before_generation: >
+    Antes de iniciar a geracao, apresente um resumo estruturado de todas
+    as informacoes coletadas (respondidas e inferidas) e peca confirmacao
+    do usuario. Destaque claramente quais valores foram inferidos pela
+    inteligencia artificial para que o usuario possa corrigir se necessario.

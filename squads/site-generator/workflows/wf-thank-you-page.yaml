@@ -1,0 +1,594 @@
+# =============================================================================
+# WORKFLOW: THANK YOU PAGE — PAGINA DE AGRADECIMENTO POS-CONVERSAO
+# Pipeline minimo para paginas de confirmacao com upsell/downsell,
+# proximos passos e compartilhamento social
+# =============================================================================
+
+workflow:
+  id: wf-thank-you-page
+  name: "Workflow de Geracao de Pagina de Agradecimento"
+  description: >
+    Pipeline minimo para geracao de paginas de agradecimento (thank you pages)
+    exibidas apos uma conversao (registro, compra, download). Estas paginas
+    confirmam a acao do usuario, orientam sobre os proximos passos, apresentam
+    uma oferta de upsell ou downsell opcional e incentivam compartilhamento
+    social. Pipeline reduzido que pula estagios de estrategia aprofundada
+    e analise competitiva, focando na experiencia pos-conversao.
+  page_type: thank_you_page
+  version: "1.0.0"
+  last_updated: "2026-03-29"
+
+  default_sections:
+    - header-simple
+    - hero-centered
+    - solution-3-step
+    - social-proof-testimonials-grid
+    - thank-you-upsell
+    - thank-you-social-sharing
+    - faq-accordion
+    - cta-centered
+    - footer-minimal
+
+  custom_sections:
+    - id: thank-you-upsell
+      name: "Oferta de Upsell ou Downsell"
+      category: thank_you_specific
+      description: >
+        Secao que apresenta uma oferta complementar apos a conversao principal.
+        Pode ser um upsell (oferta de maior valor) ou downsell (oferta de
+        menor valor). Posicionada estrategicamente no momento em que o
+        usuario esta mais engajado e com o cartao de credito na mao
+        (em caso de compra) ou com o email acabado de confirmar.
+      copy_elements:
+        - "{{section_headline}}"
+        - "{{offer_intro}}"
+        - "{{product_name}}"
+        - "{{product_description}}"
+        - "{{benefit_1}}"
+        - "{{benefit_2}}"
+        - "{{benefit_3}}"
+        - "{{original_price}}"
+        - "{{special_price}}"
+        - "{{discount_reason}}"
+        - "{{cta_button_text}}"
+        - "{{cta_decline_text}}"
+        - "{{urgency_text}}"
+        - "{{guarantee_micro}}"
+      copy_agent: cta-engineer
+      design_pattern: "upsell-card"
+
+    - id: thank-you-social-sharing
+      name: "Compartilhamento Social"
+      category: thank_you_specific
+      description: >
+        Secao que incentiva o usuario a compartilhar sua acao nas redes
+        sociais, indicar amigos ou deixar um depoimento. Inclui botoes
+        de compartilhamento pre-configurados e mensagem sugerida.
+      copy_elements:
+        - "{{section_headline}}"
+        - "{{sharing_message}}"
+        - "{{share_button_facebook_text}}"
+        - "{{share_button_twitter_text}}"
+        - "{{share_button_whatsapp_text}}"
+        - "{{share_button_linkedin_text}}"
+        - "{{referral_message}}"
+        - "{{referral_link_label}}"
+      copy_agent: body-copy-architect
+      design_pattern: "social-sharing-buttons"
+
+  estimated_cost:
+    total: "$0.40"
+    breakdown:
+      briefing: "$0.03"
+      strategy_light: "$0.05"
+      copywriting: "$0.12"
+      design: "$0.08"
+      development: "$0.07"
+      quality_review: "$0.05"
+
+  estimated_duration:
+    total: "6 minutos"
+    breakdown:
+      briefing: "30 segundos"
+      strategy_light: "1 minuto"
+      copywriting: "1 minuto 30 segundos"
+      design: "1 minuto"
+      development: "1 minuto"
+      quality_review: "1 minuto"
+
+  estimated_tokens:
+    total: 38000
+    breakdown:
+      briefing: 2000
+      strategy_light: 5000
+      copywriting: 12000
+      design: 7000
+      development: 7000
+      quality_review: 5000
+
+# =============================================================================
+# FASES DO PIPELINE
+# =============================================================================
+phases:
+
+  # ---------------------------------------------------------------------------
+  # FASE 1 — BRIEFING RAPIDO
+  # ---------------------------------------------------------------------------
+  - id: phase_1_briefing
+    name: "Briefing Rapido de Pos-Conversao"
+    stage: briefing
+    sequence: 1
+
+    agents:
+      primary: site-commander
+      supporting: []
+
+    inputs:
+      - user_briefing_raw: "Descricao do que o usuario acabou de converter (compra, registro, download)"
+      - conversion_type: "Tipo de conversao (compra, registro, download de lead magnet)"
+      - upsell_product: "Produto ou oferta de upsell/downsell (opcional)"
+      - next_steps: "Proximos passos que o usuario deve seguir"
+      - user_brand_assets: "Logo e cores (opcional)"
+
+    outputs:
+      - briefing_structured: "Briefing estruturado para pagina de agradecimento"
+      - page_type_confirmed: "Tipo confirmado como thank_you_page"
+      - pipeline_plan: "Pipeline minimo ativado"
+      - section_list: "Lista de secoes para a pagina de agradecimento"
+      - conversion_context: "Contexto da conversao (o que o usuario fez)"
+      - upsell_strategy: "Estrategia de upsell/downsell (se aplicavel)"
+      - next_steps_structured: "Proximos passos estruturados"
+
+    quality_gate:
+      conditions:
+        - "Contexto da conversao claramente definido"
+        - "Proximos passos identificados e sequenciados"
+        - "Upsell definido ou explicitamente descartado"
+        - "Lista de secoes adequada ao tipo de conversao"
+      veto_conditions:
+        - "Tipo de conversao indefinido"
+        - "Proximos passos completamente ausentes"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_1_briefing
+      trigger: "Contexto de conversao ou proximos passos indefinidos"
+      action: "Solicitar informacao sobre o que o usuario acabou de fazer"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 2048
+
+  # ---------------------------------------------------------------------------
+  # FASE 2 — ESTRATEGIA LEVE
+  # ---------------------------------------------------------------------------
+  - id: phase_2_strategy_light
+    name: "Estrategia Leve de Pos-Conversao"
+    stage: strategy
+    sequence: 2
+
+    agents:
+      primary: strategy-captain
+      supporting:
+        - offer-architect
+
+    inputs:
+      - briefing_structured: "Briefing da Fase 1"
+      - conversion_context: "Contexto da conversao"
+      - upsell_strategy: "Estrategia de upsell (se aplicavel)"
+      - next_steps_structured: "Proximos passos"
+
+    outputs:
+      - upsell_offer_structure: "Estrutura da oferta de upsell/downsell"
+      - next_steps_optimized: "Proximos passos otimizados para engajamento"
+      - sharing_strategy: "Estrategia de compartilhamento social"
+      - copywriting_brief: "Briefing conciso para copywriting"
+      - design_brief: "Briefing conciso para design"
+
+    quality_gate:
+      conditions:
+        - "Proximos passos claros e sequenciados (no maximo 3 passos)"
+        - "Upsell estruturado com proposta de valor clara (se aplicavel)"
+        - "Estrategia de compartilhamento definida"
+        - "Briefing de copywriting acionavel"
+      veto_conditions:
+        - "Proximos passos confusos ou em numero excessivo (mais de 5)"
+        - "Upsell desconectado do produto original (se aplicavel)"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_2_strategy_light
+      trigger: "Upsell desconectado do contexto ou proximos passos confusos"
+      action: "strategy-captain simplifica proximos passos e alinha upsell"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 3 — COPYWRITING POS-CONVERSAO
+  # ---------------------------------------------------------------------------
+  - id: phase_3_copy
+    name: "Copywriting de Confirmacao e Upsell"
+    stage: copywriting
+    sequence: 3
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - headline-sniper
+        - body-copy-architect
+        - cta-engineer
+
+    inputs:
+      - copywriting_brief: "Briefing da Fase 2"
+      - conversion_context: "Contexto da conversao"
+      - upsell_offer_structure: "Estrutura do upsell (se aplicavel)"
+      - next_steps_optimized: "Proximos passos otimizados"
+      - sharing_strategy: "Estrategia de compartilhamento"
+      - section_list: "Lista de secoes"
+
+    outputs:
+      - confirmation_copy: "Copy de confirmacao e parabens"
+      - next_steps_copy: "Copy dos proximos passos com instrucoes claras"
+      - upsell_copy: "Copy da oferta de upsell/downsell (se aplicavel)"
+      - social_sharing_copy: "Textos de compartilhamento social"
+      - faq_post_conversion: "Perguntas frequentes pos-conversao"
+      - cta_copy_package: "Chamadas para acao (upsell, compartilhamento, proximo passo)"
+      - copy_metadata: "Meta tags (noindex para proteger da indexacao publica)"
+
+    quality_gate:
+      conditions:
+        - "Mensagem de confirmacao clara e celebratoria"
+        - "Proximos passos numerados e faceis de seguir (maximo 3)"
+        - "Copy de upsell persuasiva sem ser agressiva (se aplicavel)"
+        - "Textos de compartilhamento pre-escritos e atrativos"
+        - "Tom de voz caloroso e gratificante"
+        - "Perguntas frequentes cobrindo acesso, suporte e proximos passos"
+        - "Zero erros gramaticais ou ortograficos"
+        - "Meta tag noindex presente para proteger pagina de indexacao"
+      veto_conditions:
+        - "Mensagem de confirmacao ausente ou fria"
+        - "Proximos passos confusos ou ausentes"
+        - "Upsell agressivo que prejudica experiencia do usuario"
+        - "Erros gramaticais ou ortograficos"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "headline_and_confirmation"
+        description: "Headline de confirmacao como base"
+        tasks:
+          - agent: headline-sniper
+            task: "Headline de confirmacao celebratoria e proximos passos"
+      - group: "body_and_cta_parallel"
+        description: "Body copy e chamadas para acao em paralelo"
+        depends_on: "headline_and_confirmation"
+        tasks:
+          - agent: body-copy-architect
+            task: "Proximos passos, compartilhamento e perguntas frequentes"
+          - agent: cta-engineer
+            task: "Chamadas para acao de upsell e compartilhamento"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Tom de confirmacao inadequado ou upsell excessivamente agressivo"
+      action: "copy-captain ajusta tom e equilibrio entre gratidao e oferta"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.7
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 4 — DESIGN LIMPO E CALOROSO
+  # ---------------------------------------------------------------------------
+  - id: phase_4_design
+    name: "Design Limpo e Caloroso"
+    stage: design
+    sequence: 4
+
+    agents:
+      primary: design-captain
+      supporting:
+        - layout-architect
+        - color-typography-specialist
+        - responsive-engineer
+
+    inputs:
+      - design_brief: "Briefing de design da Fase 2"
+      - copy_packages: "Copy da Fase 3"
+      - section_list: "Lista de secoes"
+      - user_brand_assets: "Assets de marca"
+      - conversion_context: "Contexto para direcionar atmosfera visual"
+
+    outputs:
+      - layout_specification: "Layout limpo e celebratorio"
+      - design_tokens_applied: "Tokens de design com cores calorosas"
+      - responsive_rules: "Responsividade simplificada"
+      - sharing_buttons_design: "Design dos botoes de compartilhamento"
+      - upsell_card_design: "Design do card de upsell (se aplicavel)"
+
+    quality_gate:
+      conditions:
+        - "Atmosfera visual positiva e celebratoria"
+        - "Proximos passos visualmente destacados e faceis de seguir"
+        - "Card de upsell visualmente integrado sem ser invasivo (se aplicavel)"
+        - "Botoes de compartilhamento reconheciveis e bem posicionados"
+        - "Contraste de cores acima de 4.5"
+        - "Responsividade em todos os breakpoints"
+        - "Hierarquia clara: confirmacao > proximos passos > upsell > compartilhamento"
+      veto_conditions:
+        - "Design frio ou impessoal"
+        - "Upsell mais destacado que a mensagem de confirmacao"
+        - "Contraste insuficiente WCAG 2.1 nivel AA"
+        - "Layout quebrado em breakpoint critico"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "design_parallel"
+        description: "Tokens e layout em paralelo"
+        tasks:
+          - agent: color-typography-specialist
+            task: "Paleta calorosa e tipografia amigavel"
+          - agent: layout-architect
+            task: "Layout limpo com hierarquia de confirmacao"
+      - group: "responsive_after"
+        description: "Responsividade apos layout"
+        depends_on: "design_parallel"
+        tasks:
+          - agent: responsive-engineer
+            task: "Responsividade com foco em compartilhamento mobile"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_4_design
+      trigger: "Design frio ou upsell mais destacado que confirmacao"
+      action: "design-captain ajusta hierarquia visual e atmosfera"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 5 — DESENVOLVIMENTO
+  # ---------------------------------------------------------------------------
+  - id: phase_5_build
+    name: "Geracao de Codigo"
+    stage: build
+    sequence: 5
+
+    agents:
+      primary: dev-captain
+      supporting:
+        - html-architect
+        - css-engineer
+        - javascript-specialist
+
+    inputs:
+      - layout_specification: "Layout da Fase 4"
+      - design_tokens_applied: "Tokens de design"
+      - copy_packages: "Copy da Fase 3"
+      - responsive_rules: "Regras de responsividade"
+      - sharing_buttons_design: "Design dos botoes de compartilhamento"
+      - upsell_card_design: "Design do upsell"
+
+    outputs:
+      - html_complete: "HTML semantico completo"
+      - css_complete: "CSS com estilos calorosos"
+      - javascript_complete: "JavaScript para compartilhamento e interatividade"
+      - sharing_implementation: "Botoes de compartilhamento funcional com links corretos"
+      - final_html_file: "Arquivo HTML autocontido"
+      - performance_metrics: "Metricas de performance"
+
+    quality_gate:
+      conditions:
+        - "HTML semantico valido"
+        - "Botoes de compartilhamento funcional com links corretos"
+        - "Acordeao de perguntas frequentes funcional (se incluso)"
+        - "Responsividade em todos os breakpoints"
+        - "Tamanho do arquivo abaixo de 300 kilobytes"
+        - "Pagina carrega em menos de 1 segundo (estimativa)"
+        - "Meta tag noindex presente no HTML"
+        - "Todas as imagens com texto alternativo"
+        - "JavaScript sem erros de console"
+      veto_conditions:
+        - "HTML com erros de sintaxe"
+        - "Botoes de compartilhamento nao funcionais"
+        - "Meta tag noindex ausente"
+        - "Pagina nao renderiza em breakpoint critico"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "html_first"
+        description: "HTML como base"
+        tasks:
+          - agent: html-architect
+            task: "Estrutura HTML com meta noindex"
+      - group: "css_and_javascript"
+        description: "CSS e JavaScript em paralelo"
+        depends_on: "html_first"
+        tasks:
+          - agent: css-engineer
+            task: "CSS com estilos calorosos e responsividade"
+          - agent: javascript-specialist
+            task: "JavaScript para compartilhamento social e interatividade"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_5_build
+      trigger: "Botoes de compartilhamento nao funcionais ou meta noindex ausente"
+      action: "dev-captain direciona correcao"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 6 — REVISAO RAPIDA E ENTREGA
+  # ---------------------------------------------------------------------------
+  - id: phase_6_quality
+    name: "Revisao Rapida de Qualidade e Entrega"
+    stage: quality
+    sequence: 6
+
+    agents:
+      primary: quality-captain
+      supporting:
+        - copy-reviewer
+        - ux-auditor
+
+    inputs:
+      - final_html_file: "HTML da Fase 5"
+      - copy_packages: "Copy original"
+      - conversion_context: "Contexto da conversao"
+      - quality_thresholds: "Limiares de qualidade"
+
+    outputs:
+      - copy_review_report: "Revisao de copy com foco em tom e clareza"
+      - ux_audit_report: "Auditoria focada em proximos passos e upsell"
+      - overall_quality_score: "Nota geral"
+      - final_approved_html: "HTML final aprovado"
+      - delivery_report: "Relatorio de entrega"
+
+    quality_gate:
+      conditions:
+        - "Nota geral de qualidade acima de 7.0"
+        - "Mensagem de confirmacao clara e calorosa"
+        - "Proximos passos visiveis e faceis de seguir"
+        - "Upsell integrado sem ser invasivo (se aplicavel)"
+        - "Botoes de compartilhamento funcionais"
+        - "Meta noindex presente"
+        - "Zero erros gramaticais"
+        - "Responsividade validada"
+      veto_conditions:
+        - "Nota geral abaixo de 6.0"
+        - "Mensagem de confirmacao ausente ou fria"
+        - "Proximos passos confusos ou ausentes"
+        - "Meta noindex ausente (protecao contra indexacao)"
+        - "Erros gramaticais na copy"
+      min_score: 7.0
+      auto_approve_score: 8.0
+
+    parallel_tasks:
+      - group: "review_parallel"
+        description: "Revisoes em paralelo"
+        tasks:
+          - agent: copy-reviewer
+            task: "Revisao de copy com foco em tom caloroso e proximos passos"
+          - agent: ux-auditor
+            task: "Auditoria de experiencia focada em clareza e fluxo pos-conversao"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_3_copy
+      trigger: "Tom inadequado ou proximos passos confusos"
+      action: "quality-captain envia apontamentos ao copy-captain"
+      alternative_routes:
+        - condition: "Botoes de compartilhamento ou upsell com problemas tecnicos"
+          routes_back_to: phase_5_build
+          action: "quality-captain envia apontamentos ao dev-captain"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 4096
+
+# =============================================================================
+# REGRAS DE ESCALACAO
+# =============================================================================
+escalation_rules:
+  - condition: "Qualquer fase excede maximo de iteracoes sem atingir limiar"
+    action: "Escalar para site-commander"
+    commander_options:
+      - "Aceitar resultado com ressalvas"
+      - "Instrucoes para tentativa final"
+
+  - condition: "Pipeline total excede 30 minutos"
+    action: "Entregar resultado parcial"
+
+  - condition: "Nota geral abaixo de 6.0"
+    action: "Revisao humana obrigatoria"
+
+# =============================================================================
+# CONFIGURACOES ESPECIFICAS PARA PAGINAS DE AGRADECIMENTO
+# =============================================================================
+page_type_settings:
+  skip_agents:
+    - market-researcher
+    - competitor-analyst
+    - audience-profiler
+    - story-weaver
+    - objection-handler
+    - email-sequence-writer
+    - ab-test-architect
+    - seo-specialist
+    - trust-signal-specialist
+    - analytics-engineer
+    - visual-hierarchy-specialist
+    - icon-imagery-curator
+    - animation-specialist
+    - form-builder
+    - integration-specialist
+    - performance-optimizer
+    - cro-specialist
+    - accessibility-checker
+    - cross-browser-tester
+  skip_agents_rationale: >
+    Paginas de agradecimento utilizam um subconjunto reduzido de agentes.
+    Nao requerem pesquisa de mercado, analise competitiva, storytelling
+    extenso, otimizacao de mecanismos de busca (a pagina usa noindex),
+    testes A/B ou formularios de captura. O foco e na experiencia de
+    confirmacao, proximos passos, upsell opcional e compartilhamento.
+
+  focus_areas:
+    - "Confirmacao clara e celebratoria da acao realizada"
+    - "Proximos passos simples e sequenciados (maximo 3)"
+    - "Oferta de upsell/downsell integrada e nao invasiva"
+    - "Incentivo ao compartilhamento social"
+    - "Tom caloroso e gratificante"
+    - "Protecao contra indexacao (meta noindex obrigatorio)"
+
+  seo_settings:
+    noindex: true
+    nofollow: false
+    noindex_rationale: >
+      Paginas de agradecimento nao devem ser indexadas por mecanismos
+      de busca para proteger a experiencia do funil e evitar que
+      visitantes acessem a pagina sem ter realizado a conversao.
+
+  upsell_guidelines:
+    max_upsells: 1
+    upsell_position: "apos proximos passos, antes de compartilhamento"
+    upsell_tone: "sugestao gentil, nunca agressivo"
+    decline_option: "sempre presente com texto respeitoso"
+    discount_reason: "justificar o desconto (cliente recente, oferta especial, etc.)"
+    urgency_allowed: true
+    urgency_max_duration: "24 horas ou 48 horas no maximo"
+
+  sharing_guidelines:
+    platforms: ["facebook", "twitter", "whatsapp", "linkedin"]
+    pre_written_messages: true
+    referral_link: "opcional — link de indicacao rastreavel"
+    incentive: "opcional — bonus ou desconto por indicacao"
+
+  conversion_types_supported:
+    - type: "purchase"
+      confirmation_emphasis: "pedido confirmado, detalhes do acesso"
+      next_steps: ["acessar area de membros", "verificar email de confirmacao", "entrar no grupo"]
+    - type: "registration"
+      confirmation_emphasis: "registro confirmado, detalhes do evento"
+      next_steps: ["verificar email", "adicionar ao calendario", "entrar no grupo"]
+    - type: "download"
+      confirmation_emphasis: "download iniciado ou link enviado"
+      next_steps: ["verificar email", "baixar material", "consumir conteudo"]

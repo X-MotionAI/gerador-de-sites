@@ -1,0 +1,772 @@
+# =============================================================================
+# WORKFLOW: WEBINAR PAGE — PAGINA DE REGISTRO PARA WEBINARIO
+# Pipeline completo com secoes especificas de contagem regressiva,
+# biografia do palestrante, agenda e enfase em prova social e urgencia
+# =============================================================================
+
+workflow:
+  id: wf-webinar-page
+  name: "Workflow de Geracao de Pagina de Webinario"
+  description: >
+    Pipeline completo para geracao de paginas de registro para webinarios,
+    masterclasses, aulas ao vivo e eventos online. Inclui secoes especificas
+    como contagem regressiva, biografia do palestrante, agenda ou curriculo
+    do evento, enfase em prova social do expert e elementos de urgencia
+    (vagas limitadas, data especifica). O formulario de registro captura
+    dados para participacao no evento ao vivo.
+  page_type: webinar_page
+  version: "1.0.0"
+  last_updated: "2026-03-29"
+
+  default_sections:
+    - header-simple
+    - hero-split
+    - social-proof-logos-bar
+    - pain-points-3-column
+    - solution-3-step
+    - webinar-agenda
+    - speaker-bio
+    - social-proof-testimonials-grid
+    - social-proof-stats
+    - bonus-cards
+    - countdown-timer
+    - cta-urgency
+    - faq-accordion
+    - guarantee-badge
+    - cta-centered
+    - footer-minimal
+
+  custom_sections:
+    - id: webinar-agenda
+      name: "Agenda do Webinario"
+      category: webinar_specific
+      description: >
+        Secao que apresenta o conteudo que sera abordado no webinario,
+        organizado como uma agenda ou curriculo com topicos numerados.
+        Cada topico possui titulo e breve descricao do que o participante
+        vai aprender.
+      copy_elements:
+        - "{{section_headline}}"
+        - "{{section_subheadline}}"
+        - "{{topic_1_title}}"
+        - "{{topic_1_description}}"
+        - "{{topic_1_benefit}}"
+        - "{{topic_2_title}}"
+        - "{{topic_2_description}}"
+        - "{{topic_2_benefit}}"
+        - "{{topic_3_title}}"
+        - "{{topic_3_description}}"
+        - "{{topic_3_benefit}}"
+        - "{{topic_4_title}}"
+        - "{{topic_4_description}}"
+        - "{{topic_4_benefit}}"
+        - "{{topic_5_title}}"
+        - "{{topic_5_description}}"
+        - "{{topic_5_benefit}}"
+        - "{{bonus_topic_title}}"
+        - "{{bonus_topic_description}}"
+        - "{{closing_promise}}"
+      copy_agent: body-copy-architect
+      design_pattern: "numbered-agenda"
+
+    - id: speaker-bio
+      name: "Biografia do Palestrante"
+      category: webinar_specific
+      description: >
+        Secao dedicada a apresentar o palestrante ou host do webinario
+        com foto profissional, biografia focada em credenciais relevantes,
+        resultados alcancados e por que ele ou ela e a pessoa certa para
+        ensinar esse conteudo.
+      copy_elements:
+        - "{{section_headline}}"
+        - "{{speaker_name}}"
+        - "{{speaker_title}}"
+        - "{{speaker_bio_paragraph_1}}"
+        - "{{speaker_bio_paragraph_2}}"
+        - "{{credential_1}}"
+        - "{{credential_2}}"
+        - "{{credential_3}}"
+        - "{{notable_result_1}}"
+        - "{{notable_result_2}}"
+        - "{{notable_result_3}}"
+        - "{{personal_message}}"
+        - "{{photo_alt}}"
+      copy_agent: body-copy-architect
+      design_pattern: "bio-credentials"
+
+    - id: countdown-timer
+      name: "Contagem Regressiva"
+      category: webinar_specific
+      description: >
+        Secao com contagem regressiva visual mostrando dias, horas, minutos
+        e segundos ate o inicio do webinario. Inclui data e horario do
+        evento, fuso horario e chamada para acao para registro imediato.
+      copy_elements:
+        - "{{countdown_headline}}"
+        - "{{event_date}}"
+        - "{{event_time}}"
+        - "{{event_timezone}}"
+        - "{{urgency_message}}"
+        - "{{spots_remaining_text}}"
+        - "{{cta_button_text}}"
+        - "{{cta_below_text}}"
+      copy_agent: cta-engineer
+      design_pattern: "countdown-block"
+
+  estimated_cost:
+    total: "$1.10"
+    breakdown:
+      briefing: "$0.05"
+      strategy: "$0.18"
+      copywriting: "$0.35"
+      design: "$0.15"
+      development: "$0.20"
+      conversion_optimization: "$0.10"
+      quality_review: "$0.07"
+
+  estimated_duration:
+    total: "15 minutos"
+    breakdown:
+      briefing: "1 minuto"
+      strategy: "3 minutos"
+      copywriting: "4 minutos"
+      design: "2 minutos 30 segundos"
+      development: "2 minutos 30 segundos"
+      conversion_optimization: "1 minuto"
+      quality_review: "1 minuto"
+
+  estimated_tokens:
+    total: 105000
+    breakdown:
+      briefing: 4000
+      strategy: 16000
+      copywriting: 35000
+      design: 15000
+      development: 20000
+      conversion_optimization: 10000
+      quality_review: 5000
+
+# =============================================================================
+# FASES DO PIPELINE
+# =============================================================================
+phases:
+
+  # ---------------------------------------------------------------------------
+  # FASE 1 — BRIEFING E DIAGNOSTICO
+  # ---------------------------------------------------------------------------
+  - id: phase_1_briefing
+    name: "Briefing e Diagnostico"
+    stage: briefing
+    sequence: 1
+
+    agents:
+      primary: site-commander
+      supporting: []
+
+    inputs:
+      - user_briefing_raw: "Descricao do webinario, tema, palestrante e audiencia"
+      - user_brand_assets: "Logo, foto do palestrante, cores (opcional)"
+      - event_details: "Data, horario, duracao e plataforma do webinario"
+      - speaker_info: "Informacoes sobre o palestrante (bio, credenciais, resultados)"
+      - webinar_content: "Agenda ou topicos que serao abordados"
+
+    outputs:
+      - briefing_structured: "Briefing estruturado completo"
+      - page_type_confirmed: "Tipo confirmado como webinar_page"
+      - pipeline_plan: "Plano de execucao do pipeline"
+      - section_list: "Lista de secoes incluindo agenda, bio e contagem regressiva"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - tone_of_voice: "Tom de voz definido"
+      - event_metadata: "Dados do evento (data, hora, fuso, duracao, plataforma)"
+
+    quality_gate:
+      conditions:
+        - "Briefing com todos os campos obrigatorios preenchidos"
+        - "Data e horario do evento definidos"
+        - "Informacoes do palestrante suficientes para secao de bio"
+        - "Pelo menos 3 topicos da agenda definidos"
+        - "Nivel de consciencia identificado"
+        - "Lista de secoes validada com secoes especificas de webinario"
+      veto_conditions:
+        - "Data do evento ausente ou no passado"
+        - "Nenhuma informacao sobre o palestrante"
+        - "Tema do webinario indefinido ou vago"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_1_briefing
+      trigger: "Informacoes do evento ou palestrante incompletas"
+      action: "Solicitar dados especificos sobre data, palestrante ou agenda"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 2 — ESTRATEGIA E POSICIONAMENTO DO EVENTO
+  # ---------------------------------------------------------------------------
+  - id: phase_2_strategy
+    name: "Estrategia e Posicionamento do Evento"
+    stage: strategy
+    sequence: 2
+
+    agents:
+      primary: strategy-captain
+      supporting:
+        - market-researcher
+        - offer-architect
+        - audience-profiler
+
+    inputs:
+      - briefing_structured: "Briefing da Fase 1"
+      - awareness_level: "Nivel de consciencia"
+      - event_metadata: "Dados do evento"
+      - speaker_info: "Informacoes do palestrante"
+
+    outputs:
+      - market_landscape: "Cenario de mercado e posicionamento do evento"
+      - offer_structure: "Estrutura da oferta do webinario (gratuito ou pago)"
+      - audience_profiles: "Perfis da audiencia com motivacoes para participar"
+      - event_positioning: "Posicionamento do evento como unico e imperdivel"
+      - urgency_strategy: "Estrategia de urgencia e escassez para o evento"
+      - copywriting_brief: "Briefing de copywriting com enfase em evento"
+      - design_brief: "Briefing de design com direcao visual"
+
+    quality_gate:
+      conditions:
+        - "Posicionamento do evento como unico e diferenciado"
+        - "Pelo menos 3 motivos convincentes para participar identificados"
+        - "Audiencia alvo com dores e desejos mapeados"
+        - "Estrategia de urgencia definida (data limite, vagas limitadas)"
+        - "Proposta de valor do webinario articulada em uma frase"
+        - "Beneficio principal de participar claramente definido"
+      veto_conditions:
+        - "Evento posicionado como generico sem diferencial"
+        - "Nenhum elemento de urgencia ou escassez identificado"
+        - "Proposta de valor do evento indefinida"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "research_parallel"
+        description: "Pesquisa de mercado e perfil de audiencia em paralelo"
+        tasks:
+          - agent: market-researcher
+            task: "Cenario de mercado e posicionamento do evento"
+          - agent: audience-profiler
+            task: "Perfis da audiencia com motivacoes para eventos ao vivo"
+      - group: "offer_after_research"
+        description: "Oferta depende da pesquisa"
+        depends_on: "research_parallel"
+        tasks:
+          - agent: offer-architect
+            task: "Estrutura da oferta e estrategia de urgencia"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_2_strategy
+      trigger: "Evento sem diferencial claro ou urgencia insuficiente"
+      action: "strategy-captain refina posicionamento e urgencia"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 3 — COPYWRITING COM ENFASE EM EVENTO
+  # ---------------------------------------------------------------------------
+  - id: phase_3_copy
+    name: "Copywriting com Enfase em Evento e Urgencia"
+    stage: copywriting
+    sequence: 3
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - headline-sniper
+        - body-copy-architect
+        - story-weaver
+        - cta-engineer
+        - objection-handler
+
+    inputs:
+      - copywriting_brief: "Briefing de copywriting da Fase 2"
+      - offer_structure: "Estrutura da oferta do evento"
+      - audience_profiles: "Perfis da audiencia"
+      - awareness_level: "Nivel de consciencia"
+      - urgency_strategy: "Estrategia de urgencia"
+      - event_metadata: "Dados do evento"
+      - speaker_info: "Informacoes do palestrante"
+      - webinar_content: "Agenda e topicos do webinario"
+      - section_list: "Lista de secoes incluindo custom sections"
+
+    outputs:
+      - headlines_package: "Headlines e subheadlines para todas as secoes"
+      - body_copy_package: "Textos de corpo incluindo secoes especificas do webinario"
+      - speaker_bio_copy: "Biografia completa do palestrante"
+      - agenda_copy: "Copy completa da agenda com topicos e beneficios"
+      - countdown_copy: "Textos da contagem regressiva e urgencia"
+      - cta_copy_package: "Chamadas para acao com urgencia"
+      - social_proof_copy: "Prova social do palestrante e do conteudo"
+      - faq_content: "Perguntas frequentes sobre o webinario"
+      - urgency_elements: "Todos os elementos de urgencia e escassez"
+      - bonus_copy: "Copy de bonus para quem se registrar (se aplicavel)"
+      - copy_metadata: "Meta tags otimizadas para evento"
+
+    quality_gate:
+      conditions:
+        - "Todas as secoes com copy completa incluindo secoes customizadas"
+        - "Headline principal comunica beneficio do webinario e urgencia"
+        - "Biografia do palestrante com credenciais e resultados relevantes"
+        - "Agenda com pelo menos 3 topicos com beneficios claros"
+        - "Elementos de urgencia autenticos (data real, vagas se aplicavel)"
+        - "Chamadas para acao com verbo de registro e beneficio"
+        - "Perguntas frequentes cobrindo logistica (data, horario, acesso, gravacao)"
+        - "Prova social do palestrante especifica e verificavel"
+        - "Zero erros gramaticais ou ortograficos"
+        - "Tom de voz consistente em toda a pagina"
+      veto_conditions:
+        - "Headline sem urgencia ou sem beneficio"
+        - "Biografia do palestrante generica sem credenciais"
+        - "Agenda vaga sem topicos especificos"
+        - "Elementos de urgencia falsos ou exagerados"
+        - "Erros gramaticais ou ortograficos"
+        - "Perguntas frequentes sem informacoes logisticas do evento"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "headlines_first"
+        description: "Headlines sao a base"
+        tasks:
+          - agent: headline-sniper
+            task: "Headlines e subheadlines com urgencia de evento"
+      - group: "body_and_bio_parallel"
+        description: "Body copy e biografia podem ser escritos em paralelo"
+        depends_on: "headlines_first"
+        tasks:
+          - agent: body-copy-architect
+            task: "Textos de corpo, agenda e biografia do palestrante"
+          - agent: story-weaver
+            task: "Narrativa de transformacao e ganchos emocionais"
+      - group: "cta_and_objections"
+        description: "Chamadas para acao e objecoes apos body copy"
+        depends_on: "body_and_bio_parallel"
+        tasks:
+          - agent: cta-engineer
+            task: "Chamadas para acao com urgencia e contagem regressiva"
+          - agent: objection-handler
+            task: "Perguntas frequentes sobre o webinario"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Urgencia insuficiente ou biografia do palestrante fraca"
+      action: "copy-captain direciona revisao ao agente responsavel"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.8
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 4 — DESIGN E INTERFACE
+  # ---------------------------------------------------------------------------
+  - id: phase_4_design
+    name: "Design com Enfase em Evento e Urgencia Visual"
+    stage: design
+    sequence: 4
+
+    agents:
+      primary: design-captain
+      supporting:
+        - layout-architect
+        - visual-hierarchy-specialist
+        - responsive-engineer
+        - color-typography-specialist
+        - icon-imagery-curator
+        - animation-specialist
+
+    inputs:
+      - design_brief: "Briefing de design da Fase 2"
+      - copy_packages: "Todos os pacotes de copy da Fase 3"
+      - section_list: "Lista de secoes com design patterns"
+      - user_brand_assets: "Assets de marca e foto do palestrante"
+      - event_metadata: "Dados do evento para contagem regressiva"
+
+    outputs:
+      - layout_specification: "Layout completo com secoes de webinario"
+      - countdown_design: "Design da contagem regressiva com animacao"
+      - speaker_section_design: "Design da secao do palestrante"
+      - agenda_design: "Design da secao de agenda"
+      - visual_hierarchy_map: "Hierarquia visual com enfase em urgencia"
+      - responsive_rules: "Responsividade completa"
+      - design_tokens_applied: "Tokens de design aplicados"
+      - animation_specs: "Animacoes incluindo contagem regressiva"
+
+    quality_gate:
+      conditions:
+        - "Contagem regressiva visualmente impactante e funcional"
+        - "Foto do palestrante em destaque na secao de bio"
+        - "Agenda com layout limpo e facil de escanear"
+        - "Formulario de registro acima da dobra ou imediatamente abaixo"
+        - "Elementos de urgencia com cores quentes e destaque visual"
+        - "Hierarquia visual guia o olhar do visitante para o registro"
+        - "Contraste acima de 4.5 para todos os textos"
+        - "Responsividade em todos os breakpoints"
+      veto_conditions:
+        - "Contagem regressiva sem design impactante"
+        - "Formulario de registro enterrado abaixo de multiplas secoes"
+        - "Contraste insuficiente WCAG 2.1 nivel AA"
+        - "Layout quebrado em qualquer breakpoint"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "foundation_parallel"
+        description: "Tokens, hierarquia e direção de imagens em paralelo"
+        tasks:
+          - agent: color-typography-specialist
+            task: "Paleta de cores com tons de urgencia e tipografia de impacto"
+          - agent: visual-hierarchy-specialist
+            task: "Hierarquia visual com foco em registro e urgencia"
+          - agent: icon-imagery-curator
+            task: "Direcao de imagens e icones para agenda e credenciais"
+      - group: "layout_after_foundation"
+        description: "Layout depende dos tokens e hierarquia"
+        depends_on: "foundation_parallel"
+        tasks:
+          - agent: layout-architect
+            task: "Layout completo incluindo contagem regressiva, bio e agenda"
+          - agent: responsive-engineer
+            task: "Responsividade com atencao especial a contagem regressiva em mobile"
+      - group: "animation_last"
+        description: "Animacoes dependem de layout definido"
+        depends_on: "layout_after_foundation"
+        tasks:
+          - agent: animation-specialist
+            task: "Animacao de contagem regressiva e transicoes de scroll"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_4_design
+      trigger: "Contagem regressiva sem impacto visual ou formulario mal posicionado"
+      action: "design-captain ajusta layout e design dos elementos problematicos"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 5 — DESENVOLVIMENTO (BUILD)
+  # ---------------------------------------------------------------------------
+  - id: phase_5_build
+    name: "Geracao de Codigo com Contagem Regressiva Funcional"
+    stage: build
+    sequence: 5
+
+    agents:
+      primary: dev-captain
+      supporting:
+        - html-architect
+        - css-engineer
+        - javascript-specialist
+        - form-builder
+        - integration-specialist
+        - performance-optimizer
+
+    inputs:
+      - layout_specification: "Layout da Fase 4"
+      - countdown_design: "Design da contagem regressiva"
+      - design_tokens_applied: "Tokens de design"
+      - copy_packages: "Pacotes de copy da Fase 3"
+      - responsive_rules: "Regras de responsividade"
+      - animation_specs: "Especificacoes de animacoes"
+      - event_metadata: "Dados do evento para contagem regressiva funcional"
+
+    outputs:
+      - html_complete: "HTML semantico completo com secoes de webinario"
+      - css_complete: "CSS com estilos de contagem regressiva e urgencia"
+      - javascript_complete: "JavaScript com contagem regressiva funcional"
+      - form_implementation: "Formulario de registro funcional"
+      - countdown_implementation: "Contagem regressiva funcional com data real do evento"
+      - final_html_file: "Arquivo HTML autocontido"
+      - performance_metrics: "Metricas de performance"
+
+    quality_gate:
+      conditions:
+        - "HTML semantico valido"
+        - "Contagem regressiva funcional com data real do evento"
+        - "Contagem regressiva exibe dias, horas, minutos e segundos"
+        - "Formulario de registro funcional com validacao"
+        - "Acordeao de perguntas frequentes funcional"
+        - "Responsividade perfeita em todos os breakpoints"
+        - "First Contentful Paint estimado abaixo de 1500 milissegundos"
+        - "Tamanho do arquivo abaixo de 600 kilobytes"
+        - "Formulario com campo de honeypot"
+        - "Todas as imagens com texto alternativo"
+        - "JavaScript sem erros de console"
+      veto_conditions:
+        - "Contagem regressiva nao funcional ou com data incorreta"
+        - "Formulario de registro nao funcional"
+        - "HTML com erros de sintaxe"
+        - "JavaScript com erros criticos"
+        - "Pagina nao renderiza em breakpoint critico"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "html_first"
+        description: "Estrutura HTML como base"
+        tasks:
+          - agent: html-architect
+            task: "HTML semantico com secoes de webinario"
+      - group: "css_and_form_parallel"
+        description: "CSS e formulario em paralelo"
+        depends_on: "html_first"
+        tasks:
+          - agent: css-engineer
+            task: "CSS com estilos de contagem regressiva e urgencia"
+          - agent: form-builder
+            task: "Formulario de registro com validacao"
+      - group: "javascript_and_integration"
+        description: "JavaScript e integracoes apos estrutura"
+        depends_on: "css_and_form_parallel"
+        tasks:
+          - agent: javascript-specialist
+            task: "Contagem regressiva funcional, acordeao e interatividade"
+          - agent: integration-specialist
+            task: "Integracao com plataforma de webinario (se aplicavel)"
+      - group: "optimization_last"
+        description: "Otimizacao final"
+        depends_on: "javascript_and_integration"
+        tasks:
+          - agent: performance-optimizer
+            task: "Otimizacao de performance e minificacao"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_5_build
+      trigger: "Contagem regressiva nao funcional ou formulario com problemas"
+      action: "dev-captain direciona correcao ao agente responsavel"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 6 — OTIMIZACAO DE CONVERSAO
+  # ---------------------------------------------------------------------------
+  - id: phase_6_conversion
+    name: "Otimizacao de Conversao para Registro de Evento"
+    stage: conversion
+    sequence: 6
+
+    agents:
+      primary: conversion-captain
+      supporting:
+        - cro-specialist
+        - seo-specialist
+        - trust-signal-specialist
+        - analytics-engineer
+
+    inputs:
+      - final_html_file: "HTML da Fase 5"
+      - copy_packages: "Pacotes de copy"
+      - audience_profiles: "Perfis da audiencia"
+      - urgency_strategy: "Estrategia de urgencia"
+
+    outputs:
+      - cro_adjustments: "Ajustes de otimizacao de conversao para registro"
+      - seo_optimization: "Meta tags otimizadas para evento"
+      - trust_elements_enhanced: "Sinais de confianca do palestrante reposicionados"
+      - analytics_setup: "Rastreamento de registro e funil do evento"
+      - optimized_html_file: "HTML otimizado para registro"
+
+    quality_gate:
+      conditions:
+        - "Nota de otimizacao de conversao acima de 7.0"
+        - "Meta tags com data e detalhes do evento (schema.org Event)"
+        - "Sinais de confianca do palestrante visiveis"
+        - "Chamada para acao de registro acima da dobra e no final"
+        - "Contagem regressiva posicionada para criar urgencia"
+        - "Rastreamento de evento de registro configurado"
+      veto_conditions:
+        - "Meta tags ausentes"
+        - "Nenhum sinal de confianca do palestrante visivel"
+        - "Chamada para acao de registro ausente acima da dobra"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "optimization_parallel"
+        description: "Otimizacoes em paralelo"
+        tasks:
+          - agent: cro-specialist
+            task: "Otimizacao de conversao focada em registro"
+          - agent: seo-specialist
+            task: "Meta tags e schema.org para evento"
+          - agent: trust-signal-specialist
+            task: "Sinais de confianca do palestrante"
+          - agent: analytics-engineer
+            task: "Rastreamento de funil de registro"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_6_conversion
+      trigger: "Conversao estimada abaixo do limiar"
+      action: "conversion-captain ajusta posicionamento de urgencia e registro"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 7 — REVISAO DE QUALIDADE E ENTREGA
+  # ---------------------------------------------------------------------------
+  - id: phase_7_quality
+    name: "Revisao Final de Qualidade e Entrega"
+    stage: quality
+    sequence: 7
+
+    agents:
+      primary: quality-captain
+      supporting:
+        - copy-reviewer
+        - ux-auditor
+        - accessibility-checker
+        - cross-browser-tester
+
+    inputs:
+      - optimized_html_file: "HTML otimizado da Fase 6"
+      - copy_packages: "Pacotes de copy originais"
+      - event_metadata: "Dados do evento para verificacao"
+      - design_tokens_applied: "Tokens de design"
+      - quality_thresholds: "Limiares de qualidade"
+
+    outputs:
+      - copy_review_report: "Revisao de copy com foco em urgencia e evento"
+      - ux_audit_report: "Auditoria de experiencia focada em registro"
+      - accessibility_report: "Relatorio de acessibilidade"
+      - browser_compatibility_report: "Compatibilidade entre navegadores"
+      - countdown_validation: "Validacao da contagem regressiva com data correta"
+      - overall_quality_score: "Nota geral de qualidade"
+      - final_approved_html: "HTML final aprovado"
+      - delivery_report: "Relatorio de entrega com informacoes do evento"
+
+    quality_gate:
+      conditions:
+        - "Nota geral de qualidade acima de 7.0"
+        - "Contagem regressiva com data correta e funcional"
+        - "Informacoes do evento (data, hora, fuso) corretas e visiveis"
+        - "Biografia do palestrante completa e persuasiva"
+        - "Formulario de registro funcional"
+        - "Zero erros gramaticais"
+        - "Acessibilidade WCAG 2.1 nivel AA"
+        - "Responsividade validada"
+      veto_conditions:
+        - "Nota geral abaixo de 6.0"
+        - "Contagem regressiva com data errada"
+        - "Formulario de registro nao funcional"
+        - "Data ou horario do evento incorretos na pagina"
+        - "Erros gramaticais na copy"
+        - "Falha critica de acessibilidade"
+      min_score: 7.0
+      auto_approve_score: 8.5
+
+    parallel_tasks:
+      - group: "review_parallel"
+        description: "Revisoes em paralelo"
+        tasks:
+          - agent: copy-reviewer
+            task: "Revisao de copy com validacao de informacoes do evento"
+          - agent: ux-auditor
+            task: "Auditoria de experiencia focada em fluxo de registro"
+          - agent: accessibility-checker
+            task: "Verificacao de acessibilidade incluindo contagem regressiva"
+          - agent: cross-browser-tester
+            task: "Teste de compatibilidade com foco em JavaScript da contagem regressiva"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Copy fraca ou informacoes do evento incorretas"
+      action: "quality-captain envia relatorio ao copy-captain"
+      alternative_routes:
+        - condition: "Contagem regressiva ou formulario com problemas tecnicos"
+          routes_back_to: phase_5_build
+          action: "quality-captain envia relatorio ao dev-captain"
+        - condition: "Design da contagem regressiva sem impacto"
+          routes_back_to: phase_4_design
+          action: "quality-captain envia relatorio ao design-captain"
+        - condition: "Sinais de confianca ou urgencia mal posicionados"
+          routes_back_to: phase_6_conversion
+          action: "quality-captain envia relatorio ao conversion-captain"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+
+# =============================================================================
+# REGRAS DE ESCALACAO
+# =============================================================================
+escalation_rules:
+  - condition: "Qualquer fase excede 2 iteracoes sem atingir limiar"
+    action: "Escalar para site-commander"
+    commander_options:
+      - "Aceitar resultado com ressalvas"
+      - "Instrucoes para tentativa final"
+      - "Intervencao humana"
+
+  - condition: "Pipeline total excede 120 minutos"
+    action: "Entregar resultado parcial"
+
+  - condition: "Nota geral abaixo de 6.0"
+    action: "Revisao humana obrigatoria"
+
+  - condition: "Data do evento incorreta na contagem regressiva"
+    action: "Bloqueio imediato ate correcao — nunca entregar com data errada"
+
+# =============================================================================
+# CONFIGURACOES ESPECIFICAS PARA PAGINAS DE WEBINARIO
+# =============================================================================
+page_type_settings:
+  skip_agents:
+    - competitor-analyst
+  skip_agents_rationale: >
+    Paginas de webinario nao requerem analise competitiva aprofundada.
+    O foco e no posicionamento do evento e do palestrante, nao na
+    comparacao com concorrentes.
+
+  focus_areas:
+    - "Contagem regressiva funcional e visualmente impactante"
+    - "Biografia do palestrante com credenciais relevantes"
+    - "Agenda com topicos e beneficios claros"
+    - "Urgencia autentica (data real, vagas se aplicavel)"
+    - "Prova social do palestrante prominente"
+    - "Formulario de registro simples e acima da dobra"
+
+  form_requirements:
+    max_fields: 4
+    required_fields: ["nome", "email"]
+    optional_fields: ["telefone", "whatsapp"]
+    submit_button_style: "destaque com cor contrastante e texto de registro"
+    success_action: "redirecionamento para pagina de confirmacao com instrucoes de acesso"
+
+  event_requirements:
+    countdown_mandatory: true
+    countdown_target: "data e horario exatos do evento"
+    countdown_expired_behavior: "exibir mensagem 'Evento ja iniciou' ou redirecionar"
+    timezone_display: true
+    calendar_add_button: "opcional — botao para adicionar ao calendario (Google, Outlook)"
+    replay_option: "se aplicavel, mencionar que a gravacao sera disponibilizada"
+
+  urgency_elements:
+    spots_limit: "se aplicavel, exibir numero de vagas restantes"
+    deadline: "data e horario de encerramento do registro"
+    bonus_deadline: "se aplicavel, bonus exclusivo para quem registrar antes de data X"
+    social_proof_live: "se aplicavel, exibir numero de inscritos em tempo real"

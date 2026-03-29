@@ -1,0 +1,637 @@
+# =============================================================================
+# WORKFLOW: LANDING PAGE — PAGINA DE CAPTURA DE LEADS
+# Pipeline completo de geracao com portoes de qualidade, execucao paralela,
+# loops de feedback e atribuicao de agentes por fase
+# =============================================================================
+
+workflow:
+  id: wf-landing-page
+  name: "Workflow de Geracao de Landing Page"
+  description: >
+    Pipeline completo para geracao de landing pages de captura de leads.
+    Landing pages sao paginas focadas em converter visitantes em leads
+    atraves de um formulario simples (nome e email), oferecendo um
+    material gratuito, demonstracao ou acesso antecipado em troca.
+    Estrutura tipica de 8 a 12 secoes com foco em clareza da proposta
+    de valor, prova social e formulario de captura acima da dobra.
+  page_type: landing_page
+  version: "1.0.0"
+  last_updated: "2026-03-29"
+
+  default_sections:
+    - header-simple
+    - hero-split
+    - social-proof-logos-bar
+    - pain-points-3-column
+    - solution-features
+    - solution-3-step
+    - social-proof-testimonials-grid
+    - authority-credentials
+    - faq-accordion
+    - cta-centered
+    - guarantee-badge
+    - footer-minimal
+
+  estimated_cost:
+    total: "$0.85"
+    breakdown:
+      briefing: "$0.05"
+      strategy: "$0.15"
+      copywriting: "$0.25"
+      design: "$0.12"
+      development: "$0.15"
+      conversion_optimization: "$0.08"
+      quality_review: "$0.05"
+
+  estimated_duration:
+    total: "12 minutos"
+    breakdown:
+      briefing: "1 minuto"
+      strategy: "3 minutos"
+      copywriting: "3 minutos"
+      design: "2 minutos"
+      development: "2 minutos"
+      conversion_optimization: "30 segundos"
+      quality_review: "30 segundos"
+
+  estimated_tokens:
+    total: 85000
+    breakdown:
+      briefing: 4000
+      strategy: 16000
+      copywriting: 28000
+      design: 12000
+      development: 16000
+      conversion_optimization: 6000
+      quality_review: 3000
+
+# =============================================================================
+# FASES DO PIPELINE
+# =============================================================================
+phases:
+
+  # ---------------------------------------------------------------------------
+  # FASE 1 — BRIEFING E DIAGNOSTICO
+  # ---------------------------------------------------------------------------
+  - id: phase_1_briefing
+    name: "Briefing e Diagnostico"
+    stage: briefing
+    sequence: 1
+
+    agents:
+      primary: site-commander
+      supporting: []
+
+    inputs:
+      - user_briefing_raw: "Texto livre do usuario descrevendo o que deseja"
+      - user_brand_assets: "Logo, cores, fontes e materiais existentes (opcional)"
+      - user_preferences: "Preferencias de estilo, tom e referencias visuais (opcional)"
+
+    outputs:
+      - briefing_structured: "Briefing estruturado com todos os campos preenchidos"
+      - page_type_confirmed: "Tipo de pagina confirmado como landing_page"
+      - pipeline_plan: "Plano de execucao do pipeline com agentes e fases ativados"
+      - section_list: "Lista de secoes selecionadas para esta pagina especifica"
+      - awareness_level: "Nivel de consciencia do prospect identificado"
+      - tone_of_voice: "Tom de voz definido para toda a copy"
+
+    quality_gate:
+      conditions:
+        - "Briefing estruturado possui todos os campos obrigatorios preenchidos"
+        - "Tipo de pagina confirmado e validado como landing_page"
+        - "Nivel de consciencia do prospect identificado corretamente"
+        - "Tom de voz definido e coerente com o nicho e audiencia"
+        - "Lista de secoes selecionada e validada contra o catalogo de secoes"
+        - "Pipeline plan gerado com todos os agentes necessarios atribuidos"
+      veto_conditions:
+        - "Briefing com campos obrigatorios ausentes (nome do produto, nicho, oferta)"
+        - "Tipo de pagina nao pode ser determinado a partir do briefing"
+        - "Nicho ou produto viola politicas de conteudo do framework"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_1_briefing
+      trigger: "Briefing incompleto ou ambiguo apos tentativa de inferencia automatica"
+      action: "Solicitar esclarecimentos especificos ao usuario sobre campos ausentes"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 2 — ESTRATEGIA E INTELIGENCIA DE MERCADO
+  # ---------------------------------------------------------------------------
+  - id: phase_2_strategy
+    name: "Estrategia e Inteligencia de Mercado"
+    stage: strategy
+    sequence: 2
+
+    agents:
+      primary: strategy-captain
+      supporting:
+        - market-researcher
+        - offer-architect
+        - audience-profiler
+
+    inputs:
+      - briefing_structured: "Briefing estruturado da Fase 1"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - section_list: "Lista de secoes selecionadas"
+
+    outputs:
+      - market_landscape: "Analise do cenario de mercado e tendencias do nicho"
+      - offer_structure: "Estrutura da oferta com proposta de valor e diferencial"
+      - audience_profiles: "Perfis detalhados da audiencia alvo com dores e desejos"
+      - strategic_positioning: "Posicionamento estrategico e angulo de abordagem"
+      - copywriting_brief: "Briefing especifico para a esquadra de copywriting"
+      - design_brief: "Briefing especifico para a esquadra de design"
+
+    quality_gate:
+      conditions:
+        - "Proposta de valor clara e diferenciada articulada em uma frase"
+        - "Pelo menos 3 dores especificas da audiencia identificadas e validadas"
+        - "Pelo menos 3 desejos ou aspiracoes da audiencia mapeados"
+        - "Oferta estruturada com beneficio principal e beneficios secundarios"
+        - "Angulo de abordagem definido e alinhado com nivel de consciencia"
+        - "Briefing de copywriting completo e acionavel"
+        - "Briefing de design completo com direcao visual"
+      veto_conditions:
+        - "Proposta de valor generica ou indistinguivel da concorrencia"
+        - "Audiencia alvo vaga ou excessivamente ampla sem segmentacao"
+        - "Oferta sem beneficio claro ou sem diferencial perceptivel"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "research_parallel"
+        description: "Pesquisa de mercado e perfil de audiencia podem executar em paralelo"
+        tasks:
+          - agent: market-researcher
+            task: "Analise do cenario de mercado e tendencias do nicho"
+          - agent: audience-profiler
+            task: "Criacao de perfis detalhados da audiencia alvo"
+      - group: "offer_after_research"
+        description: "Estruturacao da oferta depende dos resultados da pesquisa"
+        depends_on: "research_parallel"
+        tasks:
+          - agent: offer-architect
+            task: "Estruturacao da oferta com base na pesquisa de mercado e perfis"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_2_strategy
+      trigger: "Proposta de valor avaliada como fraca ou generica pelo strategy-captain"
+      action: "Refinar posicionamento e oferta com novas perspectivas de diferenciacao"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 3 — COPYWRITING
+  # ---------------------------------------------------------------------------
+  - id: phase_3_copy
+    name: "Producao de Copy Persuasiva"
+    stage: copywriting
+    sequence: 3
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - headline-sniper
+        - body-copy-architect
+        - cta-engineer
+        - objection-handler
+
+    inputs:
+      - copywriting_brief: "Briefing de copywriting da Fase 2"
+      - offer_structure: "Estrutura da oferta"
+      - audience_profiles: "Perfis da audiencia"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - section_list: "Lista de secoes com elementos de copy necessarios"
+      - tone_of_voice: "Tom de voz definido no briefing"
+
+    outputs:
+      - headlines_package: "Todas as headlines e subheadlines da pagina"
+      - body_copy_package: "Textos de corpo para todas as secoes"
+      - cta_copy_package: "Textos de todas as chamadas para acao e botoes"
+      - faq_content: "Perguntas e respostas para a secao de perguntas frequentes"
+      - social_proof_copy: "Textos de prova social e depoimentos"
+      - microcopy_package: "Textos pequenos (labels, tooltips, textos de formulario)"
+      - copy_metadata: "Metadados de otimizacao de mecanismos de busca (titulo, descricao)"
+
+    quality_gate:
+      conditions:
+        - "Todas as secoes da lista possuem copy completa para todos os elementos"
+        - "Headline principal atinge nota minima de 7.0 em persuasao"
+        - "Copy utiliza o tom de voz definido de forma consistente"
+        - "Chamadas para acao sao claras, especificas e orientadas a beneficio"
+        - "Perguntas frequentes cobrem as principais objecoes da audiencia"
+        - "Textos de prova social sao criveis e especificos (com dados quando possivel)"
+        - "Microcopy do formulario e clara e nao gera duvidas"
+        - "Copy respeita o nivel de consciencia definido na estrategia"
+        - "Zero erros gramaticais ou ortograficos"
+      veto_conditions:
+        - "Headline principal vaga, generica ou sem beneficio claro"
+        - "Copy com erros gramaticais ou ortograficos"
+        - "Tom de voz inconsistente entre secoes"
+        - "Chamada para acao principal sem verbo de acao ou sem beneficio"
+        - "Copy plagiada ou excessivamente similar a concorrentes conhecidos"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "headlines_first"
+        description: "Headlines devem ser criadas primeiro como base para o restante"
+        tasks:
+          - agent: headline-sniper
+            task: "Criacao de todas as headlines e subheadlines da pagina"
+      - group: "body_and_cta_parallel"
+        description: "Body copy e chamadas para acao podem ser criadas em paralelo apos headlines"
+        depends_on: "headlines_first"
+        tasks:
+          - agent: body-copy-architect
+            task: "Producao de textos de corpo para todas as secoes"
+          - agent: cta-engineer
+            task: "Producao de todos os textos de chamadas para acao e botoes"
+      - group: "objections_after_body"
+        description: "Tratamento de objecoes depende da copy de corpo estar pronta"
+        depends_on: "body_and_cta_parallel"
+        tasks:
+          - agent: objection-handler
+            task: "Criacao do conteudo de perguntas frequentes e tratamento de objecoes"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Nota de persuasao abaixo de 7.0 ou inconsistencia de tom entre secoes"
+      action: "copy-captain coordena revisao direcionada aos elementos especificos que falharam"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.8
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 4 — DESIGN E INTERFACE
+  # ---------------------------------------------------------------------------
+  - id: phase_4_design
+    name: "Design e Especificacao Visual"
+    stage: design
+    sequence: 4
+
+    agents:
+      primary: design-captain
+      supporting:
+        - layout-architect
+        - visual-hierarchy-specialist
+        - responsive-engineer
+        - color-typography-specialist
+
+    inputs:
+      - design_brief: "Briefing de design da Fase 2"
+      - copy_packages: "Todos os pacotes de copy da Fase 3"
+      - section_list: "Lista de secoes com design patterns associados"
+      - user_brand_assets: "Assets de marca do usuario (se fornecidos)"
+
+    outputs:
+      - layout_specification: "Especificacao completa de layout para todas as secoes"
+      - visual_hierarchy_map: "Mapa de hierarquia visual com pesos e enfase"
+      - responsive_rules: "Regras de responsividade para cada breakpoint"
+      - design_tokens_applied: "Tokens de design aplicados (cores, tipografia, espacamento)"
+      - component_specs: "Especificacoes de componentes individuais"
+      - animation_specs: "Especificacoes de animacoes e transicoes sutis"
+
+    quality_gate:
+      conditions:
+        - "Layout segue principios de hierarquia visual com fluxo de leitura claro"
+        - "Formulario de captura visivel acima da dobra sem necessidade de scroll"
+        - "Contraste de cores atende razao minima de 4.5 para texto normal"
+        - "Tipografia legivel em todos os breakpoints (minimo 16 pixels para corpo)"
+        - "Responsividade validada para breakpoints 320, 768, 1024 e 1440 pixels"
+        - "Espacamento consistente seguindo escala definida nos tokens de design"
+        - "Chamada para acao principal visualmente destacada e impossivel de ignorar"
+      veto_conditions:
+        - "Formulario de captura abaixo da dobra sem indicacao visual de scroll"
+        - "Contraste de cores abaixo do minimo de acessibilidade WCAG 2.1 nivel AA"
+        - "Layout quebrado em qualquer breakpoint definido"
+        - "Hierarquia visual confusa sem ponto focal claro"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "design_parallel"
+        description: "Tokens de design e hierarquia visual podem ser definidos em paralelo"
+        tasks:
+          - agent: color-typography-specialist
+            task: "Definicao de paleta de cores e sistema tipografico"
+          - agent: visual-hierarchy-specialist
+            task: "Criacao do mapa de hierarquia visual e pesos de enfase"
+      - group: "layout_after_tokens"
+        description: "Layout depende dos tokens e hierarquia estarem definidos"
+        depends_on: "design_parallel"
+        tasks:
+          - agent: layout-architect
+            task: "Especificacao de layout completa para todas as secoes"
+          - agent: responsive-engineer
+            task: "Definicao de regras de responsividade por breakpoint"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_4_design
+      trigger: "Hierarquia visual confusa ou formulario nao visivel acima da dobra"
+      action: "design-captain redireciona ajustes ao agente responsavel pelo problema"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 5 — DESENVOLVIMENTO (BUILD)
+  # ---------------------------------------------------------------------------
+  - id: phase_5_build
+    name: "Geracao de Codigo HTML/CSS/JavaScript"
+    stage: build
+    sequence: 5
+
+    agents:
+      primary: dev-captain
+      supporting:
+        - html-architect
+        - css-engineer
+        - javascript-specialist
+        - form-builder
+        - performance-optimizer
+
+    inputs:
+      - layout_specification: "Especificacao de layout da Fase 4"
+      - design_tokens_applied: "Tokens de design aplicados"
+      - copy_packages: "Todos os pacotes de copy da Fase 3"
+      - responsive_rules: "Regras de responsividade"
+      - component_specs: "Especificacoes de componentes"
+      - animation_specs: "Especificacoes de animacoes"
+      - section_list: "Lista de secoes com templates associados"
+
+    outputs:
+      - html_complete: "Estrutura HTML semantica completa da pagina"
+      - css_complete: "Estilos CSS completos com responsividade"
+      - javascript_complete: "JavaScript para interatividade (formulario, acordeao, animacoes)"
+      - form_implementation: "Implementacao completa do formulario de captura"
+      - final_html_file: "Arquivo HTML unico autocontido pronto para deploy"
+      - performance_metrics: "Metricas de performance estimadas"
+
+    quality_gate:
+      conditions:
+        - "HTML semantico valido sem erros de sintaxe"
+        - "CSS sem classes orfas ou estilos nao utilizados"
+        - "JavaScript sem erros de console"
+        - "Formulario funcional com validacao de campos"
+        - "Pagina renderiza corretamente em todos os breakpoints"
+        - "Tempo estimado de First Contentful Paint abaixo de 1500 milissegundos"
+        - "Tamanho total do arquivo HTML abaixo de 500 kilobytes"
+        - "Todas as imagens com texto alternativo descritivo"
+        - "Navegacao por teclado funcional para todos os elementos interativos"
+      veto_conditions:
+        - "HTML com erros de sintaxe que impedem renderizacao"
+        - "Formulario de captura nao funcional ou sem validacao"
+        - "JavaScript com erros que bloqueiam interatividade"
+        - "Pagina nao renderiza em algum breakpoint critico"
+        - "Tamanho do arquivo acima de 1 megabyte"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "html_first"
+        description: "Estrutura HTML deve ser criada primeiro"
+        tasks:
+          - agent: html-architect
+            task: "Geracao da estrutura HTML semantica completa"
+      - group: "css_and_form_parallel"
+        description: "CSS e formulario podem ser desenvolvidos em paralelo apos HTML"
+        depends_on: "html_first"
+        tasks:
+          - agent: css-engineer
+            task: "Geracao de todos os estilos CSS com responsividade"
+          - agent: form-builder
+            task: "Implementacao do formulario de captura com validacao"
+      - group: "javascript_after_structure"
+        description: "JavaScript depende de HTML e CSS estarem prontos"
+        depends_on: "css_and_form_parallel"
+        tasks:
+          - agent: javascript-specialist
+            task: "Implementacao de interatividade e animacoes"
+      - group: "optimization_last"
+        description: "Otimizacao de performance e na etapa final do build"
+        depends_on: "javascript_after_structure"
+        tasks:
+          - agent: performance-optimizer
+            task: "Otimizacao de performance e minificacao do arquivo final"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_5_build
+      trigger: "Erros de renderizacao, formulario nao funcional ou performance abaixo do limiar"
+      action: "dev-captain identifica o agente responsavel e envia instrucoes de correcao especificas"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 6 — OTIMIZACAO DE CONVERSAO
+  # ---------------------------------------------------------------------------
+  - id: phase_6_conversion
+    name: "Otimizacao de Conversao e Sinais de Confianca"
+    stage: conversion
+    sequence: 6
+
+    agents:
+      primary: conversion-captain
+      supporting:
+        - cro-specialist
+        - seo-specialist
+        - trust-signal-specialist
+        - analytics-engineer
+
+    inputs:
+      - final_html_file: "Arquivo HTML gerado na Fase 5"
+      - copy_packages: "Pacotes de copy para referencia"
+      - audience_profiles: "Perfis de audiencia para referencia"
+      - offer_structure: "Estrutura da oferta para referencia"
+
+    outputs:
+      - cro_adjustments: "Ajustes de otimizacao de conversao aplicados ao HTML"
+      - seo_optimization: "Meta tags, headings e estrutura otimizada para mecanismos de busca"
+      - trust_elements_added: "Sinais de confianca adicionados ou reposicionados"
+      - analytics_setup: "Configuracao de rastreamento de eventos e conversoes"
+      - optimized_html_file: "Arquivo HTML otimizado para conversao"
+
+    quality_gate:
+      conditions:
+        - "Nota de otimizacao de conversao acima de 7.0"
+        - "Meta titulo e meta descricao presentes e otimizados"
+        - "Estrutura de headings hierarquica e logica (h1 unico, h2 para secoes)"
+        - "Pelo menos 3 sinais de confianca visiveis na pagina"
+        - "Formulario possui campos minimos necessarios sem campos desnecessarios"
+        - "Chamada para acao principal acima da dobra e repetida no final"
+        - "Rastreamento de eventos configurado para formulario e cliques de chamada para acao"
+      veto_conditions:
+        - "Meta titulo ou meta descricao ausentes"
+        - "Nenhum sinal de confianca visivel na pagina"
+        - "Chamada para acao principal ausente ou enterrada"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "optimization_parallel"
+        description: "Otimizacao de conversao, busca e sinais de confianca podem executar em paralelo"
+        tasks:
+          - agent: cro-specialist
+            task: "Revisao e ajustes de otimizacao de conversao"
+          - agent: seo-specialist
+            task: "Otimizacao de meta tags e estrutura para mecanismos de busca"
+          - agent: trust-signal-specialist
+            task: "Verificacao e posicionamento de sinais de confianca"
+          - agent: analytics-engineer
+            task: "Configuracao de rastreamento de eventos e conversoes"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_6_conversion
+      trigger: "Nota de otimizacao de conversao abaixo de 7.0"
+      action: "conversion-captain identifica gaps especificos e direciona ajustes pontuais"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 7 — REVISAO DE QUALIDADE E ENTREGA
+  # ---------------------------------------------------------------------------
+  - id: phase_7_quality
+    name: "Revisao Final de Qualidade e Entrega"
+    stage: quality
+    sequence: 7
+
+    agents:
+      primary: quality-captain
+      supporting:
+        - copy-reviewer
+        - ux-auditor
+        - accessibility-checker
+        - cross-browser-tester
+
+    inputs:
+      - optimized_html_file: "Arquivo HTML otimizado da Fase 6"
+      - copy_packages: "Pacotes de copy originais para verificacao"
+      - design_tokens_applied: "Tokens de design para verificacao de conformidade"
+      - quality_thresholds: "Limiares de qualidade do framework (config.yaml)"
+
+    outputs:
+      - copy_review_report: "Relatorio de revisao de copy com nota e apontamentos"
+      - ux_audit_report: "Relatorio de auditoria de experiencia do usuario"
+      - accessibility_report: "Relatorio de acessibilidade com conformidade WCAG"
+      - browser_compatibility_report: "Relatorio de compatibilidade entre navegadores"
+      - overall_quality_score: "Nota geral de qualidade (media ponderada)"
+      - final_approved_html: "Arquivo HTML final aprovado para entrega"
+      - delivery_report: "Relatorio completo de entrega com metricas e recomendacoes"
+
+    quality_gate:
+      conditions:
+        - "Nota geral de qualidade acima de 7.0 (media ponderada)"
+        - "Nota de persuasao da copy acima de 7.0"
+        - "Nota de legibilidade da copy acima de 7.0"
+        - "Zero erros gramaticais ou ortograficos na copy final"
+        - "Acessibilidade em conformidade com WCAG 2.1 nivel AA"
+        - "Responsividade validada em todos os breakpoints"
+        - "Formulario funcional e com validacao adequada"
+        - "Performance dentro do orcamento definido (First Contentful Paint, Largest Contentful Paint)"
+        - "Nota de otimizacao de conversao acima de 7.0"
+      veto_conditions:
+        - "Nota geral de qualidade abaixo de 6.0 (requer revisao humana obrigatoria)"
+        - "Erros gramaticais encontrados na copy final"
+        - "Formulario de captura nao funcional"
+        - "Falha critica de acessibilidade (contraste, navegacao por teclado)"
+        - "Pagina nao renderiza em algum navegador principal"
+      min_score: 7.0
+      auto_approve_score: 8.5
+
+    parallel_tasks:
+      - group: "review_parallel"
+        description: "Todas as revisoes de qualidade podem executar em paralelo"
+        tasks:
+          - agent: copy-reviewer
+            task: "Revisao completa de toda a copy da pagina"
+          - agent: ux-auditor
+            task: "Auditoria de experiencia do usuario e usabilidade"
+          - agent: accessibility-checker
+            task: "Verificacao de conformidade com diretrizes de acessibilidade"
+          - agent: cross-browser-tester
+            task: "Teste de compatibilidade entre navegadores"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Nota de copy abaixo de 7.0 — redireciona para fase de copywriting"
+      action: "quality-captain envia relatorio detalhado ao copy-captain com apontamentos especificos"
+      alternative_routes:
+        - condition: "Problemas de layout ou responsividade"
+          routes_back_to: phase_4_design
+          action: "quality-captain envia relatorio ao design-captain"
+        - condition: "Problemas de codigo ou performance"
+          routes_back_to: phase_5_build
+          action: "quality-captain envia relatorio ao dev-captain"
+        - condition: "Problemas de conversao ou sinais de confianca"
+          routes_back_to: phase_6_conversion
+          action: "quality-captain envia relatorio ao conversion-captain"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+
+# =============================================================================
+# REGRAS DE ESCALACAO
+# =============================================================================
+escalation_rules:
+  - condition: "Qualquer fase excede o maximo de 2 iteracoes de feedback sem atingir limiar"
+    action: "Escalar para site-commander com relatorio detalhado do que falhou"
+    commander_options:
+      - "Aceitar resultado atual com ressalvas documentadas"
+      - "Fornecer instrucoes especificas para uma tentativa final"
+      - "Solicitar intervencao humana"
+
+  - condition: "Pipeline total excede 120 minutos de execucao"
+    action: "Interromper pipeline e entregar resultado parcial ao usuario"
+    includes: "Relatorio do ponto de parada e o que falta para completar"
+
+  - condition: "Nota geral abaixo de 6.0 apos todas as iteracoes"
+    action: "Sinalizar para revisao humana obrigatoria antes da entrega"
+    includes: "Relatorio detalhado com problemas identificados e sugestoes de correcao"
+
+# =============================================================================
+# CONFIGURACOES ESPECIFICAS PARA LANDING PAGES
+# =============================================================================
+page_type_settings:
+  skip_agents:
+    - email-sequence-writer
+    - ab-test-architect
+  skip_agents_rationale: >
+    Landing pages nao requerem sequencias de email (fora do escopo da pagina)
+    nem testes A/B na geracao inicial (sao configurados apos publicacao).
+
+  focus_areas:
+    - "Formulario de captura acima da dobra com minimo de campos"
+    - "Proposta de valor clara em 5 segundos de leitura"
+    - "Prova social visivel sem necessidade de scroll"
+    - "Chamada para acao repetida no minimo 2 vezes na pagina"
+
+  form_requirements:
+    max_fields: 3
+    required_fields: ["nome", "email"]
+    optional_fields: ["telefone"]
+    submit_button_style: "destacado com cor contrastante"
+    success_redirect: "pagina de agradecimento ou mensagem de confirmacao"

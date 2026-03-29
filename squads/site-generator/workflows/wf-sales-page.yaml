@@ -1,0 +1,799 @@
+# =============================================================================
+# WORKFLOW: SALES PAGE — PAGINA DE VENDAS LONGA
+# Pipeline expandido com fase de storytelling, limiares elevados de qualidade
+# e secoes adicionais de persuasao para venda direta
+# =============================================================================
+
+workflow:
+  id: wf-sales-page
+  name: "Workflow de Geracao de Pagina de Vendas"
+  description: >
+    Pipeline expandido para geracao de paginas de vendas longas (long-form sales pages).
+    Paginas de vendas sao paginas completas com 14 a 20 secoes que guiam o prospect
+    desde a identificacao do problema ate a decisao de compra, utilizando todos os
+    elementos de persuasao: storytelling, prova social, stack de valor, garantia,
+    tratamento de objecoes e urgencia. Inclui fase adicional de storytelling entre
+    estrategia e copywriting, limiares de qualidade mais elevados e avaliacao
+    especifica de pontuacao de persuasao.
+  page_type: sales_page
+  version: "1.0.0"
+  last_updated: "2026-03-29"
+
+  default_sections:
+    - header-sticky
+    - hero-video
+    - social-proof-logos-bar
+    - pain-points-storytelling
+    - pain-points-3-column
+    - solution-mechanism
+    - solution-before-after
+    - solution-features
+    - authority-credentials
+    - social-proof-testimonials-grid
+    - social-proof-case-study
+    - social-proof-stats
+    - bonus-cards
+    - pricing-value-stack
+    - guarantee-full-section
+    - objection-handling-faq
+    - cta-urgency
+    - faq-accordion
+    - cta-centered
+    - footer-full
+
+  estimated_cost:
+    total: "$1.85"
+    breakdown:
+      briefing: "$0.05"
+      strategy: "$0.20"
+      storytelling: "$0.20"
+      copywriting: "$0.55"
+      design: "$0.20"
+      development: "$0.30"
+      conversion_optimization: "$0.15"
+      quality_review: "$0.20"
+
+  estimated_duration:
+    total: "25 minutos"
+    breakdown:
+      briefing: "1 minuto"
+      strategy: "4 minutos"
+      storytelling: "3 minutos"
+      copywriting: "6 minutos"
+      design: "3 minutos"
+      development: "4 minutos"
+      conversion_optimization: "2 minutos"
+      quality_review: "2 minutos"
+
+  estimated_tokens:
+    total: 180000
+    breakdown:
+      briefing: 4000
+      strategy: 20000
+      storytelling: 20000
+      copywriting: 55000
+      design: 20000
+      development: 30000
+      conversion_optimization: 16000
+      quality_review: 15000
+
+# =============================================================================
+# FASES DO PIPELINE
+# =============================================================================
+phases:
+
+  # ---------------------------------------------------------------------------
+  # FASE 1 — BRIEFING E DIAGNOSTICO
+  # ---------------------------------------------------------------------------
+  - id: phase_1_briefing
+    name: "Briefing e Diagnostico"
+    stage: briefing
+    sequence: 1
+
+    agents:
+      primary: site-commander
+      supporting: []
+
+    inputs:
+      - user_briefing_raw: "Texto livre do usuario descrevendo o produto, oferta e audiencia"
+      - user_brand_assets: "Logo, cores, fontes, fotos do expert e materiais existentes (opcional)"
+      - user_preferences: "Preferencias de estilo, tom, referencias visuais e concorrentes (opcional)"
+      - user_testimonials: "Depoimentos de clientes reais (fortemente recomendado)"
+      - user_pricing: "Informacoes de preco, parcelamento, garantia e bonus"
+
+    outputs:
+      - briefing_structured: "Briefing estruturado completo com todos os campos"
+      - page_type_confirmed: "Tipo de pagina confirmado como sales_page"
+      - pipeline_plan: "Plano de execucao com fase de storytelling ativada"
+      - section_list: "Lista de 14 a 20 secoes selecionadas para esta pagina"
+      - awareness_level: "Nivel de consciencia do prospect identificado"
+      - tone_of_voice: "Tom de voz definido para toda a copy"
+      - storytelling_inputs: "Informacoes para a fase de storytelling (historia do expert, transformacao)"
+
+    quality_gate:
+      conditions:
+        - "Briefing estruturado possui todos os campos obrigatorios preenchidos"
+        - "Informacoes de preco e oferta completas e claras"
+        - "Tipo de pagina confirmado como sales_page"
+        - "Nivel de consciencia do prospect identificado"
+        - "Lista de secoes com no minimo 14 secoes selecionadas"
+        - "Informacoes suficientes para construir narrativa de storytelling"
+      veto_conditions:
+        - "Informacoes de preco completamente ausentes"
+        - "Produto ou oferta nao pode ser descrito com clareza"
+        - "Nicho viola politicas de conteudo do framework"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_1_briefing
+      trigger: "Briefing com lacunas criticas que impedem construcao da pagina de vendas"
+      action: "Solicitar informacoes especificas ao usuario sobre preco, oferta ou historia"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 2 — ESTRATEGIA E INTELIGENCIA DE MERCADO
+  # ---------------------------------------------------------------------------
+  - id: phase_2_strategy
+    name: "Estrategia e Inteligencia de Mercado"
+    stage: strategy
+    sequence: 2
+
+    agents:
+      primary: strategy-captain
+      supporting:
+        - market-researcher
+        - offer-architect
+        - audience-profiler
+        - competitor-analyst
+
+    inputs:
+      - briefing_structured: "Briefing estruturado da Fase 1"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - section_list: "Lista de secoes selecionadas"
+      - storytelling_inputs: "Informacoes para storytelling"
+
+    outputs:
+      - market_landscape: "Analise completa do cenario de mercado"
+      - competitive_positioning: "Analise competitiva detalhada com diferenciais"
+      - offer_structure: "Estrutura completa da oferta com stack de valor"
+      - audience_profiles: "Perfis detalhados com mapa de dores, desejos e objecoes"
+      - strategic_positioning: "Posicionamento e angulo unico de venda"
+      - copywriting_brief: "Briefing expandido para copywriting com direcoes de persuasao"
+      - storytelling_brief: "Briefing especifico para a fase de storytelling"
+      - design_brief: "Briefing de design com direcao visual premium"
+
+    quality_gate:
+      conditions:
+        - "Proposta de valor unica e diferenciada claramente articulada"
+        - "Analise competitiva com pelo menos 3 concorrentes mapeados"
+        - "Pelo menos 5 dores especificas da audiencia identificadas"
+        - "Pelo menos 5 desejos ou aspiracoes mapeados"
+        - "Pelo menos 5 objecoes principais antecipadas"
+        - "Stack de valor completo com produto principal e pelo menos 3 bonus"
+        - "Angulo unico de venda definido e validado contra concorrencia"
+        - "Mecanismo unico da solucao identificado ou criado"
+      veto_conditions:
+        - "Proposta de valor indistinguivel da concorrencia"
+        - "Nenhuma objecao antecipada (indica analise superficial)"
+        - "Stack de valor sem itens ou com valores irrazoaveis"
+        - "Audiencia alvo vaga sem segmentacao"
+      min_score: 7.5
+
+    parallel_tasks:
+      - group: "research_parallel"
+        description: "Pesquisa de mercado, analise competitiva e perfil de audiencia em paralelo"
+        tasks:
+          - agent: market-researcher
+            task: "Analise completa do cenario de mercado e tendencias"
+          - agent: audience-profiler
+            task: "Criacao de perfis detalhados com mapa de dores, desejos e objecoes"
+          - agent: competitor-analyst
+            task: "Analise competitiva detalhada com pelo menos 3 concorrentes"
+      - group: "offer_after_research"
+        description: "Oferta depende dos resultados da pesquisa completa"
+        depends_on: "research_parallel"
+        tasks:
+          - agent: offer-architect
+            task: "Estruturacao completa da oferta com stack de valor e mecanismo unico"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_2_strategy
+      trigger: "Proposta de valor avaliada como fraca ou mecanismo unico nao convincente"
+      action: "strategy-captain coordena refinamento com foco no diferencial competitivo"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 3 — STORYTELLING (FASE EXCLUSIVA DE PAGINAS DE VENDAS)
+  # ---------------------------------------------------------------------------
+  - id: phase_3_storytelling
+    name: "Construcao Narrativa e Storytelling"
+    stage: storytelling
+    sequence: 3
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - story-weaver
+
+    inputs:
+      - storytelling_brief: "Briefing de storytelling da Fase 2"
+      - audience_profiles: "Perfis da audiencia com dores e desejos"
+      - offer_structure: "Estrutura da oferta"
+      - awareness_level: "Nivel de consciencia do prospect"
+
+    outputs:
+      - narrative_arc: "Arco narrativo completo da pagina (do problema a transformacao)"
+      - origin_story: "Historia de origem do expert ou do produto"
+      - transformation_stories: "Historias de transformacao de clientes"
+      - emotional_hooks: "Ganchos emocionais para cada ponto da narrativa"
+      - story_transitions: "Transicoes narrativas entre secoes da pagina"
+      - identification_moments: "Momentos de identificacao do prospect com a narrativa"
+
+    quality_gate:
+      conditions:
+        - "Arco narrativo completo com inicio, meio e fim coerentes"
+        - "Historia de origem autentica e emocionalmente conectada"
+        - "Pelo menos 2 momentos de identificacao forte do prospect"
+        - "Transicoes narrativas fluidas entre secoes"
+        - "Ganchos emocionais alinhados com nivel de consciencia"
+        - "Narrativa conduz naturalmente a revelacao da solucao"
+        - "Historias de transformacao especificas e criveis"
+      veto_conditions:
+        - "Narrativa generica sem elementos especificos do nicho"
+        - "Historia de origem que parece fabricada ou exagerada"
+        - "Ausencia de arco narrativo coerente"
+        - "Ganchos emocionais manipulativos ou antiéticos"
+      min_score: 7.5
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_storytelling
+      trigger: "Narrativa avaliada como generica ou sem conexao emocional suficiente"
+      action: "copy-captain orienta story-weaver a aprofundar elementos especificos da narrativa"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.85
+      max_tokens: 12000
+
+  # ---------------------------------------------------------------------------
+  # FASE 4 — COPYWRITING EXPANDIDO
+  # ---------------------------------------------------------------------------
+  - id: phase_4_copy
+    name: "Producao de Copy Persuasiva Completa"
+    stage: copywriting
+    sequence: 4
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - headline-sniper
+        - body-copy-architect
+        - story-weaver
+        - cta-engineer
+        - objection-handler
+        - email-sequence-writer
+
+    inputs:
+      - copywriting_brief: "Briefing de copywriting da Fase 2"
+      - narrative_arc: "Arco narrativo e elementos de storytelling da Fase 3"
+      - offer_structure: "Estrutura da oferta com stack de valor"
+      - audience_profiles: "Perfis da audiencia com dores, desejos e objecoes"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - section_list: "Lista completa de 14 a 20 secoes"
+      - tone_of_voice: "Tom de voz definido"
+      - competitive_positioning: "Posicionamento competitivo"
+
+    outputs:
+      - headlines_package: "Todas as headlines e subheadlines (14 a 20 secoes)"
+      - body_copy_package: "Textos de corpo extensos para todas as secoes"
+      - story_sections_copy: "Copy das secoes narrativas integrada ao arco"
+      - cta_copy_package: "Textos de todas as chamadas para acao (minimo 4 pontos)"
+      - value_stack_copy: "Copy do stack de valor com ancoragem de preco"
+      - guarantee_copy: "Copy completa da garantia com reversao de risco"
+      - objection_handling_copy: "Tratamento detalhado de todas as objecoes"
+      - faq_content: "Perguntas frequentes expandidas (8 a 12 perguntas)"
+      - social_proof_copy: "Depoimentos e estudos de caso formatados"
+      - urgency_copy: "Elementos de urgencia e escassez"
+      - email_follow_up: "Sequencia de emails de acompanhamento pos-compra"
+      - copy_metadata: "Meta titulo, meta descricao e Open Graph"
+
+    quality_gate:
+      conditions:
+        - "Todas as 14 a 20 secoes possuem copy completa"
+        - "Headline principal atinge nota de persuasao acima de 7.5"
+        - "Copy do stack de valor com ancoragem eficaz (valor percebido versus preco)"
+        - "Garantia com linguagem clara e sem ambiguidades"
+        - "Pelo menos 5 objecoes tratadas com respostas convincentes"
+        - "Perguntas frequentes com 8 a 12 perguntas cobrindo objecoes reais"
+        - "Elementos de urgencia autenticos e eticos"
+        - "Narrativa fluida entre secoes (story transitions aplicadas)"
+        - "Chamadas para acao em pelo menos 4 pontos estrategicos da pagina"
+        - "Copy de prova social especifica com dados e resultados quantificaveis"
+        - "Zero erros gramaticais ou ortograficos"
+        - "Tom de voz consistente ao longo de toda a pagina"
+      veto_conditions:
+        - "Headline principal vaga ou sem beneficio claro"
+        - "Stack de valor sem ancoragem de preco ou com valores inverossimeis"
+        - "Garantia ambigua ou com termos confusos"
+        - "Erros gramaticais ou ortograficos na copy"
+        - "Elementos de urgencia falsos ou manipulativos"
+        - "Copy plagiada de concorrentes conhecidos"
+        - "Promessas ilegais ou que violam regulamentacoes de publicidade"
+      min_score: 7.5
+
+    parallel_tasks:
+      - group: "headlines_first"
+        description: "Headlines sao a base para toda a copy"
+        tasks:
+          - agent: headline-sniper
+            task: "Criacao de todas as headlines e subheadlines para 14 a 20 secoes"
+      - group: "story_and_body_sequential"
+        description: "Story weaver refina narrativa, body copy arquiteta os textos"
+        depends_on: "headlines_first"
+        tasks:
+          - agent: story-weaver
+            task: "Refinamento das secoes narrativas com integracoes de headline"
+      - group: "body_copy_after_story"
+        description: "Body copy depende de headlines e narrativa"
+        depends_on: "story_and_body_sequential"
+        tasks:
+          - agent: body-copy-architect
+            task: "Producao completa de textos de corpo para todas as secoes"
+      - group: "cta_and_objections_parallel"
+        description: "Chamadas para acao e objecoes em paralelo apos body copy"
+        depends_on: "body_copy_after_story"
+        tasks:
+          - agent: cta-engineer
+            task: "Producao de textos de chamadas para acao, stack de valor e urgencia"
+          - agent: objection-handler
+            task: "Tratamento de objecoes e criacao de perguntas frequentes"
+      - group: "email_last"
+        description: "Sequencia de emails depende de toda a copy estar pronta"
+        depends_on: "cta_and_objections_parallel"
+        tasks:
+          - agent: email-sequence-writer
+            task: "Criacao de sequencia de emails de acompanhamento"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_4_copy
+      trigger: "Nota de persuasao abaixo de 7.5 ou narrativa desconectada entre secoes"
+      action: "copy-captain coordena revisao focada nos elementos com nota mais baixa"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.8
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 5 — DESIGN E INTERFACE
+  # ---------------------------------------------------------------------------
+  - id: phase_5_design
+    name: "Design e Especificacao Visual Premium"
+    stage: design
+    sequence: 5
+
+    agents:
+      primary: design-captain
+      supporting:
+        - layout-architect
+        - visual-hierarchy-specialist
+        - responsive-engineer
+        - color-typography-specialist
+        - icon-imagery-curator
+        - animation-specialist
+
+    inputs:
+      - design_brief: "Briefing de design da Fase 2"
+      - copy_packages: "Todos os pacotes de copy da Fase 4"
+      - section_list: "Lista de 14 a 20 secoes com design patterns"
+      - user_brand_assets: "Assets de marca do usuario"
+      - narrative_arc: "Arco narrativo para informar ritmo visual"
+
+    outputs:
+      - layout_specification: "Especificacao de layout para 14 a 20 secoes"
+      - visual_hierarchy_map: "Mapa de hierarquia visual com ritmo de leitura"
+      - responsive_rules: "Regras de responsividade completas"
+      - design_tokens_applied: "Tokens de design aplicados com variacao de enfase"
+      - component_specs: "Especificacoes de componentes (cards, modais, tabs)"
+      - imagery_guide: "Guia de imagens com direcao de estilo e sugestoes"
+      - animation_specs: "Animacoes de scroll, hover e transicoes"
+      - visual_rhythm: "Ritmo visual alinhado ao arco narrativo"
+
+    quality_gate:
+      conditions:
+        - "Layout com ritmo visual que acompanha o arco narrativo"
+        - "Hierarquia visual clara com fluxo de leitura guiado"
+        - "Contraste de cores acima de 4.5 para todos os textos"
+        - "Tipografia hierarquica com pelo menos 4 niveis de tamanho"
+        - "Responsividade perfeita em todos os breakpoints"
+        - "Secoes de preco e chamada para acao visualmente destacadas"
+        - "Stack de valor com apresentacao visual impactante"
+        - "Secao de garantia com selo visual prominente"
+        - "Imagens e icones com direcao de estilo consistente"
+        - "Animacoes sutis que reforçam a hierarquia sem distrair"
+      veto_conditions:
+        - "Layout monotonico sem variacao visual entre secoes"
+        - "Preco enterrado ou sem destaque visual"
+        - "Contraste abaixo do minimo WCAG 2.1 nivel AA"
+        - "Layout quebrado em qualquer breakpoint"
+        - "Animacoes excessivas que prejudicam performance ou acessibilidade"
+      min_score: 7.5
+
+    parallel_tasks:
+      - group: "foundation_parallel"
+        description: "Tokens de design, hierarquia e direcao de imagens em paralelo"
+        tasks:
+          - agent: color-typography-specialist
+            task: "Sistema de cores e tipografia premium"
+          - agent: visual-hierarchy-specialist
+            task: "Mapa de hierarquia visual e ritmo de leitura"
+          - agent: icon-imagery-curator
+            task: "Direcao de estilo de imagens e selecao de icones"
+      - group: "layout_and_responsive"
+        description: "Layout e responsividade apos fundacao visual"
+        depends_on: "foundation_parallel"
+        tasks:
+          - agent: layout-architect
+            task: "Especificacao de layout completa para todas as secoes"
+          - agent: responsive-engineer
+            task: "Regras de responsividade por breakpoint"
+      - group: "animation_last"
+        description: "Animacoes dependem de layout e componentes definidos"
+        depends_on: "layout_and_responsive"
+        tasks:
+          - agent: animation-specialist
+            task: "Especificacao de animacoes de scroll, hover e transicoes"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_5_design
+      trigger: "Ritmo visual nao acompanha arco narrativo ou preco sem destaque"
+      action: "design-captain redireciona ajustes ao agente responsavel"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 6 — DESENVOLVIMENTO (BUILD)
+  # ---------------------------------------------------------------------------
+  - id: phase_6_build
+    name: "Geracao de Codigo HTML/CSS/JavaScript"
+    stage: build
+    sequence: 6
+
+    agents:
+      primary: dev-captain
+      supporting:
+        - html-architect
+        - css-engineer
+        - javascript-specialist
+        - form-builder
+        - integration-specialist
+        - performance-optimizer
+
+    inputs:
+      - layout_specification: "Especificacao de layout da Fase 5"
+      - design_tokens_applied: "Tokens de design"
+      - copy_packages: "Todos os pacotes de copy da Fase 4"
+      - responsive_rules: "Regras de responsividade"
+      - component_specs: "Especificacoes de componentes"
+      - animation_specs: "Especificacoes de animacoes"
+      - imagery_guide: "Guia de imagens"
+      - section_list: "Lista de 14 a 20 secoes com templates"
+
+    outputs:
+      - html_complete: "Estrutura HTML semantica completa (14 a 20 secoes)"
+      - css_complete: "CSS completo com animacoes e responsividade"
+      - javascript_complete: "JavaScript para interatividade completa"
+      - form_implementation: "Formulario de checkout ou redirecionamento de compra"
+      - payment_integration: "Integracao com plataforma de pagamento (redirecionamento)"
+      - final_html_file: "Arquivo HTML unico autocontido"
+      - performance_metrics: "Metricas de performance estimadas"
+
+    quality_gate:
+      conditions:
+        - "HTML semantico valido para todas as 14 a 20 secoes"
+        - "CSS sem estilos orfaos ou conflitantes"
+        - "JavaScript sem erros de console"
+        - "Acordeao de perguntas frequentes funcional"
+        - "Barra flutuante de chamada para acao funcional"
+        - "Contagem regressiva funcional (se inclusa)"
+        - "Carrossel de depoimentos funcional (se incluso)"
+        - "Responsividade perfeita em todos os breakpoints"
+        - "First Contentful Paint estimado abaixo de 1500 milissegundos"
+        - "Largest Contentful Paint estimado abaixo de 2500 milissegundos"
+        - "Tamanho do arquivo HTML abaixo de 800 kilobytes"
+        - "Todas as imagens com texto alternativo"
+        - "Navegacao por teclado funcional"
+      veto_conditions:
+        - "HTML com erros de sintaxe"
+        - "JavaScript com erros que bloqueiam interatividade"
+        - "Botao de compra nao funcional"
+        - "Pagina nao renderiza em breakpoint critico"
+        - "Tamanho do arquivo acima de 1.5 megabytes"
+      min_score: 7.5
+
+    parallel_tasks:
+      - group: "html_first"
+        description: "Estrutura HTML completa como base"
+        tasks:
+          - agent: html-architect
+            task: "Geracao de HTML semantico para 14 a 20 secoes"
+      - group: "css_and_form_parallel"
+        description: "CSS e formulario de checkout em paralelo"
+        depends_on: "html_first"
+        tasks:
+          - agent: css-engineer
+            task: "CSS completo com animacoes e responsividade"
+          - agent: form-builder
+            task: "Formulario de checkout ou botao de compra"
+      - group: "javascript_and_integration"
+        description: "JavaScript e integracoes apos estrutura"
+        depends_on: "css_and_form_parallel"
+        tasks:
+          - agent: javascript-specialist
+            task: "Interatividade completa (acordeao, carrossel, contagem regressiva)"
+          - agent: integration-specialist
+            task: "Integracao com plataforma de pagamento"
+      - group: "optimization_last"
+        description: "Otimizacao final de performance"
+        depends_on: "javascript_and_integration"
+        tasks:
+          - agent: performance-optimizer
+            task: "Otimizacao de performance e minificacao"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_6_build
+      trigger: "Erros criticos de renderizacao ou componentes interativos nao funcionais"
+      action: "dev-captain identifica agente responsavel e envia instrucoes de correcao"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 16384
+
+  # ---------------------------------------------------------------------------
+  # FASE 7 — OTIMIZACAO DE CONVERSAO
+  # ---------------------------------------------------------------------------
+  - id: phase_7_conversion
+    name: "Otimizacao Avancada de Conversao"
+    stage: conversion
+    sequence: 7
+
+    agents:
+      primary: conversion-captain
+      supporting:
+        - cro-specialist
+        - ab-test-architect
+        - analytics-engineer
+        - seo-specialist
+        - trust-signal-specialist
+
+    inputs:
+      - final_html_file: "Arquivo HTML gerado na Fase 6"
+      - copy_packages: "Pacotes de copy para referencia"
+      - audience_profiles: "Perfis de audiencia"
+      - offer_structure: "Estrutura da oferta e stack de valor"
+      - competitive_positioning: "Posicionamento competitivo"
+
+    outputs:
+      - cro_adjustments: "Ajustes avancados de otimizacao de conversao"
+      - ab_test_plan: "Plano de testes A/B com hipoteses e variantes"
+      - seo_optimization: "Otimizacao completa para mecanismos de busca"
+      - trust_elements_enhanced: "Sinais de confianca otimizados e reposicionados"
+      - analytics_setup: "Rastreamento completo com funil de conversao"
+      - persuasion_score: "Pontuacao de persuasao da pagina completa"
+      - optimized_html_file: "HTML otimizado para conversao maxima"
+
+    quality_gate:
+      conditions:
+        - "Nota de otimizacao de conversao acima de 7.5"
+        - "Pontuacao de persuasao acima de 7.5"
+        - "Meta tags completas e otimizadas"
+        - "Estrutura de headings logica e hierarquica"
+        - "Pelo menos 5 sinais de confianca distribuidos pela pagina"
+        - "Chamadas para acao em pelo menos 4 pontos estrategicos"
+        - "Ancoragem de preco eficaz no stack de valor"
+        - "Elementos de urgencia posicionados estrategicamente"
+        - "Funil de rastreamento configurado com pelo menos 5 eventos"
+        - "Plano de testes A/B com pelo menos 3 hipoteses"
+      veto_conditions:
+        - "Meta tags ausentes"
+        - "Menos de 3 sinais de confianca na pagina"
+        - "Botao de compra sem rastreamento de conversao"
+        - "Chamada para acao principal ausente acima da dobra"
+      min_score: 7.5
+
+    parallel_tasks:
+      - group: "all_optimization_parallel"
+        description: "Todas as otimizacoes podem executar em paralelo"
+        tasks:
+          - agent: cro-specialist
+            task: "Auditoria e ajustes avancados de conversao"
+          - agent: ab-test-architect
+            task: "Definicao de plano de testes A/B com hipoteses"
+          - agent: seo-specialist
+            task: "Otimizacao avancada para mecanismos de busca"
+          - agent: trust-signal-specialist
+            task: "Otimizacao de sinais de confianca"
+          - agent: analytics-engineer
+            task: "Configuracao de funil de rastreamento completo"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_7_conversion
+      trigger: "Pontuacao de persuasao abaixo de 7.5 ou sinais de confianca insuficientes"
+      action: "conversion-captain direciona ajustes especificos nos elementos com pior nota"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 8 — REVISAO DE QUALIDADE E ENTREGA
+  # ---------------------------------------------------------------------------
+  - id: phase_8_quality
+    name: "Revisao Final de Qualidade com Pontuacao de Persuasao"
+    stage: quality
+    sequence: 8
+
+    agents:
+      primary: quality-captain
+      supporting:
+        - copy-reviewer
+        - ux-auditor
+        - accessibility-checker
+        - cross-browser-tester
+
+    inputs:
+      - optimized_html_file: "HTML otimizado da Fase 7"
+      - copy_packages: "Pacotes de copy originais"
+      - narrative_arc: "Arco narrativo para verificacao de coerencia"
+      - design_tokens_applied: "Tokens de design"
+      - persuasion_score: "Pontuacao de persuasao da Fase 7"
+      - quality_thresholds: "Limiares de qualidade elevados para paginas de vendas"
+
+    outputs:
+      - copy_review_report: "Revisao detalhada de copy com nota de persuasao"
+      - narrative_coherence_report: "Avaliacao de coerencia narrativa entre secoes"
+      - ux_audit_report: "Auditoria de experiencia do usuario"
+      - accessibility_report: "Relatorio de acessibilidade WCAG"
+      - browser_compatibility_report: "Compatibilidade entre navegadores"
+      - overall_quality_score: "Nota geral de qualidade (media ponderada)"
+      - persuasion_final_score: "Pontuacao final de persuasao"
+      - final_approved_html: "HTML final aprovado"
+      - delivery_report: "Relatorio completo de entrega"
+      - ab_test_recommendations: "Recomendacoes de testes A/B priorizadas"
+
+    quality_gate:
+      conditions:
+        - "Nota geral de qualidade acima de 7.5"
+        - "Nota de persuasao da copy acima de 7.5"
+        - "Nota de impacto emocional acima de 7.0"
+        - "Coerencia narrativa entre secoes validada"
+        - "Nota de legibilidade acima de 7.0"
+        - "Zero erros gramaticais ou ortograficos"
+        - "Acessibilidade em conformidade com WCAG 2.1 nivel AA"
+        - "Responsividade perfeita em todos os breakpoints"
+        - "Todas as interacoes funcionais (acordeao, carrossel, contagem regressiva)"
+        - "Performance dentro do orcamento definido"
+        - "Stack de valor com ancoragem eficaz"
+        - "Garantia claramente visivel e com termos inequivocos"
+      veto_conditions:
+        - "Nota geral abaixo de 6.5 (requer revisao humana)"
+        - "Erros gramaticais na copy final"
+        - "Botao de compra nao funcional"
+        - "Narrativa incoerente ou desconectada entre secoes"
+        - "Falha critica de acessibilidade"
+        - "Pagina nao renderiza em navegador principal"
+        - "Promessas ilegais ou que violam regulamentacoes"
+      min_score: 7.5
+      auto_approve_score: 9.0
+
+    parallel_tasks:
+      - group: "all_reviews_parallel"
+        description: "Todas as revisoes em paralelo"
+        tasks:
+          - agent: copy-reviewer
+            task: "Revisao completa de copy com avaliacao de persuasao e coerencia narrativa"
+          - agent: ux-auditor
+            task: "Auditoria de experiencia do usuario com foco em jornada de compra"
+          - agent: accessibility-checker
+            task: "Verificacao de acessibilidade WCAG"
+          - agent: cross-browser-tester
+            task: "Teste de compatibilidade entre navegadores"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_4_copy
+      trigger: "Nota de persuasao abaixo de 7.5 ou narrativa incoerente"
+      action: "quality-captain envia relatorio ao copy-captain com apontamentos detalhados"
+      alternative_routes:
+        - condition: "Problemas de layout, ritmo visual ou responsividade"
+          routes_back_to: phase_5_design
+          action: "quality-captain envia relatorio ao design-captain"
+        - condition: "Problemas de codigo, performance ou interatividade"
+          routes_back_to: phase_6_build
+          action: "quality-captain envia relatorio ao dev-captain"
+        - condition: "Problemas de conversao, sinais de confianca ou ancoragem"
+          routes_back_to: phase_7_conversion
+          action: "quality-captain envia relatorio ao conversion-captain"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+
+# =============================================================================
+# REGRAS DE ESCALACAO
+# =============================================================================
+escalation_rules:
+  - condition: "Qualquer fase excede 2 iteracoes de feedback sem atingir limiar"
+    action: "Escalar para site-commander com relatorio detalhado"
+    commander_options:
+      - "Aceitar resultado atual com ressalvas documentadas"
+      - "Fornecer instrucoes especificas para tentativa final"
+      - "Solicitar intervencao humana"
+
+  - condition: "Pipeline total excede 120 minutos"
+    action: "Interromper e entregar resultado parcial ao usuario"
+
+  - condition: "Nota geral abaixo de 6.5 apos todas as iteracoes"
+    action: "Sinalizar para revisao humana obrigatoria"
+
+  - condition: "Pontuacao de persuasao abaixo de 6.5 apos feedback"
+    action: "Escalar para site-commander para decisao sobre refacao da copy"
+
+# =============================================================================
+# CONFIGURACOES ESPECIFICAS PARA PAGINAS DE VENDAS
+# =============================================================================
+page_type_settings:
+  skip_agents: []
+  skip_agents_rationale: >
+    Paginas de vendas utilizam todos os 38 agentes do framework sem excecao.
+    Cada agente contribui para a construcao completa da experiencia de venda.
+
+  focus_areas:
+    - "Narrativa persuasiva com arco emocional completo"
+    - "Stack de valor com ancoragem de preco eficaz"
+    - "Prova social abundante e especifica (depoimentos, estudos de caso, estatisticas)"
+    - "Tratamento exaustivo de objecoes"
+    - "Garantia prominente com reversao total de risco"
+    - "Multiplos pontos de chamada para acao estrategicamente posicionados"
+    - "Urgencia e escassez autenticas"
+
+  quality_thresholds_override:
+    copy_persuasion_score: 7.5
+    copy_readability_score: 7.0
+    emotional_impact_score: 7.0
+    cro_score: 7.5
+    overall_minimum_pass_score: 7.5
+    auto_approve_score: 9.0
+    require_human_review_below: 6.5
+
+  checkout_requirements:
+    primary_action: "redirecionamento para pagina de checkout externa"
+    fallback_action: "formulario de interesse com captura de dados"
+    payment_methods_display: true
+    installment_display: true
+    guarantee_seal_near_button: true

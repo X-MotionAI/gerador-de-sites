@@ -1,0 +1,516 @@
+# =============================================================================
+# WORKFLOW: SQUEEZE PAGE — PAGINA DE CAPTURA MINIMALISTA
+# Pipeline simplificado para paginas de captura com foco em um unico
+# formulario, headline forte e chamada para acao imediata
+# =============================================================================
+
+workflow:
+  id: wf-squeeze-page
+  name: "Workflow de Geracao de Squeeze Page"
+  description: >
+    Pipeline simplificado para geracao de squeeze pages (paginas de captura
+    minimalistas). Squeeze pages sao paginas ultra-focadas com apenas 3 a 5
+    secoes, projetadas para converter visitantes em leads com o minimo de
+    distracao. O foco absoluto e na headline, subheadline, formulario de
+    captura e chamada para acao. Sem navegacao, sem scroll longo, sem
+    elementos que desviem a atencao do formulario. Pipeline abreviado
+    com estagios simplificados e orcamento de tokens reduzido.
+  page_type: squeeze_page
+  version: "1.0.0"
+  last_updated: "2026-03-29"
+
+  default_sections:
+    - header-simple
+    - hero-minimal
+    - social-proof-logos-bar
+    - cta-centered
+    - footer-minimal
+
+  optional_sections:
+    - pain-points-3-column
+    - solution-3-step
+
+  estimated_cost:
+    total: "$0.35"
+    breakdown:
+      briefing: "$0.03"
+      strategy: "$0.08"
+      copywriting: "$0.10"
+      design: "$0.05"
+      development: "$0.05"
+      conversion_optimization: "$0.02"
+      quality_review: "$0.02"
+
+  estimated_duration:
+    total: "5 minutos"
+    breakdown:
+      briefing: "30 segundos"
+      strategy: "1 minuto"
+      copywriting: "1 minuto 30 segundos"
+      design: "45 segundos"
+      development: "45 segundos"
+      conversion_optimization: "15 segundos"
+      quality_review: "15 segundos"
+
+  estimated_tokens:
+    total: 32000
+    breakdown:
+      briefing: 2000
+      strategy: 6000
+      copywriting: 10000
+      design: 5000
+      development: 5000
+      conversion_optimization: 2000
+      quality_review: 2000
+
+# =============================================================================
+# FASES DO PIPELINE
+# =============================================================================
+phases:
+
+  # ---------------------------------------------------------------------------
+  # FASE 1 — BRIEFING RAPIDO
+  # ---------------------------------------------------------------------------
+  - id: phase_1_briefing
+    name: "Briefing Rapido"
+    stage: briefing
+    sequence: 1
+
+    agents:
+      primary: site-commander
+      supporting: []
+
+    inputs:
+      - user_briefing_raw: "Texto livre descrevendo o lead magnet e audiencia alvo"
+      - user_brand_assets: "Logo e cores (opcional)"
+
+    outputs:
+      - briefing_structured: "Briefing estruturado com campos essenciais"
+      - page_type_confirmed: "Tipo confirmado como squeeze_page"
+      - pipeline_plan: "Pipeline simplificado com agentes reduzidos"
+      - section_list: "Lista de 3 a 5 secoes"
+      - awareness_level: "Nivel de consciencia do prospect"
+      - lead_magnet_description: "Descricao clara do material gratuito oferecido"
+
+    quality_gate:
+      conditions:
+        - "Lead magnet claramente descrito com beneficio principal"
+        - "Audiencia alvo identificada"
+        - "Nivel de consciencia determinado"
+        - "Lista de 3 a 5 secoes definida"
+      veto_conditions:
+        - "Lead magnet sem descricao ou sem beneficio claro"
+        - "Impossivel determinar o que o visitante recebera em troca do email"
+      min_score: 7.0
+
+    parallel_tasks: []
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_1_briefing
+      trigger: "Lead magnet nao pode ser descrito com clareza"
+      action: "Solicitar descricao especifica do material oferecido"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 2048
+
+  # ---------------------------------------------------------------------------
+  # FASE 2 — ESTRATEGIA SIMPLIFICADA
+  # ---------------------------------------------------------------------------
+  - id: phase_2_strategy
+    name: "Estrategia Simplificada"
+    stage: strategy
+    sequence: 2
+
+    agents:
+      primary: strategy-captain
+      supporting:
+        - offer-architect
+        - audience-profiler
+
+    inputs:
+      - briefing_structured: "Briefing da Fase 1"
+      - awareness_level: "Nivel de consciencia"
+      - lead_magnet_description: "Descricao do lead magnet"
+
+    outputs:
+      - offer_structure: "Estrutura simplificada da oferta gratuita"
+      - audience_profile: "Perfil resumido da audiencia alvo"
+      - value_proposition: "Proposta de valor em uma frase"
+      - copywriting_brief: "Briefing conciso para copywriting"
+      - design_brief: "Briefing conciso para design"
+
+    quality_gate:
+      conditions:
+        - "Proposta de valor clara e especifica em uma frase"
+        - "Beneficio principal do lead magnet articulado"
+        - "Audiencia alvo segmentada com pelo menos 2 dores identificadas"
+        - "Briefing de copywriting completo e acionavel"
+      veto_conditions:
+        - "Proposta de valor generica sem beneficio tangivel"
+        - "Lead magnet sem diferencial perceptivel"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "strategy_parallel"
+        description: "Oferta e audiencia podem ser analisadas em paralelo"
+        tasks:
+          - agent: offer-architect
+            task: "Estruturacao da oferta gratuita e proposta de valor"
+          - agent: audience-profiler
+            task: "Perfil resumido da audiencia com dores principais"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_2_strategy
+      trigger: "Proposta de valor generica ou indistinta"
+      action: "strategy-captain refina angulo de abordagem com foco no diferencial do lead magnet"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.6
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 3 — COPYWRITING FOCADO
+  # ---------------------------------------------------------------------------
+  - id: phase_3_copy
+    name: "Copywriting Focado em Conversao Imediata"
+    stage: copywriting
+    sequence: 3
+
+    agents:
+      primary: copy-captain
+      supporting:
+        - headline-sniper
+        - cta-engineer
+
+    inputs:
+      - copywriting_brief: "Briefing da Fase 2"
+      - offer_structure: "Estrutura da oferta gratuita"
+      - audience_profile: "Perfil da audiencia"
+      - value_proposition: "Proposta de valor"
+      - awareness_level: "Nivel de consciencia"
+      - section_list: "Lista de 3 a 5 secoes"
+
+    outputs:
+      - headline_principal: "Headline principal de alto impacto"
+      - subheadline: "Subheadline que complementa e reforça a headline"
+      - cta_text: "Texto do botao de chamada para acao"
+      - cta_supporting_text: "Texto de suporte abaixo do botao"
+      - form_headline: "Titulo acima do formulario (se formulario separado)"
+      - social_proof_micro: "Frase curta de prova social"
+      - trust_micro: "Texto curto de confianca (privacidade, sem spam)"
+      - copy_metadata: "Meta titulo e meta descricao otimizados"
+
+    quality_gate:
+      conditions:
+        - "Headline principal com beneficio claro em no maximo 12 palavras"
+        - "Subheadline que expande o beneficio da headline"
+        - "Chamada para acao com verbo de acao e beneficio"
+        - "Texto de confianca presente (privacidade, sem spam)"
+        - "Copy total da pagina legivel em menos de 30 segundos"
+        - "Zero erros gramaticais ou ortograficos"
+        - "Proposta de valor compreensivel em 5 segundos de leitura"
+      veto_conditions:
+        - "Headline vaga sem beneficio ou dor especifica"
+        - "Chamada para acao generica como 'Enviar' ou 'Cadastrar'"
+        - "Erros gramaticais ou ortograficos"
+        - "Copy longa demais para uma squeeze page (mais de 200 palavras total)"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "headline_first"
+        description: "Headline e a base de toda a copy"
+        tasks:
+          - agent: headline-sniper
+            task: "Criacao de headline e subheadline de alto impacto"
+      - group: "cta_after_headline"
+        description: "Chamada para acao depende do tom da headline"
+        depends_on: "headline_first"
+        tasks:
+          - agent: cta-engineer
+            task: "Texto de chamada para acao, suporte e microcopy de confianca"
+
+    feedback_loop:
+      max_iterations: 2
+      routes_back_to: phase_3_copy
+      trigger: "Headline fraca ou chamada para acao generica"
+      action: "copy-captain direciona revisao especifica ao agente responsavel"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.8
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 4 — DESIGN MINIMALISTA
+  # ---------------------------------------------------------------------------
+  - id: phase_4_design
+    name: "Design Minimalista e Focado"
+    stage: design
+    sequence: 4
+
+    agents:
+      primary: design-captain
+      supporting:
+        - layout-architect
+        - color-typography-specialist
+
+    inputs:
+      - design_brief: "Briefing de design da Fase 2"
+      - copy_outputs: "Copy completa da Fase 3"
+      - section_list: "Lista de 3 a 5 secoes"
+      - user_brand_assets: "Assets de marca (se fornecidos)"
+
+    outputs:
+      - layout_specification: "Layout minimalista para 3 a 5 secoes"
+      - design_tokens_applied: "Tokens de design (paleta reduzida)"
+      - responsive_rules: "Responsividade simplificada"
+      - form_design: "Design do formulario com foco em conversao"
+
+    quality_gate:
+      conditions:
+        - "Formulario visivel acima da dobra sem scroll em todos os dispositivos"
+        - "Design limpo sem elementos que distraiam do formulario"
+        - "Contraste de cores acima de 4.5 para textos"
+        - "Botao de chamada para acao com cor contrastante e tamanho grande"
+        - "Responsividade funcional em 320, 768, 1024 e 1440 pixels"
+        - "Nenhum menu de navegacao ou link que desvie do formulario"
+      veto_conditions:
+        - "Formulario abaixo da dobra em qualquer dispositivo"
+        - "Elementos visuais que competem com o formulario"
+        - "Contraste insuficiente WCAG 2.1 nivel AA"
+        - "Layout quebrado em qualquer breakpoint"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "design_parallel"
+        description: "Layout e tokens podem ser definidos em paralelo"
+        tasks:
+          - agent: layout-architect
+            task: "Layout minimalista com formulario acima da dobra"
+          - agent: color-typography-specialist
+            task: "Paleta de cores reduzida e tipografia de impacto"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_4_design
+      trigger: "Formulario nao visivel acima da dobra ou design com distracao"
+      action: "design-captain simplifica layout e reposiciona formulario"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.5
+      max_tokens: 4096
+
+  # ---------------------------------------------------------------------------
+  # FASE 5 — DESENVOLVIMENTO RAPIDO
+  # ---------------------------------------------------------------------------
+  - id: phase_5_build
+    name: "Geracao Rapida de Codigo"
+    stage: build
+    sequence: 5
+
+    agents:
+      primary: dev-captain
+      supporting:
+        - html-architect
+        - css-engineer
+        - form-builder
+
+    inputs:
+      - layout_specification: "Layout minimalista da Fase 4"
+      - design_tokens_applied: "Tokens de design"
+      - copy_outputs: "Copy da Fase 3"
+      - responsive_rules: "Regras de responsividade"
+      - form_design: "Design do formulario"
+
+    outputs:
+      - final_html_file: "Arquivo HTML unico autocontido e minificado"
+      - form_implementation: "Formulario funcional com validacao"
+      - performance_metrics: "Metricas de performance"
+
+    quality_gate:
+      conditions:
+        - "HTML valido e semantico"
+        - "Formulario funcional com validacao de email"
+        - "Pagina carrega em menos de 1 segundo (estimativa)"
+        - "Responsividade perfeita em todos os breakpoints"
+        - "Tamanho do arquivo abaixo de 150 kilobytes"
+        - "Formulario com campo de honeypot contra spam"
+        - "Todas as imagens com texto alternativo"
+      veto_conditions:
+        - "HTML com erros de sintaxe"
+        - "Formulario nao funcional"
+        - "Tamanho do arquivo acima de 300 kilobytes"
+        - "Formulario nao visivel acima da dobra"
+      min_score: 7.0
+
+    parallel_tasks:
+      - group: "html_first"
+        description: "HTML como base"
+        tasks:
+          - agent: html-architect
+            task: "Estrutura HTML simples e semantica"
+      - group: "css_and_form"
+        description: "CSS e formulario em paralelo"
+        depends_on: "html_first"
+        tasks:
+          - agent: css-engineer
+            task: "CSS minimalista com responsividade"
+          - agent: form-builder
+            task: "Formulario de captura com validacao e honeypot"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_5_build
+      trigger: "Formulario nao funcional ou pagina acima do limite de tamanho"
+      action: "dev-captain direciona correcao ao agente responsavel"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 8192
+
+  # ---------------------------------------------------------------------------
+  # FASE 6 — REVISAO RAPIDA E ENTREGA
+  # ---------------------------------------------------------------------------
+  - id: phase_6_quality
+    name: "Revisao Rapida de Qualidade e Entrega"
+    stage: quality
+    sequence: 6
+
+    agents:
+      primary: quality-captain
+      supporting:
+        - copy-reviewer
+        - ux-auditor
+
+    inputs:
+      - final_html_file: "HTML da Fase 5"
+      - copy_outputs: "Copy original para verificacao"
+      - quality_thresholds: "Limiares de qualidade do framework"
+
+    outputs:
+      - copy_review_report: "Revisao rapida de copy"
+      - ux_audit_report: "Auditoria rapida de usabilidade e formulario"
+      - overall_quality_score: "Nota geral de qualidade"
+      - final_approved_html: "HTML final aprovado"
+      - delivery_report: "Relatorio resumido de entrega"
+
+    quality_gate:
+      conditions:
+        - "Nota geral de qualidade acima de 7.0"
+        - "Headline compreensivel em 3 segundos"
+        - "Formulario funcional e visivel acima da dobra"
+        - "Zero erros gramaticais"
+        - "Pagina carrega rapido (abaixo de 1 segundo estimado)"
+        - "Responsividade validada nos breakpoints criticos"
+      veto_conditions:
+        - "Nota geral abaixo de 6.0"
+        - "Formulario nao funcional"
+        - "Erros gramaticais na headline ou chamada para acao"
+        - "Formulario nao visivel acima da dobra em dispositivos moveis"
+      min_score: 7.0
+      auto_approve_score: 8.0
+
+    parallel_tasks:
+      - group: "review_parallel"
+        description: "Revisao de copy e experiencia do usuario em paralelo"
+        tasks:
+          - agent: copy-reviewer
+            task: "Revisao rapida de headline, subheadline e chamada para acao"
+          - agent: ux-auditor
+            task: "Auditoria rapida focada em formulario e fluxo de conversao"
+
+    feedback_loop:
+      max_iterations: 1
+      routes_back_to: phase_3_copy
+      trigger: "Headline fraca ou chamada para acao ineficaz"
+      action: "quality-captain envia apontamentos ao copy-captain"
+      alternative_routes:
+        - condition: "Formulario com problemas de usabilidade"
+          routes_back_to: phase_5_build
+          action: "quality-captain envia apontamentos ao dev-captain"
+
+    model_settings:
+      model: "claude-sonnet-4-20250514"
+      temperature: 0.3
+      max_tokens: 4096
+
+# =============================================================================
+# REGRAS DE ESCALACAO
+# =============================================================================
+escalation_rules:
+  - condition: "Qualquer fase excede maximo de iteracoes sem atingir limiar"
+    action: "Escalar para site-commander"
+    commander_options:
+      - "Aceitar resultado com ressalvas"
+      - "Fornecer instrucoes para tentativa final"
+
+  - condition: "Pipeline total excede 30 minutos"
+    action: "Entregar resultado parcial ao usuario"
+
+  - condition: "Nota geral abaixo de 6.0"
+    action: "Sinalizar para revisao humana"
+
+# =============================================================================
+# CONFIGURACOES ESPECIFICAS PARA SQUEEZE PAGES
+# =============================================================================
+page_type_settings:
+  skip_agents:
+    - story-weaver
+    - email-sequence-writer
+    - ab-test-architect
+    - competitor-analyst
+    - market-researcher
+    - body-copy-architect
+    - objection-handler
+    - visual-hierarchy-specialist
+    - responsive-engineer
+    - icon-imagery-curator
+    - animation-specialist
+    - javascript-specialist
+    - integration-specialist
+    - performance-optimizer
+    - cro-specialist
+    - seo-specialist
+    - trust-signal-specialist
+    - analytics-engineer
+    - accessibility-checker
+    - cross-browser-tester
+  skip_agents_rationale: >
+    Squeeze pages utilizam um subconjunto minimo de agentes para maximizar
+    velocidade de geracao e minimizar custo de tokens. Apenas os agentes
+    essenciais para headline, chamada para acao, layout basico e formulario
+    sao ativados. Agentes de storytelling, analise competitiva, animacoes
+    e otimizacao avancada sao omitidos por nao serem necessarios neste
+    formato ultra-simplificado.
+
+  focus_areas:
+    - "Headline de alto impacto com beneficio imediato"
+    - "Formulario minimo (apenas nome e email)"
+    - "Chamada para acao irresistivel"
+    - "Zero distracao visual"
+    - "Carregamento ultra-rapido"
+
+  form_requirements:
+    max_fields: 2
+    required_fields: ["email"]
+    optional_fields: ["nome"]
+    submit_button_style: "grande com cor contrastante e texto orientado a beneficio"
+    privacy_text: "Texto curto de privacidade abaixo do formulario"
+    honeypot: true
+    success_action: "redirecionamento para pagina de agradecimento"
+
+  design_constraints:
+    max_sections: 5
+    no_navigation_menu: true
+    no_sidebar: true
+    no_external_links: true
+    single_column_on_mobile: true
+    form_above_fold_mandatory: true
+    max_scroll_depth: "2 telas no maximo"
